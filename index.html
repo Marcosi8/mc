@@ -73,7 +73,7 @@
             100% { transform: translateY(0); }
         }
 
-        /* Posicionamento dos bottons para desktop/telas maiores */
+       
         .icon-pos-1 { top: 15px; left: 15px; transform: rotate(-8deg); animation-delay: 0s; }
         .icon-pos-2 { top: 15px; right: 15px; transform: rotate(15deg); animation-delay: 0.5s; }
         .icon-pos-3 { top: 100px; left: -10px; transform: rotate(2deg); animation-delay: 1s; } /* Ajustado para fora da borda esquerda */
@@ -136,13 +136,13 @@
                 height: 40px;
             }
             
-            /* Posicionamento OTIMIZADO para mobile (mais afastado do centro) */
+            
             .icon-pos-1 { top: -5px; left: -5px; transform: rotate(-8deg); } 
             .icon-pos-2 { top: -5px; right: -5px; transform: rotate(15deg); } 
-            .icon-pos-3 { top: 60px; left: -15px; transform: rotate(2deg); } /* Mais para fora */
-            .icon-pos-4 { top: 60px; right: -15px; transform: rotate(-10deg); } /* Mais para fora */
-            .icon-pos-5 { top: 160px; left: -15px; transform: rotate(7deg); } /* Mais para fora */
-            .icon-pos-6 { top: 160px; right: -15px; transform: rotate(-5deg); } /* Mais para fora */
+            .icon-pos-3 { top: 60px; left: -15px; transform: rotate(2deg); } 
+            .icon-pos-4 { top: 60px; right: -15px; transform: rotate(-10deg); }
+            .icon-pos-5 { top: 160px; left: -15px; transform: rotate(7deg); } 
+            .icon-pos-6 { top: 160px; right: -15px; transform: rotate(-5deg); } 
             .icon-pos-7 { bottom: -5px; left: -5px; transform: rotate(12deg); } 
             .icon-pos-8 { bottom: -5px; right: -5px; transform: rotate(-3deg); } 
             .icon-pos-9 { top: 15px; left: 50%; transform: translateX(-50%) rotate(10deg); } 
@@ -152,7 +152,7 @@
 </head>
 <body>
     <div class="container">
-        <img src="https://raw.githubusercontent.com/Marcosi8/graficoamor/main/img.icons8.png" alt="Botton 1" class="decoration-icon icon-pos-1">
+        <img src="img.icons8.png" alt="Botton 1" class="decoration-icon icon-pos-1">
         <img src="caminho_para_seu_icone2.png" alt="2" class="decoration-icon icon-pos-2">
         <img src="caminho_para_seu_icone3.png" alt="3" class="decoration-icon icon-pos-3">
         <img src="caminho_para_seu_icone4.png" alt="4" class="decoration-icon icon-pos-4">
@@ -167,7 +167,7 @@
         <p><span id="daysCount">0 dias, 0 horas, 0 minutos e 0 segundos</span> desde o início do nosso amor💙 05/05/2025</p>
         <p>(Crescimento do Amor ao Longo do Tempo)</p>
 
-        <img src="sua-foto-aqui.jpg" alt="Foto do nosso amor" class="love-photo">
+        <img src="" alt="" class="love-photo">
 
         <svg viewBox="0 0 600 400">
             <line x1="50" y1="350" x2="550" y2="350" stroke="#ddd" />
@@ -195,11 +195,11 @@
     </div>
 
     <script>
-        const startDate = new Date(2025, 4, 5); /* 5 de maio de 2025 (mês 4 para maio) */
+        const startDate = new Date(2025, 4, 5); 
 
         function updateCountdown() {
             const now = new Date();
-            const diffTime = now.getTime() - startDate.getTime(); /* Diferença em milissegundos */
+            const diffTime = now.getTime() - startDate.getTime(); 
 
             const totalSeconds = Math.floor(diffTime / 1000);
 
