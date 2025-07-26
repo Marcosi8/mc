@@ -27,8 +27,8 @@
             max-width: 800px;
             width: 100%;
             box-sizing: border-box;
-            position: relative; 
-            overflow: hidden; 
+            position: relative; /* Essencial para posicionar os ícones de forma absoluta */
+            overflow: hidden; /* Garante que ícones que saiam um pouco da borda sejam cortados */
         }
         h1 {
             color: #C2185B;
@@ -54,13 +54,13 @@
             background-color: #f0f0f0;
             object-fit: cover; 
             border: 2px solid #C2185B; 
-            position: absolute; 
+            position: absolute; /* Permite posicionamento preciso */
             z-index: 10;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            cursor: grab; 
-            touch-action: none; 
+            cursor: grab; /* Indica que o elemento é arrastável */
+            touch-action: none; /* Previne o comportamento padrão do toque do navegador */
 
-        
+            /* ANIMAÇÃO DE FLUTUAÇÃO */
             animation-name: floatAnimation;
             animation-duration: 3s; 
             animation-iteration-count: infinite; 
@@ -72,13 +72,17 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
         }
 
-        
+        /* Definição da animação de flutuação */
         @keyframes floatAnimation {
             0% { transform: translateY(0); }
             50% { transform: translateY(-10px); } 
             100% { transform: translateY(0); }
         }
 
+        /* Posicionamento dos bottons aleatórios - ajuste à vontade! */
+        /* Importante: Removi as propriedades 'top' e 'left' daqui.
+           Agora elas serão gerenciadas pelo JavaScript após o primeiro arraste.
+           Mantenho apenas o 'transform: rotate()' aqui. */
         .icon-pos-1 { top: 15px; left: 15px; transform: rotate(-8deg); animation-delay: 0s; }
         .icon-pos-2 { top: 10px; right: 100px; transform: rotate(15deg); animation-delay: 0.5s; }
         .icon-pos-3 { top: 80px; left: 5px; transform: rotate(2deg); animation-delay: 1s; }
@@ -89,7 +93,6 @@
         .icon-pos-8 { bottom: 15px; right: 30px; transform: rotate(-3deg); animation-delay: 0.7s; }
         .icon-pos-9 { top: 200px; left: 50%; transform: translateX(-50%) rotate(10deg); animation-delay: 1.2s; }
         .icon-pos-10 { bottom: 100px; left: 60px; transform: rotate(-15deg); animation-delay: 1.7s; }
-
 
         svg {
             border: 1px solid #ccc;
@@ -156,7 +159,7 @@
 </head>
 <body>
     <div class="container">
-        <img src="img.icons8.png" alt="1" class="decoration-icon icon-pos-1">
+        <img src="img.icons8.png" alt="Botton 1" class="decoration-icon icon-pos-1">
         <img src="caminho_para_seu_icone2.png" alt="2" class="decoration-icon icon-pos-2">
         <img src="caminho_para_seu_icone3.png" alt="3" class="decoration-icon icon-pos-3">
         <img src="caminho_para_seu_icone4.png" alt="4" class="decoration-icon icon-pos-4">
@@ -170,7 +173,7 @@
         <p> <span id="daysCount">0 dias, 0 horas, 0 minutos e 0 segundos</span> desde o início do nosso amor💙 05/05/2025</p>
         <p>(Crescimento do Amor ao Longo do Tempo)</p>
 
-        <img src="" alt="" class="love-photo">
+        <img src="sua-foto-aqui.jpg" alt="Foto do nosso amor" class="love-photo">
 
         <svg viewBox="0 0 600 400">
             <line x1="50" y1="350" x2="550" y2="350" stroke="#ddd" />
@@ -198,10 +201,11 @@
         </div>
 
     <script>
-        const startDate = new Date(2025, 4, 5); 
+        const startDate = new Date(2025, 4, 5); /* 5 de maio de 2025 (mês 4 para maio) */
+
         function updateCountdown() {
             const now = new Date();
-            const diffTime = now.getTime() - startDate.getTime(); 
+            const diffTime = now.getTime() - startDate.getTime(); /* Diferença em milissegundos */
 
             const totalSeconds = Math.floor(diffTime / 1000);
 
@@ -223,17 +227,42 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
-       
+        /* --- CÓDIGO PARA ARRASTAR OS BOTTONS (DRAG-AND-DROP) --- */
         const container = document.querySelector('.container');
-        let activeItem = null; 
-        let currentX;
-        let currentY;
-        let initialX;
-        let initialY;
-        let xOffset = 0;
-        let yOffset = 0;
+        let activeItem = null; // O item que está sendo arrastado
+        let initialX; // Posição X inicial do clique/toque dentro do elemento
+        let initialY; // Posição Y inicial do clique/toque dentro do elemento
 
-        document.querySelectorAll('.decoration-icon').forEach(item => {
+        // Get all decoration icons
+        const decorationIcons = document.querySelectorAll('.decoration-icon');
+
+        decorationIcons.forEach(item => {
+            // Guarda a rotação original do CSS no atributo de dados (dataset)
+            const style = window.getComputedStyle(item);
+            const transformValue = style.getPropertyValue('transform');
+            
+            // Tenta extrair 'rotate(Xdeg)' da string de transform
+            // Isso lida com casos onde o navegador converte rotate para matrix()
+            let rotation = '';
+            if (transformValue && transformValue !== 'none') {
+                const matrixValues = transformValue.match(/matrix.*\((.+)\)/);
+                if (matrixValues && matrixValues[1]) {
+                    const values = matrixValues[1].split(',').map(Number);
+                    const a = values[0];
+                    const b = values[1];
+                    const angle = Math.round(Math.atan2(b, a) * (180/Math.PI));
+                    rotation = `rotate(${angle}deg)`;
+                } else {
+                    // Fallback for simple rotate or other direct transforms
+                    const rotateMatch = transformValue.match(/rotate\(([^)]+)\)/);
+                    if (rotateMatch) {
+                        rotation = rotateMatch[0];
+                    }
+                }
+            }
+            item.dataset.originalRotation = rotation;
+
+            // Define os eventos para toque e mouse
             item.addEventListener('touchstart', dragStart, false);
             item.addEventListener('touchend', dragEnd, false);
             item.addEventListener('touchmove', drag, false);
@@ -241,64 +270,79 @@
             item.addEventListener('mousedown', dragStart, false);
             item.addEventListener('mouseup', dragEnd, false);
             item.addEventListener('mousemove', drag, false);
+
+            // Adiciona classe para desativar a transição CSS de posicionamento no início para evitar pulos
+            item.classList.add('draggable');
         });
 
         function dragStart(e) {
+            // Verifica se o alvo é um botton
+            if (!e.target.classList.contains('decoration-icon')) return;
+
+            activeItem = e.target;
+            const rect = activeItem.getBoundingClientRect();
+            
+            // Calcula a posição do toque/clique em relação ao canto superior esquerdo do botton
             if (e.type === 'touchstart') {
-                initialX = e.touches[0].clientX - xOffset;
-                initialY = e.touches[0].clientY - yOffset;
-            } else {
-                initialX = e.clientX - xOffset;
-                initialY = e.clientY - yOffset;
+                initialX = e.touches[0].clientX - rect.left;
+                initialY = e.touches[0].clientY - rect.top;
+            } else { // mousedown
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
             }
 
-            if (e.target.classList.contains('decoration-icon')) {
-                activeItem = e.target;
-                
-                activeItem.style.animationPlayState = 'paused';
-               
-                activeItem.style.cursor = 'grabbing';
-            }
+            // Pausa a animação de flutuação e desativa transições CSS para suavizar o arraste
+            activeItem.style.animationPlayState = 'paused';
+            activeItem.style.transition = 'none'; 
+            activeItem.style.cursor = 'grabbing'; // Muda o cursor para indicar arraste
         }
 
         function dragEnd(e) {
             if (activeItem) {
-                initialX = currentX;
-                initialY = currentY;
-
-                
+                // Reativa a transição CSS e a animação de flutuação
+                activeItem.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease'; 
                 activeItem.style.animationPlayState = 'running';
-                
-                activeItem.style.cursor = 'grab';
+                activeItem.style.cursor = 'grab'; // Volta o cursor ao normal
 
-                activeItem = null;
+                activeItem = null; // Limpa o item ativo
             }
         }
 
         function drag(e) {
-            if (activeItem) {
-                e.preventDefault(); 
+            if (!activeItem) return; // Se não há item ativo, sai da função
 
-                if (e.type === 'touchmove') {
-                    currentX = e.touches[0].clientX - initialX;
-                    currentY = e.touches[0].clientY - initialY;
-                } else {
-                    currentX = e.clientX - initialX;
-                    currentY = e.clientY - initialY;
-                }
+            e.preventDefault(); // Previne rolagem da tela ou seleção de texto
 
-                xOffset = currentX;
-                yOffset = currentY;
-
-                const originalTransform = window.getComputedStyle(activeItem).getPropertyValue('transform');
-                const rotationMatch = originalTransform.match(/rotate\(([^)]+)\)/);
-                const originalRotation = rotationMatch ? rotationMatch[0] : 'rotate(0deg)';
-
-
-                activeItem.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) ${originalRotation}`;
+            let clientX, clientY;
+            if (e.type === 'touchmove') {
+                clientX = e.touches[0].clientX;
+                clientY = e.touches[0].clientY;
+            } else { // mousemove
+                clientX = e.clientX;
+                clientY = e.clientY;
             }
+
+            const containerRect = container.getBoundingClientRect();
+            const iconWidth = activeItem.offsetWidth;
+            const iconHeight = activeItem.offsetHeight;
+
+            // Calcula a nova posição absoluta do botton dentro do container
+            let newLeft = clientX - initialX - containerRect.left;
+            let newTop = clientY - initialY - containerRect.top;
+
+            // --- Garante que o botton fique dentro dos limites do container ---
+            if (newLeft < 0) newLeft = 0;
+            if (newTop < 0) newTop = 0;
+            if (newLeft + iconWidth > containerRect.width) newLeft = containerRect.width - iconWidth;
+            if (newTop + iconHeight > containerRect.height) newTop = containerRect.height - iconHeight;
+            // --- Fim da verificação de limites ---
+
+            // Aplica a nova posição e mantém a rotação original
+            // A rotação é mantida recuperando do dataset e aplicando junto com o translate.
+            const originalRotation = activeItem.dataset.originalRotation || 'rotate(0deg)';
+            activeItem.style.transform = `translate(${newLeft}px, ${newTop}px) ${originalRotation}`;
         }
-       
+        /* --- FIM DO CÓDIGO PARA ARRASTAR OS BOTTONS (DRAG-AND-DROP) --- */
     </script>
 </body>
 </html>
