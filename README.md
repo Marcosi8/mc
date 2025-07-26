@@ -1,1 +1,1 @@
-# graficoamo
+# gráfico 
