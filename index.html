@@ -54,13 +54,13 @@
             background-color: #f0f0f0;
             object-fit: cover; 
             border: 2px solid #C2185B; 
-            position: absolute; /* Permite posicionamento preciso */
+            position: absolute; 
             z-index: 10;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            cursor: grab; /* Indica que o elemento é arrastável */
-            touch-action: none; /* Previne o comportamento padrão do toque do navegador */
+            cursor: grab; 
+            touch-action: none; 
 
-            /* ANIMAÇÃO DE FLUTUAÇÃO */
+        
             animation-name: floatAnimation;
             animation-duration: 3s; 
             animation-iteration-count: infinite; 
@@ -72,14 +72,13 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
         }
 
-        /* Definição da animação de flutuação */
+        
         @keyframes floatAnimation {
             0% { transform: translateY(0); }
             50% { transform: translateY(-10px); } 
             100% { transform: translateY(0); }
         }
 
-        /* Posicionamento dos bottons aleatórios - ajuste à vontade! */
         .icon-pos-1 { top: 15px; left: 15px; transform: rotate(-8deg); animation-delay: 0s; }
         .icon-pos-2 { top: 10px; right: 100px; transform: rotate(15deg); animation-delay: 0.5s; }
         .icon-pos-3 { top: 80px; left: 5px; transform: rotate(2deg); animation-delay: 1s; }
@@ -157,7 +156,7 @@
 </head>
 <body>
     <div class="container">
-        <img src="img.icons8.png" alt="Botton 1" class="decoration-icon icon-pos-1">
+        <img src="img.icons8.png" alt="1" class="decoration-icon icon-pos-1">
         <img src="caminho_para_seu_icone2.png" alt="2" class="decoration-icon icon-pos-2">
         <img src="caminho_para_seu_icone3.png" alt="3" class="decoration-icon icon-pos-3">
         <img src="caminho_para_seu_icone4.png" alt="4" class="decoration-icon icon-pos-4">
@@ -171,7 +170,7 @@
         <p> <span id="daysCount">0 dias, 0 horas, 0 minutos e 0 segundos</span> desde o início do nosso amor💙 05/05/2025</p>
         <p>(Crescimento do Amor ao Longo do Tempo)</p>
 
-        <img src="sua-foto-aqui.jpg" alt="Foto do nosso amor" class="love-photo">
+        <img src="" alt="" class="love-photo">
 
         <svg viewBox="0 0 600 400">
             <line x1="50" y1="350" x2="550" y2="350" stroke="#ddd" />
@@ -199,11 +198,10 @@
         </div>
 
     <script>
-        const startDate = new Date(2025, 4, 5); /* 5 de maio de 2025 (mês 4 para maio) */
-
+        const startDate = new Date(2025, 4, 5); 
         function updateCountdown() {
             const now = new Date();
-            const diffTime = now.getTime() - startDate.getTime(); /* Diferença em milissegundos */
+            const diffTime = now.getTime() - startDate.getTime(); 
 
             const totalSeconds = Math.floor(diffTime / 1000);
 
