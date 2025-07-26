@@ -43,7 +43,6 @@
             margin-bottom: 25px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        
         .decoration-icon {
             display: block;
             width: 50px; 
@@ -57,10 +56,6 @@
             position: absolute; 
             z-index: 10;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            cursor: grab; 
-            touch-action: none; 
-
-            
             animation-name: floatAnimation;
             animation-duration: 3s; 
             animation-iteration-count: infinite; 
@@ -72,24 +67,24 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
         }
 
-        
         @keyframes floatAnimation {
             0% { transform: translateY(0); }
             50% { transform: translateY(-10px); } 
             100% { transform: translateY(0); }
         }
 
-       
+        /* Posicionamento dos bottons decorativos para não cobrir texto */
         .icon-pos-1 { top: 15px; left: 15px; transform: rotate(-8deg); animation-delay: 0s; }
-        .icon-pos-2 { top: 10px; right: 100px; transform: rotate(15deg); animation-delay: 0.5s; }
-        .icon-pos-3 { top: 80px; left: 5px; transform: rotate(2deg); animation-delay: 1s; }
-        .icon-pos-4 { top: 70px; right: 20px; transform: rotate(-10deg); animation-delay: 1.5s; }
-        .icon-pos-5 { top: 150px; left: 30px; transform: rotate(7deg); animation-delay: 2s; }
-        .icon-pos-6 { top: 140px; right: 80px; transform: rotate(-5deg); animation-delay: 2.5s; }
-        .icon-pos-7 { bottom: 20px; left: 10px; transform: rotate(12deg); animation-delay: 0.2s; }
-        .icon-pos-8 { bottom: 15px; right: 30px; transform: rotate(-3deg); animation-delay: 0.7s; }
-        .icon-pos-9 { top: 200px; left: 50%; transform: translateX(-50%) rotate(10deg); animation-delay: 1.2s; }
-        .icon-pos-10 { bottom: 100px; left: 60px; transform: rotate(-15deg); animation-delay: 1.7s; }
+        .icon-pos-2 { top: 15px; right: 15px; transform: rotate(15deg); animation-delay: 0.5s; }
+        .icon-pos-3 { top: 80px; left: 0; transform: rotate(2deg); animation-delay: 1s; }
+        .icon-pos-4 { top: 80px; right: 0; transform: rotate(-10deg); animation-delay: 1.5s; }
+        .icon-pos-5 { top: 200px; left: 10px; transform: rotate(7deg); animation-delay: 2s; }
+        .icon-pos-6 { top: 200px; right: 10px; transform: rotate(-5deg); animation-delay: 2.5s; }
+        .icon-pos-7 { bottom: 20px; left: 20px; transform: rotate(12deg); animation-delay: 0.2s; }
+        .icon-pos-8 { bottom: 20px; right: 20px; transform: rotate(-3deg); animation-delay: 0.7s; }
+        .icon-pos-9 { bottom: 100px; left: 50%; transform: translateX(-50%) rotate(10deg); animation-delay: 1.2s; }
+        .icon-pos-10 { top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-15deg); animation-delay: 1.7s; } /* Este cobre o centro, ideal para um ícone principal se não houver texto */
+
 
         svg {
             border: 1px solid #ccc;
@@ -142,15 +137,15 @@
             }
             
             .icon-pos-1 { top: 5px; left: 5px; transform: rotate(-8deg); }
-            .icon-pos-2 { top: 5px; right: 70px; transform: rotate(15deg); }
-            .icon-pos-3 { top: 60px; left: 0px; transform: rotate(2deg); }
-            .icon-pos-4 { top: 50px; right: 5px; transform: rotate(-10deg); }
-            .icon-pos-5 { top: 110px; left: 10px; transform: rotate(7deg); }
-            .icon-pos-6 { top: 100px; right: 40px; transform: rotate(-5deg); }
+            .icon-pos-2 { top: 5px; right: 5px; transform: rotate(15deg); }
+            .icon-pos-3 { top: 40px; left: 0px; transform: rotate(2deg); }
+            .icon-pos-4 { top: 40px; right: 0px; transform: rotate(-10deg); }
+            .icon-pos-5 { top: 100px; left: 5px; transform: rotate(7deg); }
+            .icon-pos-6 { top: 100px; right: 5px; transform: rotate(-5deg); }
             .icon-pos-7 { bottom: 10px; left: 5px; transform: rotate(12deg); }
-            .icon-pos-8 { bottom: 5px; right: 10px; transform: rotate(-3deg); }
-            .icon-pos-9 { top: 150px; left: 50%; transform: translateX(-50%) rotate(10deg); }
-            .icon-pos-10 { bottom: 60px; left: 30px; transform: rotate(-15deg); }
+            .icon-pos-8 { bottom: 5px; right: 5px; transform: rotate(-3deg); }
+            .icon-pos-9 { top: 120px; left: 50%; transform: translateX(-50%) rotate(10deg); }
+            .icon-pos-10 { bottom: 60px; left: 50%; transform: translateX(-50%) rotate(-15deg); }
         }
     </style>
 </head>
@@ -160,11 +155,15 @@
         <img src="caminho_para_seu_icone2.png" alt="2" class="decoration-icon icon-pos-2">
         <img src="caminho_para_seu_icone3.png" alt="3" class="decoration-icon icon-pos-3">
         <img src="caminho_para_seu_icone4.png" alt="4" class="decoration-icon icon-pos-4">
+        <img src="caminho_para_seu_icone5.png" alt="5" class="decoration-icon icon-pos-5">
+        <img src="caminho_para_seu_icone6.png" alt="6" class="decoration-icon icon-pos-6">
         <img src="caminho_para_seu_icone7.png" alt="7" class="decoration-icon icon-pos-7">
         <img src="caminho_para_seu_icone8.png" alt="8" class="decoration-icon icon-pos-8">
+        <img src="caminho_para_seu_icone9.png" alt="9" class="decoration-icon icon-pos-9">
         <img src="caminho_para_seu_icone10.png" alt="10" class="decoration-icon icon-pos-10">
+
         <h1>“Eu te amo cada vez mais a cada dia”</h1>
-        <p> <span id="daysCount">0 dias, 0 horas, 0 minutos e 0 segundos</span> desde o início do nosso amor💙 05/05/2025</p>
+        <p><span id="daysCount">0 dias, 0 horas, 0 minutos e 0 segundos</span> desde o início do nosso amor💙 05/05/2025</p>
         <p>(Crescimento do Amor ao Longo do Tempo)</p>
 
         <img src="" alt="" class="love-photo">
@@ -192,14 +191,14 @@
 
         <p>mc do coração 💙</p>
 
-        </div>
+    </div>
 
     <script>
-        const startDate = new Date(2025, 4, 5); 
+        const startDate = new Date(2025, 4, 5); /* 5 de maio de 2025 (mês 4 para maio) */
 
         function updateCountdown() {
             const now = new Date();
-            const diffTime = now.getTime() - startDate.getTime(); 
+            const diffTime = now.getTime() - startDate.getTime(); /* Diferença em milissegundos */
 
             const totalSeconds = Math.floor(diffTime / 1000);
 
@@ -220,120 +219,6 @@
 
         updateCountdown();
         setInterval(updateCountdown, 1000);
-
-        
-        const container = document.querySelector('.container');
-        let activeItem = null; 
-        let initialX; 
-        let initialY; 
-        
-        // Get all decoration icons
-        const decorationIcons = document.querySelectorAll('.decoration-icon');
-
-        decorationIcons.forEach(item => {
-            // Guarda a rotação original do CSS no atributo de dados (dataset)
-            const style = window.getComputedStyle(item);
-            const transformValue = style.getPropertyValue('transform');
-            
-            // Tenta extrair 'rotate(Xdeg)' da string de transform
-            // Isso lida com casos onde o navegador converte rotate para matrix()
-            let rotation = '';
-            if (transformValue && transformValue !== 'none') {
-                const matrixValues = transformValue.match(/matrix.*\((.+)\)/);
-                if (matrixValues && matrixValues[1]) {
-                    const values = matrixValues[1].split(',').map(Number);
-                    const a = values[0];
-                    const b = values[1];
-                    const angle = Math.round(Math.atan2(b, a) * (180/Math.PI));
-                    rotation = `rotate(${angle}deg)`;
-                } else {
-                    // Fallback for simple rotate or other direct transforms
-                    const rotateMatch = transformValue.match(/rotate\(([^)]+)\)/);
-                    if (rotateMatch) {
-                        rotation = rotateMatch[0];
-                    }
-                }
-            }
-            item.dataset.originalRotation = rotation;
-
-            // Define os eventos para toque e mouse
-            item.addEventListener('touchstart', dragStart, false);
-            item.addEventListener('touchend', dragEnd, false);
-            item.addEventListener('touchmove', drag, false);
-
-            item.addEventListener('mousedown', dragStart, false);
-            item.addEventListener('mouseup', dragEnd, false);
-            item.addEventListener('mousemove', drag, false);
-
-            // Adiciona classe para desativar a transição CSS de posicionamento no início para evitar pulos
-            item.classList.add('draggable');
-        });
-
-        function dragStart(e) {
-            // Verifica se o alvo é um botton
-            if (!e.target.classList.contains('decoration-icon')) return;
-
-            activeItem = e.target;
-            const rect = activeItem.getBoundingClientRect();
-            
-            // Calcula a posição do toque/clique em relação ao canto superior esquerdo do botton
-            if (e.type === 'touchstart') {
-                initialX = e.touches[0].clientX - rect.left;
-                initialY = e.touches[0].clientY - rect.top;
-            } else { // mousedown
-                initialX = e.clientX - rect.left;
-                initialY = e.clientY - rect.top;
-            }
-
-            // Pausa a animação de flutuação e desativa transições CSS para suavizar o arraste
-            activeItem.style.animationPlayState = 'paused';
-            activeItem.style.transition = 'none'; 
-            activeItem.style.cursor = 'grabbing'; // Muda o cursor para indicar arraste
-        }
-
-        function dragEnd(e) {
-            if (activeItem) {
-                // Reativa a transição CSS e a animação de flutuação
-                activeItem.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease'; 
-                activeItem.style.animationPlayState = 'running';
-                activeItem.style.cursor = 'grab'; // Volta o cursor ao normal
-
-                activeItem = null; // Limpa o item ativo
-            }
-        }
-
-        function drag(e) {
-            if (!activeItem) return; // Se não há item ativo, sai da função
-
-            e.preventDefault(); // Previne rolagem da tela ou seleção de texto
-
-            let clientX, clientY;
-            if (e.type === 'touchmove') {
-                clientX = e.touches[0].clientX;
-                clientY = e.touches[0].clientY;
-            } else { // mousemove
-                clientX = e.clientX;
-                clientY = e.clientY;
-            }
-
-            const containerRect = container.getBoundingClientRect();
-            const iconWidth = activeItem.offsetWidth;
-            const iconHeight = activeItem.offsetHeight;
-
-            
-            let newLeft = clientX - initialX - containerRect.left;
-            let newTop = clientY - initialY - containerRect.top;
-
-            
-            if (newLeft < 0) newLeft = 0;
-            if (newTop < 0) newTop = 0;
-            if (newLeft + iconWidth > containerRect.width) newLeft = containerRect.width - iconWidth;
-            if (newTop + iconHeight > containerRect.height) newTop = containerRect.height - iconHeight;
-            
-            const originalRotation = activeItem.dataset.originalRotation || 'rotate(0deg)';
-            activeItem.style.transform = `translate(${newLeft}px, ${newTop}px) ${originalRotation}`;
-        }
-     
     </script>
 </body>
 </html>
