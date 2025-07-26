@@ -28,6 +28,7 @@
             width: 100%;
             box-sizing: border-box;
             position: relative; /* Essencial para posicionar os ícones de forma absoluta */
+            overflow: hidden; /* Garante que ícones que saiam um pouco da borda sejam cortados */
         }
         h1 {
             color: #C2185B;
@@ -42,34 +43,37 @@
             margin-bottom: 25px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        /* Estilos para os ícones de interesse */
-        .interest-icon {
-            display: block; /* Para que cada ícone ocupe sua própria linha na marcação, mas vamos posicioná-los */
+        /* Estilos para os ícones decorativos */
+        .decoration-icon {
+            display: block;
             width: 50px; /* Tamanho dos ícones */
             height: 50px;
             border-radius: 50%; /* Para torná-los circulares */
-            opacity: 0.8;
-            transition: opacity 0.2s ease, transform 0.2s ease;
-            cursor: pointer; /* Indica que são clicáveis */
-            background-color: #ddd; /* Cor de fundo padrão se a imagem não carregar */
+            opacity: 0.9; /* Um pouco de transparência para não "gritar" demais */
+            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Adicionado box-shadow para transição suave */
+            background-color: #f0f0f0; /* Cor de fundo padrão se a imagem não carregar */
             object-fit: cover; /* Garante que a imagem preencha o círculo sem distorcer */
             border: 2px solid #C2185B; /* Borda da cor do tema */
             position: absolute; /* Permite posicionamento preciso */
             z-index: 10; /* Garante que fiquem acima de outros elementos */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade de "botton" */
         }
-        .interest-icon:hover {
-            opacity: 1;
-            transform: scale(1.1);
-            box-shadow: 0 0 10px rgba(194, 24, 91, 0.5); /* Efeito de brilho ao passar o mouse */
+        .decoration-icon:hover {
+            transform: scale(1.1); /* Animação de "levantar" ao passar o mouse */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra mais intensa no hover */
         }
 
-        /* Posicionamento dos ícones - ajuste conforme sua preferência */
-        .icon-filme { top: 20px; left: 20px; }
-        .icon-serie { top: 20px; right: 20px; }
-        .icon-livro { bottom: 20px; left: 20px; }
-        .icon-hobby { bottom: 20px; right: 20px; }
-        .icon-extra1 { top: 120px; left: 20px; } /* Exemplo de mais um ícone */
-        .icon-extra2 { top: 120px; right: 20px; } /* Exemplo de mais um ícone */
+        /* Posicionamento dos bottons aleatórios - ajuste à vontade! */
+        .icon-pos-1 { top: 15px; left: 15px; transform: rotate(-8deg); }
+        .icon-pos-2 { top: 10px; right: 100px; transform: rotate(15deg); }
+        .icon-pos-3 { top: 80px; left: 5px; transform: rotate(2deg); }
+        .icon-pos-4 { top: 70px; right: 20px; transform: rotate(-10deg); }
+        .icon-pos-5 { top: 150px; left: 30px; transform: rotate(7deg); }
+        .icon-pos-6 { top: 140px; right: 80px; transform: rotate(-5deg); }
+        .icon-pos-7 { bottom: 20px; left: 10px; transform: rotate(12deg); }
+        .icon-pos-8 { bottom: 15px; right: 30px; transform: rotate(-3deg); }
+        .icon-pos-9 { top: 200px; left: 50%; transform: translateX(-50%) rotate(10deg); }
+        .icon-pos-10 { bottom: 100px; left: 60px; transform: rotate(-15deg); }
 
 
         .spotify-player-container {
@@ -96,6 +100,7 @@
             fill: #555;
         }
         .annotation {
+            font-size: 0.8em;
             fill: #000;
         }
         .heart {
@@ -131,30 +136,36 @@
             .spotify-player-container iframe {
                 height: 250px;
             }
-            .interest-icon {
+            .decoration-icon {
                 width: 40px; /* Reduz o tamanho dos ícones em telas menores */
                 height: 40px;
             }
-            /* Ajuste o posicionamento dos ícones em telas menores se necessário */
-            .icon-filme { top: 10px; left: 10px; }
-            .icon-serie { top: 10px; right: 10px; }
-            .icon-livro { bottom: 10px; left: 10px; }
-            .icon-hobby { bottom: 10px; right: 10px; }
-            .icon-extra1 { top: 80px; left: 10px; }
-            .icon-extra2 { top: 80px; right: 10px; }
+            /* Ajuste de posicionamento para mobile - refine conforme a visualização */
+            .icon-pos-1 { top: 5px; left: 5px; transform: rotate(-8deg); }
+            .icon-pos-2 { top: 5px; right: 70px; transform: rotate(15deg); }
+            .icon-pos-3 { top: 60px; left: 0px; transform: rotate(2deg); }
+            .icon-pos-4 { top: 50px; right: 5px; transform: rotate(-10deg); }
+            .icon-pos-5 { top: 110px; left: 10px; transform: rotate(7deg); }
+            .icon-pos-6 { top: 100px; right: 40px; transform: rotate(-5deg); }
+            .icon-pos-7 { bottom: 10px; left: 5px; transform: rotate(12deg); }
+            .icon-pos-8 { bottom: 5px; right: 10px; transform: rotate(-3deg); }
+            .icon-pos-9 { top: 150px; left: 50%; transform: translateX(-50%) rotate(10deg); }
+            .icon-pos-10 { bottom: 60px; left: 30px; transform: rotate(-15deg); }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="icone_filme.png" alt="Filme Favorito" class="interest-icon icon-filme" onclick="window.open('URL_DO_FILME_FAVORITO', '_blank')">
-        <img src="icone_serie.png" alt="Série Que Ela Adora" class="interest-icon icon-serie" onclick="window.open('URL_DA_SERIE_QUE_ADORA', '_blank')">
-        <img src="icone_livro.png" alt="Livro Preferido" class="interest-icon icon-livro" onclick="window.open('URL_DO_LIVRO_PREFERIDO', '_blank')">
-        <img src="icone_hobby.png" alt="Hobby Dela" class="interest-icon icon-hobby" onclick="window.open('URL_DO_HOBBY_DELA', '_blank')">
-        <img src="icone_extra1.png" alt="Interesse Extra 1" class="interest-icon icon-extra1" onclick="window.open('URL_DO_INTERESSE_EXTRA_1', '_blank')">
-        <img src="icone_extra2.png" alt="Interesse Extra 2" class="interest-icon icon-extra2" onclick="window.open('URL_DO_INTERESSE_EXTRA_2', '_blank')">
-
-
+        <img src="caminho_para_seu_icone1.png" alt="Botton 1" class="decoration-icon icon-pos-1">
+        <img src="caminho_para_seu_icone2.png" alt="Botton 2" class="decoration-icon icon-pos-2">
+        <img src="caminho_para_seu_icone3.png" alt="Botton 3" class="decoration-icon icon-pos-3">
+        <img src="caminho_para_seu_icone4.png" alt="Botton 4" class="decoration-icon icon-pos-4">
+        <img src="caminho_para_seu_icone5.png" alt="Botton 5" class="decoration-icon icon-pos-5">
+        <img src="caminho_para_seu_icone6.png" alt="Botton 6" class="decoration-icon icon-pos-6">
+        <img src="caminho_para_seu_icone7.png" alt="Botton 7" class="decoration-icon icon-pos-7">
+        <img src="caminho_para_seu_icone8.png" alt="Botton 8" class="decoration-icon icon-pos-8">
+        <img src="caminho_para_seu_icone9.png" alt="Botton 9" class="decoration-icon icon-pos-9">
+        <img src="caminho_para_seu_icone10.png" alt="Botton 10" class="decoration-icon icon-pos-10">
         <h1>“Eu te amo cada vez mais a cada dia”</h1>
         <p>Cronômetro: <span id="daysCount">0 dias, 0 horas, 0 minutos, 0 segundos</span> desde o início do nosso amor💙 05/05/2025</p>
         <p>(Crescimento do Amor ao Longo do Tempo)</p>
