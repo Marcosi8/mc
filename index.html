@@ -54,13 +54,15 @@
             background-color: #f0f0f0;
             object-fit: cover; 
             border: 2px solid #C2185B; 
-            position: absolute; 
+            position: absolute; /* Permite posicionamento preciso */
             z-index: 10;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            cursor: grab; /* Indica que o elemento é arrastável */
+            touch-action: none; /* Previne o comportamento padrão do toque do navegador */
 
-            
+            /* ANIMAÇÃO DE FLUTUAÇÃO */
             animation-name: floatAnimation;
-            animation-duration: 3s;
+            animation-duration: 3s; 
             animation-iteration-count: infinite; 
             animation-timing-function: ease-in-out; 
             animation-direction: alternate; 
@@ -70,14 +72,14 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
         }
 
-        
+        /* Definição da animação de flutuação */
         @keyframes floatAnimation {
             0% { transform: translateY(0); }
             50% { transform: translateY(-10px); } 
             100% { transform: translateY(0); }
         }
 
-       
+        /* Posicionamento dos bottons aleatórios - ajuste à vontade! */
         .icon-pos-1 { top: 15px; left: 15px; transform: rotate(-8deg); animation-delay: 0s; }
         .icon-pos-2 { top: 10px; right: 100px; transform: rotate(15deg); animation-delay: 0.5s; }
         .icon-pos-3 { top: 80px; left: 5px; transform: rotate(2deg); animation-delay: 1s; }
@@ -139,7 +141,7 @@
                 width: 40px; 
                 height: 40px;
             }
-           
+            
             .icon-pos-1 { top: 5px; left: 5px; transform: rotate(-8deg); }
             .icon-pos-2 { top: 5px; right: 70px; transform: rotate(15deg); }
             .icon-pos-3 { top: 60px; left: 0px; transform: rotate(2deg); }
@@ -197,11 +199,11 @@
         </div>
 
     <script>
-        const startDate = new Date(2025, 4, 5); 
+        const startDate = new Date(2025, 4, 5); /* 5 de maio de 2025 (mês 4 para maio) */
 
         function updateCountdown() {
             const now = new Date();
-            const diffTime = now.getTime() - startDate.getTime(); 
+            const diffTime = now.getTime() - startDate.getTime(); /* Diferença em milissegundos */
 
             const totalSeconds = Math.floor(diffTime / 1000);
 
@@ -222,6 +224,83 @@
 
         updateCountdown();
         setInterval(updateCountdown, 1000);
+
+       
+        const container = document.querySelector('.container');
+        let activeItem = null; 
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
+        let xOffset = 0;
+        let yOffset = 0;
+
+        document.querySelectorAll('.decoration-icon').forEach(item => {
+            item.addEventListener('touchstart', dragStart, false);
+            item.addEventListener('touchend', dragEnd, false);
+            item.addEventListener('touchmove', drag, false);
+
+            item.addEventListener('mousedown', dragStart, false);
+            item.addEventListener('mouseup', dragEnd, false);
+            item.addEventListener('mousemove', drag, false);
+        });
+
+        function dragStart(e) {
+            if (e.type === 'touchstart') {
+                initialX = e.touches[0].clientX - xOffset;
+                initialY = e.touches[0].clientY - yOffset;
+            } else {
+                initialX = e.clientX - xOffset;
+                initialY = e.clientY - yOffset;
+            }
+
+            if (e.target.classList.contains('decoration-icon')) {
+                activeItem = e.target;
+                
+                activeItem.style.animationPlayState = 'paused';
+               
+                activeItem.style.cursor = 'grabbing';
+            }
+        }
+
+        function dragEnd(e) {
+            if (activeItem) {
+                initialX = currentX;
+                initialY = currentY;
+
+                
+                activeItem.style.animationPlayState = 'running';
+                
+                activeItem.style.cursor = 'grab';
+
+                activeItem = null;
+            }
+        }
+
+        function drag(e) {
+            if (activeItem) {
+                e.preventDefault(); 
+
+                if (e.type === 'touchmove') {
+                    currentX = e.touches[0].clientX - initialX;
+                    currentY = e.touches[0].clientY - initialY;
+                } else {
+                    currentX = e.clientX - initialX;
+                    currentY = e.clientY - initialY;
+                }
+
+                xOffset = currentX;
+                yOffset = currentY;
+
+                const originalTransform = window.getComputedStyle(activeItem).getPropertyValue('transform');
+                const rotationMatch = originalTransform.match(/rotate\(([^)]+)\)/);
+                const originalRotation = rotationMatch ? rotationMatch[0] : 'rotate(0deg)';
+
+
+                activeItem.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) ${originalRotation}`;
+            }
+        }
+       
     </script>
 </body>
 </html>
