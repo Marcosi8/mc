@@ -15,8 +15,8 @@
             margin: 0;
             background-color: #f4f4f4;
             color: #333;
-            padding: 20px; /* Adicionado padding para evitar que o conteúdo encoste nas bordas em telas pequenas */
-            box-sizing: border-box; /* Garante que o padding não aumente a largura total */
+            padding: 20px;
+            box-sizing: border-box;
         }
         .container {
             background-color: white;
@@ -25,25 +25,43 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
             max-width: 800px;
-            width: 100%; /* Alterado para 100% para ocupar a largura total disponível */
+            width: 100%;
             box-sizing: border-box;
         }
         h1 {
-            color: #C2185B; /* Crimson-like color */
+            color: #C2185B;
             margin-bottom: 20px;
-            font-size: 1.8em; /* Unidade 'em' já é boa para responsividade de fontes */
+            font-size: 1.8em;
+        }
+        .love-photo {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .spotify-player-container {
+            margin: 30px auto;
+            max-width: 100%;
+        }
+        .spotify-player-container iframe {
+            border-radius: 12px;
+            width: 100%; /* Garante que o player do Spotify ocupe a largura total */
+            height: 352px; /* Altura padrão para players de playlist do Spotify */
+            max-width: 600px; /* Limita a largura máxima para telas maiores, se o container for maior */
         }
         svg {
             border: 1px solid #ccc;
             background-color: #fff;
             margin-top: 20px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            width: 100%; /* Torna o SVG responsivo, ocupando 100% da largura do container */
-            height: auto; /* Mantém a proporção do SVG */
-            max-width: 600px; /* Limita a largura máxima para telas maiores */
+            width: 100%;
+            height: auto;
+            max-width: 600px;
         }
         .x-axis-label, .y-axis-label, .annotation {
-            font-size: 0.9em; /* Unidades 'em' são boas para fontes responsivas */
+            font-size: 0.9em;
             fill: #555;
         }
         .annotation {
@@ -62,16 +80,25 @@
             color: #C2185B;
         }
 
-        /* Media Query opcional para ajustes finos em telas muito pequenas */
         @media (max-width: 480px) {
             .container {
-                padding: 15px; /* Reduz o padding em telas menores */
+                padding: 15px;
             }
             h1 {
-                font-size: 1.5em; /* Reduz ligeiramente o tamanho do título */
+                font-size: 1.5em;
             }
             .x-axis-label, .y-axis-label, .annotation, p {
-                font-size: 0.8em; /* Reduz o tamanho da fonte para textos menores */
+                font-size: 0.8em;
+            }
+            .love-photo {
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+            .spotify-player-container {
+                margin: 20px auto;
+            }
+            .spotify-player-container iframe {
+                height: 250px; /* Altura um pouco menor para telas pequenas, se necessário */
             }
         }
     </style>
@@ -79,8 +106,14 @@
 <body>
     <div class="container">
         <h1>“Eu te amo cada vez mais a cada dia”</h1>
-        <p>Já se passaram <span id="daysCount">0</span> dias desde o início do nosso amor💙 05/05/2025</p>
+        <p>Cronômetro: <span id="daysCount">0 dias, 00:00:00</span> desde o início do nosso amor💙 05/05/2025</p>
         <p>(Crescimento do Amor ao Longo do Tempo)</p>
+
+        <img src="sua-foto-aqui.jpg" alt="Foto do nosso amor" class="love-photo">
+
+        <div class="spotify-player-container">
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3exg5gp2JSiVMbMKYWkTkL?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
 
         <svg viewBox="0 0 600 400">
             <line x1="50" y1="350" x2="550" y2="350" stroke="#ddd" />
@@ -93,7 +126,7 @@
             <text x="25" y="200" text-anchor="end" transform="rotate(-90 25 200)" class="y-axis-label">Intensidade do Amor</text>
 
             <text x="50" y="370" text-anchor="middle" class="x-axis-label">0</text>
-            <text x="550" y="370" text-anchor="middle" class="x-axis-label" id="xAxisEndLabel">29</text>
+            <text x="550" y="370" text-anchor="middle" class="x-axis-label" id="xAxisEndLabel">0</text>
             <text x="300" y="385" text-anchor="middle" class="x-axis-label">Dias</text>
 
             <path d="M 50 350 C 150 340, 250 280, 350 180 C 450 80, 500 55, 550 50"
@@ -108,16 +141,40 @@
 
     <script>
         const startDate = new Date(2025, 4, 5); // 5 de maio de 2025 (mês 4 para maio)
-        const today = new Date();
 
-        const diffTime = Math.abs(today.getTime() - startDate.getTime());
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        function updateCountdown() {
+            const now = new Date();
+            const diffTime = now.getTime() - startDate.getTime(); // Diferença em milissegundos
 
-        document.getElementById('daysCount').innerText = diffDays;
+            // Calcula dias, horas, minutos e segundos
+            const seconds = Math.floor((diffTime / 1000) % 60);
+            const minutes = Math.floor((diffTime / (1000 * 60)) % 60);
+            const hours = Math.floor((diffTime / (1000 * 60 * 60)) % 24);
+            const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
-        if (diffDays > 0) {
-            document.getElementById('xAxisEndLabel').innerText = diffDays;
+            // Formata os números para ter sempre dois dígitos (ex: 05, 12)
+            const formattedHours = String(hours).padStart(2, '0');
+            const formattedMinutes = String(minutes).padStart(2, '0');
+            const formattedSeconds = String(seconds).padStart(2, '0');
+
+            // Atualiza o texto no HTML do cronômetro
+            document.getElementById('daysCount').innerText = 
+                `${days} dias, ${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+            
+            // Atualiza o rótulo final do eixo X do gráfico SVG
+            document.getElementById('xAxisEndLabel').innerText = days;
+            
+            // Se o gráfico é fixo, podemos ajustar a escala visual ou simplesmente o rótulo
+            // Para um gráfico que REALMENTE se expande, seria necessário gerar dinamicamente o 'path' do SVG,
+            // o que é um processo mais avançado e fora do escopo de um ajuste simples.
+            // Aqui, estamos apenas atualizando o texto do rótulo para refletir os dias.
         }
+
+        // Chama a função uma vez para exibir o tempo imediatamente
+        updateCountdown();
+
+        // Atualiza a função a cada segundo (1000 milissegundos)
+        setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
