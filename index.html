@@ -47,9 +47,9 @@
         }
         .spotify-player-container iframe {
             border-radius: 12px;
-            width: 100%; /* Garante que o player do Spotify ocupe a largura total */
-            height: 352px; /* Altura padrão para players de playlist do Spotify */
-            max-width: 600px; /* Limita a largura máxima para telas maiores, se o container for maior */
+            width: 100%;
+            height: 352px;
+            max-width: 600px;
         }
         svg {
             border: 1px solid #ccc;
@@ -98,7 +98,7 @@
                 margin: 20px auto;
             }
             .spotify-player-container iframe {
-                height: 250px; /* Altura um pouco menor para telas pequenas, se necessário */
+                height: 250px;
             }
         }
     </style>
@@ -106,14 +106,11 @@
 <body>
     <div class="container">
         <h1>“Eu te amo cada vez mais a cada dia”</h1>
-        <p>Cronômetro: <span id="daysCount">0 dias, 00:00:00</span> desde o início do nosso amor💙 05/05/2025</p>
+        
+<p>Cronômetro: <span id="daysCount">0 dias, 0 horas, 0 minutos, 0 segundos</span> desde o início do nosso amor💙 05/05/2025</p>
         <p>(Crescimento do Amor ao Longo do Tempo)</p>
 
         <img src="sua-foto-aqui.jpg" alt="Foto do nosso amor" class="love-photo">
-
-        <div class="spotify-player-container">
-            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3exg5gp2JSiVMbMKYWkTkL?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
 
         <svg viewBox="0 0 600 400">
             <line x1="50" y1="350" x2="550" y2="350" stroke="#ddd" />
@@ -137,6 +134,10 @@
         </svg>
 
         <p>mc do coração 💙</p>
+
+        <div class="spotify-player-container">
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3exg5gp2JSiVMbMKYWkTkL?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
     </div>
 
     <script>
@@ -146,11 +147,18 @@
             const now = new Date();
             const diffTime = now.getTime() - startDate.getTime(); // Diferença em milissegundos
 
-            // Calcula dias, horas, minutos e segundos
-            const seconds = Math.floor((diffTime / 1000) % 60);
-            const minutes = Math.floor((diffTime / (1000 * 60)) % 60);
-            const hours = Math.floor((diffTime / (1000 * 60 * 60)) % 24);
-            const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            // Calcula o total de segundos
+            const totalSeconds = Math.floor(diffTime / 1000);
+
+            // Calcula dias, horas, minutos e segundos a partir do total de segundos
+            const days = Math.floor(totalSeconds / (60 * 60 * 24));
+            const remainingSecondsAfterDays = totalSeconds % (60 * 60 * 24);
+
+            const hours = Math.floor(remainingSecondsAfterDays / (60 * 60));
+            const remainingSecondsAfterHours = remainingSecondsAfterDays % (60 * 60);
+
+            const minutes = Math.floor(remainingSecondsAfterHours / 60);
+            const seconds = remainingSecondsAfterHours % 60;
 
             // Formata os números para ter sempre dois dígitos (ex: 05, 12)
             const formattedHours = String(hours).padStart(2, '0');
@@ -159,15 +167,10 @@
 
             // Atualiza o texto no HTML do cronômetro
             document.getElementById('daysCount').innerText = 
-                `${days} dias, ${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+                `${days} dias, ${hours} horas, ${minutes} minutos, ${seconds} segundos`;
             
             // Atualiza o rótulo final do eixo X do gráfico SVG
             document.getElementById('xAxisEndLabel').innerText = days;
-            
-            // Se o gráfico é fixo, podemos ajustar a escala visual ou simplesmente o rótulo
-            // Para um gráfico que REALMENTE se expande, seria necessário gerar dinamicamente o 'path' do SVG,
-            // o que é um processo mais avançado e fora do escopo de um ajuste simples.
-            // Aqui, estamos apenas atualizando o texto do rótulo para refletir os dias.
         }
 
         // Chama a função uma vez para exibir o tempo imediatamente
