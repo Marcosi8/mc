@@ -27,8 +27,8 @@
             max-width: 800px;
             width: 100%;
             box-sizing: border-box;
-            position: relative; /* Essencial para posicionar os ícones de forma absoluta */
-            overflow: hidden; /* Garante que ícones que saiam um pouco da borda sejam cortados */
+            position: relative; 
+            overflow: hidden; 
         }
         h1 {
             color: #C2185B;
@@ -54,13 +54,13 @@
             background-color: #f0f0f0;
             object-fit: cover; 
             border: 2px solid #C2185B; 
-            position: absolute; /* Permite posicionamento preciso */
+            position: absolute; 
             z-index: 10;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            cursor: grab; /* Indica que o elemento é arrastável */
-            touch-action: none; /* Previne o comportamento padrão do toque do navegador */
+            cursor: grab; 
+            touch-action: none; 
 
-            /* ANIMAÇÃO DE FLUTUAÇÃO */
+            
             animation-name: floatAnimation;
             animation-duration: 3s; 
             animation-iteration-count: infinite; 
@@ -72,17 +72,14 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
         }
 
-        /* Definição da animação de flutuação */
+        
         @keyframes floatAnimation {
             0% { transform: translateY(0); }
             50% { transform: translateY(-10px); } 
             100% { transform: translateY(0); }
         }
 
-        /* Posicionamento dos bottons aleatórios - ajuste à vontade! */
-        /* Importante: Removi as propriedades 'top' e 'left' daqui.
-           Agora elas serão gerenciadas pelo JavaScript após o primeiro arraste.
-           Mantenho apenas o 'transform: rotate()' aqui. */
+       
         .icon-pos-1 { top: 15px; left: 15px; transform: rotate(-8deg); animation-delay: 0s; }
         .icon-pos-2 { top: 10px; right: 100px; transform: rotate(15deg); animation-delay: 0.5s; }
         .icon-pos-3 { top: 80px; left: 5px; transform: rotate(2deg); animation-delay: 1s; }
@@ -163,17 +160,14 @@
         <img src="caminho_para_seu_icone2.png" alt="2" class="decoration-icon icon-pos-2">
         <img src="caminho_para_seu_icone3.png" alt="3" class="decoration-icon icon-pos-3">
         <img src="caminho_para_seu_icone4.png" alt="4" class="decoration-icon icon-pos-4">
-        <img src="caminho_para_seu_icone5.png" alt="5" class="decoration-icon icon-pos-5">
-        <img src="caminho_para_seu_icone6.png" alt="6" class="decoration-icon icon-pos-6">
         <img src="caminho_para_seu_icone7.png" alt="7" class="decoration-icon icon-pos-7">
         <img src="caminho_para_seu_icone8.png" alt="8" class="decoration-icon icon-pos-8">
-        <img src="caminho_para_seu_icone9.png" alt="9" class="decoration-icon icon-pos-9">
         <img src="caminho_para_seu_icone10.png" alt="10" class="decoration-icon icon-pos-10">
         <h1>“Eu te amo cada vez mais a cada dia”</h1>
         <p> <span id="daysCount">0 dias, 0 horas, 0 minutos e 0 segundos</span> desde o início do nosso amor💙 05/05/2025</p>
         <p>(Crescimento do Amor ao Longo do Tempo)</p>
 
-        <img src="sua-foto-aqui.jpg" alt="Foto do nosso amor" class="love-photo">
+        <img src="" alt="" class="love-photo">
 
         <svg viewBox="0 0 600 400">
             <line x1="50" y1="350" x2="550" y2="350" stroke="#ddd" />
@@ -201,11 +195,11 @@
         </div>
 
     <script>
-        const startDate = new Date(2025, 4, 5); /* 5 de maio de 2025 (mês 4 para maio) */
+        const startDate = new Date(2025, 4, 5); 
 
         function updateCountdown() {
             const now = new Date();
-            const diffTime = now.getTime() - startDate.getTime(); /* Diferença em milissegundos */
+            const diffTime = now.getTime() - startDate.getTime(); 
 
             const totalSeconds = Math.floor(diffTime / 1000);
 
@@ -227,12 +221,12 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
-        /* --- CÓDIGO PARA ARRASTAR OS BOTTONS (DRAG-AND-DROP) --- */
+        
         const container = document.querySelector('.container');
-        let activeItem = null; // O item que está sendo arrastado
-        let initialX; // Posição X inicial do clique/toque dentro do elemento
-        let initialY; // Posição Y inicial do clique/toque dentro do elemento
-
+        let activeItem = null; 
+        let initialX; 
+        let initialY; 
+        
         // Get all decoration icons
         const decorationIcons = document.querySelectorAll('.decoration-icon');
 
@@ -326,23 +320,20 @@
             const iconWidth = activeItem.offsetWidth;
             const iconHeight = activeItem.offsetHeight;
 
-            // Calcula a nova posição absoluta do botton dentro do container
+            
             let newLeft = clientX - initialX - containerRect.left;
             let newTop = clientY - initialY - containerRect.top;
 
-            // --- Garante que o botton fique dentro dos limites do container ---
+            
             if (newLeft < 0) newLeft = 0;
             if (newTop < 0) newTop = 0;
             if (newLeft + iconWidth > containerRect.width) newLeft = containerRect.width - iconWidth;
             if (newTop + iconHeight > containerRect.height) newTop = containerRect.height - iconHeight;
-            // --- Fim da verificação de limites ---
-
-            // Aplica a nova posição e mantém a rotação original
-            // A rotação é mantida recuperando do dataset e aplicando junto com o translate.
+            
             const originalRotation = activeItem.dataset.originalRotation || 'rotate(0deg)';
             activeItem.style.transform = `translate(${newLeft}px, ${newTop}px) ${originalRotation}`;
         }
-        /* --- FIM DO CÓDIGO PARA ARRASTAR OS BOTTONS (DRAG-AND-DROP) --- */
+     
     </script>
 </body>
 </html>
