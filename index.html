@@ -13,25 +13,28 @@
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            /* Tema Escuro */
+            background-color: #1a1a1a; /* Fundo escuro */
+            color: #f0f0f0; /* Texto claro */
             padding: 20px;
             box-sizing: border-box;
         }
         .container {
-            background-color: white;
+            /* Tema Escuro */
+            background-color: #282828; /* Fundo mais escuro para o container */
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Sombra mais forte */
             text-align: center;
             max-width: 800px;
             width: 100%;
             box-sizing: border-box;
-            position: relative; 
-            overflow: hidden; 
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #444; /* Borda sutil */
         }
         h1 {
-            color: #C2185B;
+            color: #FF69B4; /* Um rosa mais vibrante para o título */
             margin-bottom: 20px;
             font-size: 1.8em;
         }
@@ -41,68 +44,71 @@
             border-radius: 8px;
             margin-top: 25px;
             margin-bottom: 25px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra ajustada */
         }
         .decoration-icon {
             display: block;
-            width: 50px; 
+            width: 50px;
             height: 50px;
-            border-radius: 50%; 
-            opacity: 0.9; 
-            transition: transform 0.2s ease, box-shadow 0.2s ease; 
-            background-color: #f0f0f0;
-            object-fit: cover; 
-            border: 2px solid #C2185B; 
-            position: absolute; 
+            border-radius: 50%;
+            opacity: 0.9;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            background-color: #3a3a3a; /* Fundo dos ícones escuro */
+            object-fit: cover;
+            border: 2px solid #FF69B4; /* Borda com a cor do tema */
+            position: absolute;
             z-index: 10;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
             animation-name: floatAnimation;
-            animation-duration: 3s; 
-            animation-iteration-count: infinite; 
-            animation-timing-function: ease-in-out; 
-            animation-direction: alternate; 
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+            animation-direction: alternate;
         }
         .decoration-icon:hover {
-            transform: scale(1.1); 
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
         }
 
         @keyframes floatAnimation {
             0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); } 
+            50% { transform: translateY(-10px); }
             100% { transform: translateY(0); }
         }
 
-       
+        /* Posicionamento dos ícones (mantido do original, ajuste se necessário) */
         .icon-pos-1 { top: 25px; left: 25px; transform: rotate(-8deg); animation-delay: 0s; }
         .icon-pos-2 { top: 25px; right: 25px; transform: rotate(15deg); animation-delay: 0.5s; }
-        .icon-pos-3 { top: 100px; left: 5px; transform: rotate(2deg); animation-delay: 1s; } 
-        .icon-pos-4 { top: 100px; right: 5px; transform: rotate(-10deg); animation-delay: 1.5s; } 
+        .icon-pos-3 { top: 100px; left: 5px; transform: rotate(2deg); animation-delay: 1s; }
+        .icon-pos-4 { top: 100px; right: 5px; transform: rotate(-10deg); animation-delay: 1.5s; }
         .icon-pos-5 { top: 250px; left: 5px; transform: rotate(7deg); animation-delay: 2s; }
-        .icon-pos-6 { top: 250px; right: 5px; transform: rotate(-5deg); animation-delay: 2.5s; } 
+        .icon-pos-6 { top: 250px; right: 5px; transform: rotate(-5deg); animation-delay: 2.5s; }
         .icon-pos-7 { bottom: 25px; left: 25px; transform: rotate(12deg); animation-delay: 0.2s; }
         .icon-pos-8 { bottom: 25px; right: 25px; transform: rotate(-3deg); animation-delay: 0.7s; }
         .icon-pos-9 { bottom: 100px; left: 50%; transform: translateX(-50%) rotate(10deg); animation-delay: 1.2s; }
-        .icon-pos-10 { top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-15deg); animation-delay: 1.7s; } 
-       
+        .icon-pos-10 { top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-15deg); animation-delay: 1.7s; }
 
 
         svg {
-            border: 1px solid #ccc;
-            background-color: #fff;
+            border: 1px solid #444; /* Borda do SVG mais escura */
+            background-color: #333; /* Fundo do gráfico escuro */
             margin-top: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Sombra mais proeminente */
             width: 100%;
             height: auto;
             max-width: 600px;
         }
+        /* Cores dos elementos do gráfico para tema escuro */
+        .grid-line {
+            stroke: #555; /* Linhas de grade mais suaves */
+        }
         .x-axis-label, .y-axis-label, .annotation {
             font-size: 0.9em;
-            fill: #555;
+            fill: #bbb; /* Cor do texto dos eixos e anotações */
         }
         .annotation {
             font-size: 0.8em;
-            fill: #000;
+            fill: #eee; /* Anotações mais claras */
         }
         .heart {
             font-size: 1.2em;
@@ -110,11 +116,11 @@
         p {
             margin-top: 20px;
             font-style: italic;
-            color: #666;
+            color: #bbb; /* Texto do parágrafo mais claro */
         }
         #daysCount {
             font-weight: bold;
-            color: #C2185B;
+            color: #FF69B4; /* Cor vibrante para o contador */
         }
 
         @media (max-width: 480px) {
@@ -131,47 +137,48 @@
                 margin-top: 15px;
                 margin-bottom: 15px;
             }
-            
             .decoration-icon {
-                width: 40px; 
+                width: 40px;
                 height: 40px;
             }
-            
-          
-            .icon-pos-1 { top: 10px; left: 10px; transform: rotate(-8deg); } 
-            .icon-pos-2 { top: 10px; right: 10px; transform: rotate(15deg); } 
-            .icon-pos-3 { top: 60px; left: 5px; transform: rotate(2deg); } 
-            .icon-pos-4 { top: 60px; right: 5px; transform: rotate(-10deg); } 
-            .icon-pos-5 { top: 160px; left: 5px; transform: rotate(7deg); } 
-            .icon-pos-6 { top: 160px; right: 5px; transform: rotate(-5deg); } 
-            .icon-pos-7 { bottom: 10px; left: 10px; transform: rotate(12deg); } 
-            .icon-pos-8 { bottom: 10px; right: 10px; transform: rotate(-3deg); } 
-            .icon-pos-9 { top: 15px; left: 50%; transform: translateX(-50%) rotate(10deg); } 
-            .icon-pos-10 { bottom: 15px; left: 50%; transform: translateX(-50%) rotate(-15deg); } 
+            /* Ajustes de posição para ícones em telas pequenas (mantido do original) */
+            .icon-pos-1 { top: 10px; left: 10px; transform: rotate(-8deg); }
+            .icon-pos-2 { top: 10px; right: 10px; transform: rotate(15deg); }
+            .icon-pos-3 { top: 60px; left: 5px; transform: rotate(2deg); }
+            .icon-pos-4 { top: 60px; right: 5px; transform: rotate(-10deg); }
+            .icon-pos-5 { top: 160px; left: 5px; transform: rotate(7deg); }
+            .icon-pos-6 { top: 160px; right: 5px; transform: rotate(-5deg); }
+            .icon-pos-7 { bottom: 10px; left: 10px; transform: rotate(12deg); }
+            .icon-pos-8 { bottom: 10px; right: 10px; transform: rotate(-3deg); }
+            .icon-pos-9 { top: 15px; left: 50%; transform: translateX(-50%) rotate(10deg); }
+            .icon-pos-10 { bottom: 15px; left: 50%; transform: translateX(-50%) rotate(-15deg); }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="mc/mc/img.icons8.png" alt="3" class="decoration-icon icon-pos-3">
-        <img src="mc/mc/MV5BNDkyMTVkZWEtNjgzMy00OWE4LTg0ZDAtMzQwNWI5NmVhOTRiXkEyXkFqcGc@._V1_.jpg" alt="4" class="decoration-icon icon-pos-4">
-        <img src="mc/mc/Kuromi.webp" alt="5" class="decoration-icon icon-pos-5">
-        <img src="mc/mc/715jbEtLNcL._AC_UL210_SR210,210_.jpg" alt="6" class="decoration-icon icon-pos-6">
-        <img src="" alt="7" class="decoration-icon icon-pos-7">
-        <img src="" alt="8" class="decoration-icon icon-pos-8">
-        <img src="mc/mc/unnamed.jpg" alt="10" class="decoration-icon icon-pos-10">
+        <img src="https://www.flaticon.com/svg/v2/icons/svg/3004/3004812.svg" alt="Ícone de Coração 1" class="decoration-icon icon-pos-1">
+        <img src="https://www.flaticon.com/svg/v2/icons/svg/3004/3004812.svg" alt="Ícone de Coração 2" class="decoration-icon icon-pos-2">
+        <img src="https://www.flaticon.com/svg/v2/icons/svg/3004/3004812.svg" alt="Ícone de Coração 3" class="decoration-icon icon-pos-3">
+        <img src="https://www.flaticon.com/svg/v2/icons/svg/3004/3004812.svg" alt="Ícone de Coração 4" class="decoration-icon icon-pos-4">
+        <img src="https://www.flaticon.com/svg/v2/icons/svg/3004/3004812.svg" alt="Ícone de Coração 5" class="decoration-icon icon-pos-5">
+        <img src="https://www.flaticon.com/svg/v2/icons/svg/3004/3004812.svg" alt="Ícone de Coração 6" class="decoration-icon icon-pos-6">
+        <img src="https://www.flaticon.com/svg/v2/icons/svg/3004/3004812.svg" alt="Ícone de Coração 7" class="decoration-icon icon-pos-7">
+        <img src="https://www.flaticon.com/svg/v2/icons/svg/3004/3004812.svg" alt="Ícone de Coração 8" class="decoration-icon icon-pos-8">
+        <img src="https://www.flaticon.com/svg/v2/icons/svg/3004/3004812.svg" alt="Ícone de Coração 9" class="decoration-icon icon-pos-9">
+        <img src="https://www.flaticon.com/svg/v2/icons/svg/3004/3004812.svg" alt="Ícone de Coração 10" class="decoration-icon icon-pos-10">
 
         <h1>“Eu te amo cada vez mais a cada dia”</h1>
         <p><span id="daysCount">0 dias, 0 horas, 0 minutos e 0 segundos</span> desde o início do nosso amor💙 05/05/2025</p>
         <p>(Crescimento do Amor ao Longo do Tempo)</p>
 
-        <img src="" alt="" class="love-photo">
+        <img src="https://images.unsplash.com/photo-1517976785642-1bf600b65377?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Foto de casal feliz" class="love-photo">
 
         <svg viewBox="0 0 600 400">
-            <line x1="50" y1="350" x2="550" y2="350" stroke="#ddd" />
-            <line x1="50" y1="50" x2="550" y2="50" stroke="#ddd" />
-            <line x1="50" y1="350" x2="50" y2="50" stroke="#ddd" />
-            <line x1="550" y1="350" x2="550" y2="50" stroke="#ddd" />
+            <line x1="50" y1="350" x2="550" y2="350" stroke="#555" class="grid-line" />
+            <line x1="50" y1="50" x2="550" y2="50" stroke="#555" class="grid-line" />
+            <line x1="50" y1="350" x2="50" y2="50" stroke="#555" class="grid-line" />
+            <line x1="550" y1="350" x2="550" y2="50" stroke="#555" class="grid-line" />
 
             <text x="35" y="355" text-anchor="end" class="y-axis-label">0</text>
             <text x="35" y="55" text-anchor="end" class="y-axis-label">Alto</text>
@@ -181,32 +188,31 @@
             <text x="550" y="370" text-anchor="middle" class="x-axis-label" id="xAxisEndLabel">0</text>
             <text x="300" y="385" text-anchor="middle" class="x-axis-label">Dias</text>
 
-            <path d="M 50 350 C 150 340, 250 280, 350 180 C 450 80, 500 55, 550 50"
-                  fill="none" stroke="crimson" stroke-width="2.5"/>
+            <path id="lovePath"
+                  fill="none" stroke="#FF69B4" stroke-width="3" /* Cor da linha para tema escuro, e espessura */
+                  style="filter: drop-shadow(0 0 5px rgba(255,105,180,0.7));" /* Efeito de brilho */
+            />
 
             <text x="60" y="340" class="annotation">O amor começa aqui 💙</text>
             <text x="400" y="150" class="annotation">E cresce sem parar 💙</text>
         </svg>
 
-        <p>mc do coração 💙</p>
+        <p>Feito com amor por mc para mc do coração 💙</p>
 
     </div>
 
     <script>
-        const startDate = new Date(2025, 4, 5); 
+        const startDate = new Date(2025, 4, 5); // Mês é 0-indexed: 4 = Maio
 
-        function updateCountdown() {
+        function updateCountdownAndGraph() {
             const now = new Date();
-            const diffTime = now.getTime() - startDate.getTime(); 
+            const diffTime = now.getTime() - startDate.getTime();
 
             const totalSeconds = Math.floor(diffTime / 1000);
-
             const days = Math.floor(totalSeconds / (60 * 60 * 24));
             const remainingSecondsAfterDays = totalSeconds % (60 * 60 * 24);
-
             const hours = Math.floor(remainingSecondsAfterDays / (60 * 60));
             const remainingSecondsAfterHours = remainingSecondsAfterDays % (60 * 60);
-
             const minutes = Math.floor(remainingSecondsAfterHours / 60);
             const seconds = remainingSecondsAfterHours % 60;
 
@@ -214,10 +220,54 @@
                 `${days} dias, ${hours} horas, ${minutes} minutos, ${seconds} segundos`;
 
             document.getElementById('xAxisEndLabel').innerText = days;
+
+            // --- Atualiza o gráfico dinamicamente ---
+            const svgWidth = 600; // Largura do viewBox
+            const svgHeight = 400; // Altura do viewBox
+            const margin = { left: 50, right: 50, top: 50, bottom: 50 };
+            const plotWidth = svgWidth - margin.left - margin.right;
+            const plotHeight = svgHeight - margin.top - margin.bottom;
+
+            const maxDaysForGraph = 365; // Defina um número máximo de dias para o gráfico, por exemplo, 1 ano
+            const currentDayPercentage = Math.min(days / maxDaysForGraph, 1); // Garante que não ultrapasse 100%
+
+            // Pontos de controle para a curva Bezier
+            // A curva vai de (0, 100%) a (days, X%)
+            // Ajustei para usar percentuais do plotHeight para que o amor "suba"
+            const startX = margin.left;
+            const startY = margin.top + plotHeight; // Início no canto inferior esquerdo
+
+            // Ponto final X será o máximo de dias ou a posição atual
+            const endX = margin.left + (currentDayPercentage * plotWidth);
+            // O amor deve aumentar, então o Y diminui (no SVG, Y=0 é o topo)
+            // Use uma função para a intensidade do amor, pode ser exponencial para mostrar aceleração
+            const intensity = 1 - (1 * Math.pow(currentDayPercentage, 0.8)); // Ajuste o 0.8 para mudar a "velocidade" de crescimento
+            const endY = margin.top + (intensity * plotHeight);
+
+            // Pontos de controle para a curva. Ajuste esses valores para moldar a curva.
+            // Para uma curva que sempre sobe, o Y dos pontos de controle deve ser menor que o Y inicial e maior que o Y final
+            const cp1x = startX + (plotWidth * 0.2); // 20% do caminho X
+            const cp1y = startY - (plotHeight * 0.1); // Levemente para cima
+
+            const cp2x = startX + (plotWidth * 0.6); // 60% do caminho X
+            const cp2y = startY - (plotHeight * 0.7 * currentDayPercentage); // Sobe mais conforme os dias passam
+
+            // A string 'd' para o atributo 'path'
+            const pathData = `M ${startX} ${startY} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${endX} ${endY}`;
+
+            document.getElementById('lovePath').setAttribute('d', pathData);
+
+            // Anotações ajustadas para o tema escuro
+            document.querySelector('.annotation:first-of-type').setAttribute('x', startX + 10);
+            document.querySelector('.annotation:first-of-type').setAttribute('y', startY - 10);
+
+            // A segunda anotação acompanha o fim da curva
+            document.querySelector('.annotation:last-of-type').setAttribute('x', endX - 50); // Um pouco antes do final da curva
+            document.querySelector('.annotation:last-of-type').setAttribute('y', endY - 20); // Acima do final da curva
         }
 
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
+        updateCountdownAndGraph();
+        setInterval(updateCountdownAndGraph, 1000); // Atualiza a cada segundo
     </script>
 </body>
 </html>
