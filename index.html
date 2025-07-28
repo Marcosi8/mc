@@ -83,7 +83,7 @@
         .icon-pos-7 { bottom: 25px; left: 25px; transform: rotate(12deg); animation-delay: 0.2s; }
         .icon-pos-8 { bottom: 25px; right: 25px; transform: rotate(-3deg); animation-delay: 0.7s; }
         .icon-pos-9 { bottom: 100px; left: 50%; transform: translateX(-50%) rotate(10deg); animation-delay: 1.2s; }
-        .icon-pos-10 { top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-15deg); animation-delay: 1.7s; **width: 70px; height: 70px;** }
+        .icon-pos-10 { top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-15deg); animation-delay: 1.7s; width: 70px; height: 70px; }
 
         svg {
             border: 1px solid #444;
@@ -136,26 +136,28 @@
                 width: 40px;
                 height: 40px;
             }
-            .icon-pos-1 { top: 10px; left: 10px; transform: rotate(-8deg); }
-            .icon-pos-2 { top: 10px; right: 10px; transform: rotate(15deg); }
-            .icon-pos-3 { top: 60px; left: 5px; transform: rotate(2deg); }
-            .icon-pos-4 { top: 60px; right: 5px; transform: rotate(-10deg); }
+            /* AJUSTES AQUI PARA AFSTAR OS ÍCONES SUPERIORES */
+            .icon-pos-1 { top: 5px; left: 5px; transform: rotate(-8deg); }
+            .icon-pos-2 { top: 5px; right: 5px; transform: rotate(15deg); }
+            .icon-pos-3 { top: 70px; left: 10px; transform: rotate(2deg); }
+            .icon-pos-4 { top: 70px; right: 10px; transform: rotate(-10deg); }
+
             .icon-pos-5 { top: 160px; left: 5px; transform: rotate(7deg); }
             .icon-pos-6 { top: 160px; right: 5px; transform: rotate(-5deg); }
             .icon-pos-7 { bottom: 10px; left: 10px; transform: rotate(12deg); }
-            .icon-pos-8 { bottom: 10px; right: 10px; transform: rotate(-3deg); **width: 40px; height: 40px;** }
+            .icon-pos-8 { bottom: 10px; right: 10px; transform: rotate(-3deg); width: 40px; height: 40px; }
             .icon-pos-9 { top: 15px; left: 50%; transform: translateX(-50%) rotate(10deg); }
-            .icon-pos-10 { bottom: 15px; left: 50%; transform: translateX(-50%) rotate(-15deg); **width: 60px; height: 60px;** }
+            .icon-pos-10 { bottom: 15px; left: 50%; transform: translateX(-50%) rotate(-15deg); width: 60px; height: 60px; }
 
             .annotation:first-of-type {
-                font-size: 0.7em; /* Menor em telas pequenas */
-                x: 60px; /* Ajuste para não sair da tela */
-                y: 330px; /* Ajuste para não sair da tela */
+                font-size: 0.7em;
+                x: 60px;
+                y: 330px;
             }
             .annotation:last-of-type {
-                font-size: 0.7em; /* Menor em telas pequenas */
-                x: 250px; /* Ajuste para não sair da tela */
-                y: 130px; /* Ajuste para não sair da tela */
+                font-size: 0.7em;
+                x: 250px;
+                y: 130px;
             }
         }
     </style>
