@@ -83,7 +83,7 @@
         .icon-pos-7 { bottom: 25px; left: 25px; transform: rotate(12deg); animation-delay: 0.2s; }
         .icon-pos-8 { bottom: 25px; right: 25px; transform: rotate(-3deg); animation-delay: 0.7s; }
         .icon-pos-9 { bottom: 100px; left: 50%; transform: translateX(-50%) rotate(10deg); animation-delay: 1.2s; }
-        .icon-pos-10 { top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-15deg); animation-delay: 1.7s; }
+        .icon-pos-10 { top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-15deg); animation-delay: 1.7s; **width: 70px; height: 70px;** }
 
         svg {
             border: 1px solid #444;
@@ -143,9 +143,20 @@
             .icon-pos-5 { top: 160px; left: 5px; transform: rotate(7deg); }
             .icon-pos-6 { top: 160px; right: 5px; transform: rotate(-5deg); }
             .icon-pos-7 { bottom: 10px; left: 10px; transform: rotate(12deg); }
-            .icon-pos-8 { bottom: 10px; right: 10px; transform: rotate(-3deg); }
+            .icon-pos-8 { bottom: 10px; right: 10px; transform: rotate(-3deg); **width: 40px; height: 40px;** }
             .icon-pos-9 { top: 15px; left: 50%; transform: translateX(-50%) rotate(10deg); }
-            .icon-pos-10 { bottom: 15px; left: 50%; transform: translateX(-50%) rotate(-15deg); }
+            .icon-pos-10 { bottom: 15px; left: 50%; transform: translateX(-50%) rotate(-15deg); **width: 60px; height: 60px;** }
+
+            .annotation:first-of-type {
+                font-size: 0.7em; /* Menor em telas pequenas */
+                x: 60px; /* Ajuste para não sair da tela */
+                y: 330px; /* Ajuste para não sair da tela */
+            }
+            .annotation:last-of-type {
+                font-size: 0.7em; /* Menor em telas pequenas */
+                x: 250px; /* Ajuste para não sair da tela */
+                y: 130px; /* Ajuste para não sair da tela */
+            }
         }
     </style>
 </head>
@@ -156,7 +167,7 @@
         <img src="mc/mc/Kuromi.webp" alt="5" class="decoration-icon icon-pos-5">
         <img src="mc/mc/715jbEtLNcL._AC_UL210_SR210,210_.jpg" alt="6" class="decoration-icon icon-pos-6">
         <img src="mc/mc/715jbEtLNcL._AC_UL210_SR210,210_.jpg" alt="7" class="decoration-icon icon-pos-7">
-        <img src="" alt="8" class="decoration-icon icon-pos-8">
+        <img src="mc/mc/default.jpg" alt="8" class="decoration-icon icon-pos-8">
         <img src="mc/mc/unnamed.jpg" alt="10" class="decoration-icon icon-pos-10">
 
         <h1>“Eu te amo cada vez mais a cada dia”</h1>
@@ -236,17 +247,28 @@
 
             const dadosCaminho = `M ${inicioX} ${inicioY} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${fimX} ${fimY}`;
 
-            document.getElementById('caminhoAmor').setAttribute('d', dadosCaminho);
+            const caminhoAmor = document.getElementById('caminhoAmor');
+            if (caminhoAmor) {
+                caminhoAmor.setAttribute('d', dadosCaminho);
+            }
 
-            document.querySelector('.annotation:first-of-type').setAttribute('x', inicioX + 10);
-            document.querySelector('.annotation:first-of-type').setAttribute('y', inicioY - 10);
+            const primeiraAnotacao = document.querySelector('.annotation:first-of-type');
+            const ultimaAnotacao = document.querySelector('.annotation:last-of-type');
 
-            document.querySelector('.annotation:last-of-type').setAttribute('x', fimX - 50);
-            document.querySelector('.annotation:last-of-type').setAttribute('y', fimY - 20);
+            if (primeiraAnotacao) {
+                primeiraAnotacao.setAttribute('x', inicioX + 10);
+                primeiraAnotacao.setAttribute('y', inicioY - 10);
+            }
+            if (ultimaAnotacao) {
+                ultimaAnotacao.setAttribute('x', fimX - 50);
+                ultimaAnotacao.setAttribute('y', fimY - 20);
+            }
         }
 
-        atualizarContadorEGrafico();
-        setInterval(atualizarContadorEGrafico, 1000);
+        document.addEventListener('DOMContentLoaded', () => {
+            atualizarContadorEGrafico();
+            setInterval(atualizarContadorEGrafico, 1000);
+        });
     </script>
 </body>
 </html>
