@@ -1,16 +1,5 @@
-===========================================
-INSTRUÇÕES PARA ADICIONAR MÚSICA ROMÂNTICA
-===========================================
 
-Para adicionar sua própria música romântica:
-
-1. Renomeie seu arquivo de áudio para: musica.mp3
-2. Coloque o arquivo na mesma pasta do index.html (pasta "mc")
-3. Recarregue a página no navegador
-4. Clique no botão "▶️ Reproduzir" para tocar a música
+Renomeie seu arquivo de áudio para: musica.mp3
+Coloque o arquivo na mesma pasta do index.html (pasta "mc")
 
 Formatos suportados: MP3, OGG, WAV
-
-Se você não adicionar um arquivo "musica.mp3", o player tentará usar uma música online como alternativa.
-
-===========================================
