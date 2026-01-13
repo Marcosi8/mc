@@ -15,7 +15,7 @@
         }
 
         body {
-            font-family: 'Orbitron', 'Courier New', monospace;
+            font-family: 'Orbitron', 'Courier New', monospace; /* Fonte padrão de leitura */
             min-height: 100vh;
             background: #000000;
             background-image: 
@@ -32,7 +32,7 @@
             overflow-x: hidden;
         }
 
-        /* Efeito de partículas no fundo */
+        /* Efeito de partículas */
         body::before {
             content: '';
             position: fixed;
@@ -58,7 +58,6 @@
         }
 
         .container {
-            /* Fundo escuro para garantir leitura do texto */
             background: rgba(5, 0, 5, 0.95);
             backdrop-filter: blur(10px);
             padding: 50px 40px;
@@ -76,18 +75,18 @@
         }
 
         h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.8em;
-            font-weight: 900;
+            /* MUDANÇA: Fonte Creepster para estilo Terror/Gótico */
+            font-family: 'Creepster', cursive; 
+            font-size: 3.5em; /* Aumentei um pouco pois essa fonte é menor */
+            font-weight: 400;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            /* Texto com gradiente claro */
+            letter-spacing: 2px;
             background: linear-gradient(135deg, #ff69b4 0%, #ff1493 50%, #e056fd 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 15px;
-            line-height: 1.2;
+            margin-bottom: 10px;
+            line-height: 1.1;
             text-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
             animation: textPulse 2s ease-in-out infinite;
         }
@@ -98,327 +97,15 @@
         }
 
         .subtitle {
-            font-size: 1.1em;
-            color: #ffb6c1; /* Rosa claro para leitura */
+            /* MUDANÇA: Fonte Rubik Glitch para estilo Rock Industrial */
+            font-family: 'Rubik Glitch', system-ui;
+            font-size: 1.4em;
+            color: #ffb6c1;
             margin-bottom: 30px;
-            font-weight: 400;
             text-transform: uppercase;
             letter-spacing: 2px;
             text-shadow: 0 0 8px rgba(255, 20, 147, 0.6);
         }
 
         .counter-section {
-            background: rgba(20, 0, 20, 0.7);
-            padding: 30px;
-            border: 1px solid #da70d6;
-            margin: 30px 0;
-            box-shadow: 0 0 15px rgba(218, 112, 214, 0.2);
-            position: relative;
-        }
-
-        /* Caveirinhas fixas no contador */
-        .counter-section::before {
-            content: '⚡';
-            position: absolute;
-            top: -15px; left: 20px; font-size: 2em;
-            animation: rotate 3s linear infinite;
-        }
-        .counter-section::after {
-            content: '💀';
-            position: absolute;
-            top: -15px; right: 20px; font-size: 2em;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-
-        #contadorDias {
-            font-size: 2em;
-            font-weight: 700;
-            color: #ff69b4; /* Rosa Neon */
-            display: block;
-            margin: 10px 0;
-            text-shadow: 0 0 10px rgba(255, 20, 147, 0.8);
-        }
-
-        .date-info {
-            font-size: 1em;
-            color: #e056fd; /* Lilás claro */
-            margin-top: 15px;
-            font-weight: bold;
-        }
-
-        .music-player {
-            background: rgba(15, 15, 15, 0.9);
-            padding: 25px;
-            border: 1px solid #9400d3;
-            margin: 30px 0;
-        }
-
-        .music-player h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.4em;
-            color: #ff69b4;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .music-tip {
-            margin-top: 10px;
-            font-size: 0.9em;
-            color: #dcdcdc; /* Cinza claro para leitura */
-        }
-
-        .play-button {
-            background: linear-gradient(135deg, #9400d3 0%, #ff1493 100%);
-            border: 1px solid #fff;
-            color: white;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-family: 'Orbitron', monospace;
-            text-transform: uppercase;
-            margin-top: 10px;
-        }
-
-        .chart-container {
-            margin: 40px 0;
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.8);
-            border: 1px solid #9400d3;
-        }
-
-        .chart-title {
-            font-size: 1.6em;
-            color: #ff69b4;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        svg {
-            width: 100%;
-            height: auto;
-            max-width: 800px;
-            background: rgba(10, 10, 10, 1);
-            border: 1px solid #da70d6;
-        }
-
-        .axis-line { stroke: #da70d6; stroke-width: 2; }
-        .grid-line { stroke: #9400d3; opacity: 0.3; }
-        .x-axis-label, .y-axis-label {
-            font-size: 0.85em;
-            fill: #ffb6c1; font-weight: 600;
-        }
-        .annotation {
-            font-size: 0.9em;
-            fill: #fff;
-            font-weight: 600;
-            text-shadow: 0 0 5px #ff1493;
-        }
-
-        .footer-text {
-            margin-top: 30px;
-            font-size: 1.2em;
-            color: #fff;
-            font-weight: 700;
-            font-style: italic;
-        }
-
-        /* --- ESTILOS DOS EMOJIS FLUTUANTES --- */
-        .floating-emoji {
-            position: absolute;
-            font-size: 3em; /* Tamanho grande */
-            filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.8));
-            z-index: 10;
-            cursor: default;
-            user-select: none;
-        }
-
-        @keyframes darkFloatAnim {
-            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
-            50% { transform: translateY(-20px) rotate(-10deg) scale(1.1); }
-        }
-
-        .icon-pos-1 { top: 20px; left: 20px; animation: darkFloatAnim 5s ease-in-out infinite; }
-        .icon-pos-2 { top: 20px; right: 20px; animation: darkFloatAnim 6s ease-in-out infinite; animation-delay: 0.5s; }
-        .icon-pos-3 { top: 150px; left: 10px; animation: darkFloatAnim 7s ease-in-out infinite; animation-delay: 1s; }
-        .icon-pos-4 { top: 150px; right: 10px; animation: darkFloatAnim 5.5s ease-in-out infinite; animation-delay: 1.5s; }
-        .icon-pos-5 { bottom: 20px; left: 20px; animation: darkFloatAnim 6s ease-in-out infinite; animation-delay: 0.3s; }
-        .icon-pos-6 { bottom: 20px; right: 20px; animation: darkFloatAnim 5s ease-in-out infinite; animation-delay: 0.8s; }
-
-        @media (max-width: 768px) {
-            .container { padding: 30px 15px; }
-            .floating-emoji { font-size: 2em; opacity: 0.8; }
-            .icon-pos-3 { top: 100px; }
-            .icon-pos-4 { top: 100px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="floating-emoji icon-pos-1">💀</div>
-        <div class="floating-emoji icon-pos-2">🖤</div>
-        <div class="floating-emoji icon-pos-3">🎸</div>
-        <div class="floating-emoji icon-pos-4">💀</div>
-        <div class="floating-emoji icon-pos-5">🕷️</div>
-        <div class="floating-emoji icon-pos-6">🖤</div>
-
-        <h1>"Eu te amo cada vez mais"</h1>
-        <p class="subtitle">Crescimento Exponencial do Amor Dark</p>
-
-        <div class="counter-section">
-            <div id="contadorDias">Calculando...</div>
-            <div class="date-info">desde o início 💀 <span id="dataInicioDisplay">14/05/2025</span></div>
-        </div>
-
-        <div class="music-player">
-            <h3>🎸 Trilha Sonora</h3>
-            <div class="audio-controls">
-                <audio id="audioPlayer" loop preload="auto" autoplay>
-                    <source src="musica.mp3" type="audio/mpeg">
-                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-                </audio>
-                <button class="play-button" id="playPauseBtn">🔊 Controle de Som</button>
-            </div>
-            <p class="music-tip">Tocando música automática...</p>
-        </div>
-
-        <div class="chart-container">
-            <h3 class="chart-title">Evolução Matemática</h3>
-            <svg viewBox="0 0 800 450" id="chartSvg">
-                <defs>
-                    <linearGradient id="gradientLine" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:#da70d6;stop-opacity:1" />
-                        <stop offset="50%" style="stop-color:#ff1493;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#fff;stop-opacity:1" />
-                    </linearGradient>
-                </defs>
-                
-                <line x1="80" y1="50" x2="80" y2="400" class="axis-line" />
-                <line x1="80" y1="400" x2="750" y2="400" class="axis-line" />
-                
-                <line x1="80" y1="350" x2="750" y2="350" class="grid-line" />
-                <line x1="80" y1="300" x2="750" y2="300" class="grid-line" />
-                <line x1="80" y1="250" x2="750" y2="250" class="grid-line" />
-                <line x1="80" y1="200" x2="750" y2="200" class="grid-line" />
-                <line x1="80" y1="150" x2="750" y2="150" class="grid-line" />
-                
-                <text x="75" y="405" text-anchor="end" class="y-axis-label">0</text>
-                <text x="75" y="155" text-anchor="end" class="y-axis-label">Infinito</text>
-                <text x="750" y="420" text-anchor="middle" class="x-axis-label" id="labelEixoXFinal">Dias</text>
-                
-                <path id="caminhoAmor" fill="none" stroke="url(#gradientLine)" stroke-width="4" filter="drop-shadow(0 0 10px #ff1493)" />
-                <g id="dataPoints"></g>
-                
-                <text x="90" y="390" class="annotation">Início 💀</text>
-                <text id="endAnnotation" x="400" y="150" class="annotation">Hoje (Subindo!) 🚀</text>
-            </svg>
-        </div>
-
-        <p class="footer-text">mc do coração dark 💀</p>
-    </div>
-
-    <script>
-        // CONFIGURAÇÃO DA DATA
-        const dataInicio = new Date(2025, 4, 14); // 14 de Maio de 2025
-        
-        document.getElementById('dataInicioDisplay').textContent = 
-            `${String(dataInicio.getDate()).padStart(2, '0')}/${String(dataInicio.getMonth() + 1).padStart(2, '0')}/${dataInicio.getFullYear()}`;
-
-        // LÓGICA DE ÁUDIO (AUTOPLAY INTELIGENTE)
-        const audioPlayer = document.getElementById('audioPlayer');
-        const playBtn = document.getElementById('playPauseBtn');
-
-        window.addEventListener('load', () => {
-            // Tenta tocar sozinho
-            audioPlayer.play().then(() => {
-                playBtn.textContent = "⏸️ Pausar";
-            }).catch(() => {
-                // Se o navegador bloquear, espera o primeiro clique na tela
-                document.body.addEventListener('click', () => {
-                    audioPlayer.play();
-                    playBtn.textContent = "⏸️ Pausar";
-                }, { once: true });
-            });
-        });
-
-        playBtn.addEventListener('click', () => {
-            if (audioPlayer.paused) {
-                audioPlayer.play();
-                playBtn.textContent = "⏸️ Pausar";
-            } else {
-                audioPlayer.pause();
-                playBtn.textContent = "▶️ Tocar";
-            }
-        });
-
-        // CONTADOR
-        function atualizarContador() {
-            const agora = new Date();
-            const diff = agora - dataInicio;
-            
-            if (diff < 0) {
-                 document.getElementById('contadorDias').innerText = 'Em breve...';
-                 return;
-            }
-
-            const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const segundos = Math.floor((diff % (1000 * 60)) / 1000);
-
-            document.getElementById('contadorDias').innerText = 
-                `${dias}d ${horas}h ${minutos}m ${segundos}s`;
-            
-            atualizarGrafico(dias);
-        }
-
-        // GRÁFICO (Crescimento Acelerado)
-        function atualizarGrafico(diasTotais) {
-            const diasParaPlotar = Math.max(diasTotais, 10);
-            const largura = 670; 
-            const altura = 350; 
-            const margemX = 80;
-            const margemY = 400;
-
-            let pathData = `M ${margemX} ${margemY}`;
-            const pontosGroup = document.getElementById('dataPoints');
-            pontosGroup.innerHTML = ''; 
-
-            for (let i = 0; i <= 100; i++) {
-                const progresso = i / 100;
-                const x = margemX + (progresso * largura);
-                
-                // Fórmula quadrática para curva visualmente agradável
-                const intensidade = Math.pow(progresso, 2); 
-                const y = margemY - (intensidade * altura);
-
-                if (i === 0) pathData = `M ${x} ${y}`;
-                else pathData += ` L ${x} ${y}`;
-
-                if (i % 10 === 0) {
-                    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                    circle.setAttribute('cx', x);
-                    circle.setAttribute('cy', y);
-                    circle.setAttribute('r', 4);
-                    circle.setAttribute('fill', '#ff69b4');
-                    pontosGroup.appendChild(circle);
-                }
-                
-                if (i === 100) {
-                    const endText = document.getElementById('endAnnotation');
-                    endText.setAttribute('x', x - 60);
-                    endText.setAttribute('y', y - 10);
-                }
-            }
-            
-            document.getElementById('caminhoAmor').setAttribute('d', pathData);
-            document.getElementById('labelEixoXFinal').textContent = diasTotais + " dias";
-        }
-
-        setInterval(atualizarContador, 1000);
-        atualizarContador();
-    </script>
-</body>
-</html>
+            background: rgba(20, 0,
