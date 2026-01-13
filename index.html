@@ -8,17 +8,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Black+Ops+One&family=Orbitron:wght@400;700;900&family=Rubik+Glitch&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Orbitron', 'Courier New', monospace;
             min-height: 100vh;
             background: #000000;
-            
             background-image: 
                 radial-gradient(circle at 20% 50%, rgba(139, 0, 139, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 80%, rgba(255, 20, 147, 0.1) 0%, transparent 50%),
@@ -26,26 +21,20 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             padding: 20px;
             color: #fff;
-            position: relative;
             overflow-x: hidden;
         }
 
-        
+        /* Fundo com brilho animado */
         body::before {
             content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background-image: 
                 radial-gradient(2px 2px at 20% 30%, #fff, transparent),
-                radial-gradient(2px 2px at 60% 70%, #ff69b4, transparent), /* Rosa mais claro */
-                radial-gradient(1px 1px at 50% 50%, #da70d6, transparent), /* Lilás claro */
-                radial-gradient(1px 1px at 80% 10%, #fff, transparent);
+                radial-gradient(2px 2px at 60% 70%, #ff69b4, transparent),
+                radial-gradient(1px 1px at 50% 50%, #da70d6, transparent);
             background-repeat: repeat;
             background-size: 200% 200%;
             animation: sparkle 20s linear infinite;
@@ -60,13 +49,10 @@
         }
 
         .container {
-          
-            background: rgba(5, 5, 5, 0.98);
+            background: rgba(5, 5, 5, 0.95);
             backdrop-filter: blur(15px);
             padding: 50px 40px;
-            border-radius: 0;
             border: 2px solid;
-           
             border-image: linear-gradient(135deg, #da70d6, #ff1493, #9400d3, #da70d6) 1;
             box-shadow: 
                 0 0 40px rgba(139, 0, 139, 0.3),
@@ -76,23 +62,21 @@
             max-width: 900px;
             width: 100%;
             position: relative;
-            overflow: hidden;
             z-index: 1;
+            margin-bottom: 50px;
         }
 
         h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2.8em;
+            font-size: clamp(1.8em, 5vw, 2.8em);
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 3px;
-            
             background: linear-gradient(135deg, #ff69b4 0%, #ff1493 50%, #da70d6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 15px;
-            line-height: 1.2;
             text-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
             animation: textPulse 2s ease-in-out infinite;
         }
@@ -104,10 +88,8 @@
 
         .subtitle {
             font-size: 1.1em;
-            
             color: #ffb6c1; 
             margin-bottom: 30px;
-            font-weight: 400;
             text-transform: uppercase;
             letter-spacing: 2px;
             text-shadow: 0 0 8px rgba(255, 20, 147, 0.8);
@@ -118,33 +100,19 @@
             padding: 30px;
             border: 1px solid #da70d6; 
             margin: 30px 0;
-            box-shadow: 
-                0 0 15px rgba(218, 112, 214, 0.3),
-                inset 0 0 20px rgba(0, 0, 0, 0.8);
-            position: relative;
+            box-shadow: 0 0 15px rgba(218, 112, 214, 0.3);
         }
 
         #contadorDias {
-            font-size: 2em;
+            font-size: clamp(1.5em, 4vw, 2em);
             font-weight: 700;
-          
             color: #ff69b4; 
             display: block;
             margin: 10px 0;
             text-shadow: 0 0 15px rgba(255, 20, 147, 0.8);
-            letter-spacing: 1px;
-        }
-
-        .date-info {
-            font-size: 1em; 
-            color: #e056fd;
-            margin-top: 15px;
-            font-weight: bold;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 1);
         }
 
         .music-player {
-            
             background: rgba(10, 0, 10, 0.8); 
             padding: 25px;
             border: 1px solid #9400d3;
@@ -152,155 +120,157 @@
         }
 
         .music-player h3 {
-            font-family: 'Orbitron', sans-serif;
             font-size: 1.4em;
             color: #ff69b4;
             margin-bottom: 15px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .music-tip {
-            margin-top: 10px;
-            font-size: 0.9em;
-            
-            color: #dcdcdc; 
-            text-shadow: none;
-        }
-
-        
-        .audio-controls {
-            opacity: 0.8; 
-            transition: opacity 0.3s;
-        }
-        .audio-controls:hover {
-            opacity: 1;
         }
 
         .play-button {
             background: linear-gradient(135deg, #9400d3 0%, #ff1493 100%);
             border: 1px solid #fff;
             color: white;
-            padding: 10px 20px;
-            font-size: 0.9em;
+            padding: 12px 30px;
+            font-size: 1em;
             cursor: pointer;
             font-family: 'Orbitron', monospace;
             text-transform: uppercase;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 0 10px #ff1493;
+        }
+        
+        .play-button:hover { transform: scale(1.05); box-shadow: 0 0 20px #ff1493; }
+        .play-button.pulsing { animation: btnPulse 1.5s infinite; }
+
+        @keyframes btnPulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 20, 147, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 20, 147, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 20, 147, 0); }
         }
 
+        /* Gráfico */
         .chart-container {
             margin: 40px 0;
-            padding: 30px;
+            padding: 20px;
             background: rgba(0, 0, 0, 0.8);
             border: 1px solid #9400d3;
         }
-
-        .chart-title {
-            font-size: 1.6em;
-            color: #ff69b4;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
         svg {
+            width: 100%; height: auto;
+            background: rgba(10, 10, 10, 0.9); border: 1px solid #da70d6;
+        }
+        .axis-line { stroke: #da70d6; stroke-width: 2; }
+        .grid-line { stroke: #9400d3; opacity: 0.3; }
+        .x-axis-label, .y-axis-label { font-size: 0.85em; fill: #ffb6c1; font-weight: 600; }
+        .annotation { font-size: 0.9em; fill: #fff; font-weight: 600; text-shadow: 0 0 4px #ff1493; }
+
+        /* GALERIA SCROLL */
+        .gallery-container {
             width: 100%;
-            height: auto;
-            max-width: 800px;
-            background: rgba(10, 10, 10, 0.9); 
-            border: 1px solid #da70d6;
+            max-width: 900px;
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding-bottom: 50px;
         }
 
-        .axis-line {
-            stroke: #da70d6; 
-            stroke-width: 2;
-        }
-        
-        .grid-line {
-            stroke: #9400d3;
-            opacity: 0.3;
-        }
-
-       
-        .x-axis-label, .y-axis-label {
-            font-size: 0.85em;
-            fill: #ffb6c1; 
-            font-weight: 600;
+        .gallery-item {
+            position: relative;
+            height: 300px;
+            border: 2px solid #da70d6;
+            overflow: hidden;
+            background: #000;
+            opacity: 0; /* Começa invisível */
+            transform: translateY(50px); /* Começa deslocado para baixo */
+            transition: all 0.8s ease-out;
+            box-shadow: 0 0 15px rgba(148, 0, 211, 0.3);
         }
 
-        .annotation {
-            font-size: 0.9em;
-            fill: #fff; 
-            font-weight: 600;
-            text-shadow: 0 0 4px #ff1493;
+        .gallery-item.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .footer-text {
-            margin-top: 30px;
-            font-size: 1.2em;
-            color: #fff;
-            font-weight: 700;
-            font-style: italic;
-            text-shadow: 0 0 10px #ff1493;
+        .gallery-item:hover {
+            border-color: #fff;
+            box-shadow: 0 0 25px #ff1493;
         }
 
-       
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+            filter: brightness(0.8) contrast(1.1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(1);
+        }
+
+        /* Ícones Flutuantes do Topo */
         .decoration-icon {
             position: absolute;
-            width: 70px;
-            height: 70px;
+            width: 60px; height: 60px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #ff69b4;
             opacity: 0.8;
             z-index: 10;
         }
-
         
         @keyframes darkFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
-            50% { transform: translateY(-15px) rotate(-10deg) scale(1.1); }
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(-10deg); }
         }
         .icon-pos-1 { top: 20px; left: 20px; animation: darkFloat 5s ease-in-out infinite; }
-        .icon-pos-2 { top: 20px; right: 20px; animation: darkFloat 5s ease-in-out infinite; animation-delay: 0.5s; }
-        .icon-pos-3 { top: 100px; left: 10px; animation: darkFloat 6s ease-in-out infinite; animation-delay: 1s; }
-        .icon-pos-4 { top: 100px; right: 10px; animation: darkFloat 6s ease-in-out infinite; animation-delay: 1.5s; }
-        .icon-pos-5 { bottom: 20px; left: 20px; animation: darkFloat 5.5s ease-in-out infinite; animation-delay: 0.3s; }
-        .icon-pos-6 { bottom: 20px; right: 20px; animation: darkFloat 5.5s ease-in-out infinite; animation-delay: 0.8s; }
+        .icon-pos-2 { top: 20px; right: 20px; animation: darkFloat 5s ease-in-out infinite 0.5s; }
+        .icon-pos-3 { bottom: 20px; left: 20px; animation: darkFloat 6s ease-in-out infinite 1s; }
+        .icon-pos-4 { bottom: 20px; right: 20px; animation: darkFloat 6s ease-in-out infinite 1.5s; }
+
+        .footer-text {
+            margin: 50px 0;
+            font-size: 1.2em;
+            color: #fff;
+            font-weight: 700;
+            font-style: italic;
+            text-shadow: 0 0 10px #ff1493;
+            text-align: center;
+        }
 
         @media (max-width: 768px) {
             .container { padding: 30px 15px; }
             h1 { font-size: 1.8em; }
-            .decoration-icon { width: 45px; height: 45px; opacity: 0.6; }
+            .decoration-icon { display: none; } /* Ocultar ícones flutuantes no mobile para limpar a tela */
         }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <img src="mc/mc/img.icons8.png" alt="" class="decoration-icon icon-pos-1">
-        <img src="mc/mc/MV5BNDkyMTVkZWEtNjgzMy00OWE4LTg0ZDAtMzQwNWI5NmVhOTRiXkEyXkFqcGc@._V1_.jpg" alt="" class="decoration-icon icon-pos-2">
-        <img src="mc/mc/Kuromi.webp" alt="" class="decoration-icon icon-pos-3">
-        <img src="mc/mc/addams.jpg" alt="" class="decoration-icon icon-pos-4">
-        <img src="mc/mc/patu.jpg" alt="" class="decoration-icon icon-pos-5">
-        <img src="mc/mc/unnamed.jpg" alt="" class="decoration-icon icon-pos-6">
+        <img src="mc/mc/img.icons8.png" class="decoration-icon icon-pos-1">
+        <img src="mc/mc/Kuromi.webp" class="decoration-icon icon-pos-2">
+        <img src="mc/mc/addams.jpg" class="decoration-icon icon-pos-3">
+        <img src="mc/mc/patu.jpg" class="decoration-icon icon-pos-4">
 
         <h1>"Eu te amo cada vez mais"</h1>
         <p class="subtitle">Crescimento Exponencial do Amor</p>
 
         <div class="counter-section">
             <div id="contadorDias">Calculando...</div>
-            <div class="date-info">desde o início... <span id="dataInicioDisplay">14/05/2025</span></div>
+            <div class="date-info">desde o início... <span id="dataInicioDisplay">--/--/----</span></div>
         </div>
 
         <div class="music-player">
             <h3>🎸 Trilha Sonora</h3>
-            <div class="audio-controls">
-                <audio id="audioPlayer" loop preload="auto" autoplay>
-                    <source src="musica" type="audio/mpeg">
-                    <source src="" type="audio/mpeg">
-                </audio>
-                <button class="play-button" id="playPauseBtn">🔊 Som</button>
-            </div>
-            <p class="music-tip">clique em qualquer lugar</p>
+            <audio id="audioPlayer" loop>
+                <source src="musica" type="audio/mpeg">
+                <source src="musica.mp3" type="audio/mpeg">
+            </audio>
+            <button class="play-button" id="playPauseBtn">🔊 Tocar Música</button>
+            <p class="music-tip">Se não tocar automático, clique acima.</p>
         </div>
 
         <div class="chart-container">
@@ -313,35 +283,65 @@
                         <stop offset="100%" style="stop-color:#fff;stop-opacity:1" />
                     </linearGradient>
                 </defs>
-                
                 <line x1="80" y1="50" x2="80" y2="400" class="axis-line" />
                 <line x1="80" y1="400" x2="750" y2="400" class="axis-line" />
-                
                 <line x1="80" y1="350" x2="750" y2="350" class="grid-line" />
                 <line x1="80" y1="300" x2="750" y2="300" class="grid-line" />
                 <line x1="80" y1="250" x2="750" y2="250" class="grid-line" />
                 <line x1="80" y1="200" x2="750" y2="200" class="grid-line" />
                 <line x1="80" y1="150" x2="750" y2="150" class="grid-line" />
-                
                 <text x="75" y="405" text-anchor="end" class="y-axis-label">0</text>
                 <text x="75" y="155" text-anchor="end" class="y-axis-label">Infinito</text>
-                
                 <text x="750" y="420" text-anchor="middle" class="x-axis-label" id="labelEixoXFinal">Dias</text>
-                
                 <path id="caminhoAmor" fill="none" stroke="url(#gradientLine)" stroke-width="4" filter="drop-shadow(0 0 10px #ff1493)" />
                 <g id="dataPoints"></g>
-                
                 <text x="90" y="390" class="annotation">Início 💀</text>
                 <text id="endAnnotation" x="400" y="150" class="annotation">Hoje!!🚀</text>
             </svg>
         </div>
-
-        <p class="footer-text">mc do coração, te amo mozilla</p>
     </div>
 
-    <script>
+    <div class="gallery-container">
         
-        const dataInicio = new Date(2025, 4, 14); // 14 de Maio de 2025
+        <div class="gallery-item">
+            <img src="mc/mc/img.icons8.png" alt="Nós">
+        </div>
+
+        <div class="gallery-item">
+            <img src="mc/mc/MV5BNDkyMTVkZWEtNjgzMy00OWE4LTg0ZDAtMzQwNWI5NmVhOTRiXkEyXkFqcGc@._V1_.jpg" alt="Momento">
+        </div>
+
+        <div class="gallery-item">
+            <img src="mc/mc/Kuromi.webp" alt="Kuromi">
+        </div>
+
+        <div class="gallery-item">
+            <img src="mc/mc/addams.jpg" alt="Addams">
+        </div>
+        
+        <div class="gallery-item">
+            <img src="mc/mc/patu.jpg" alt="Patu">
+        </div>
+
+        <div class="gallery-item">
+            <img src="mc/mc/unnamed.jpg" alt="Foto">
+        </div>
+
+        <div class="gallery-item">
+            <img src="mc/mc/img.icons8.png" alt="Repeteco">
+        </div>
+        
+        <div class="gallery-item">
+            <img src="mc/mc/Kuromi.webp" alt="Repeteco">
+        </div>
+
+    </div>
+
+    <p class="footer-text">mc do coração, te amo mozilla</p>
+
+    <script>
+        // 1. DATA DE INÍCIO (Ano, Mês-1, Dia). Maio é mês 4.
+        const dataInicio = new Date(2025, 4, 14); 
         
         function formatarData(data) {
             const dia = String(data.getDate()).padStart(2, '0');
@@ -350,25 +350,25 @@
         }
         document.getElementById('dataInicioDisplay').textContent = formatarData(dataInicio);
 
-    
+        // 2. SISTEMA DE ÁUDIO ROBUSTO
         const audioPlayer = document.getElementById('audioPlayer');
         const playBtn = document.getElementById('playPauseBtn');
 
-       
+        // Tenta tocar ao carregar. Se falhar, anima o botão.
         window.addEventListener('load', () => {
-            const promessaAudio = audioPlayer.play();
+            audioPlayer.volume = 0.5; // Começa com 50% de volume
+            const promessa = audioPlayer.play();
             
-            if (promessaAudio !== undefined) {
-                promessaAudio.then(_ => {
-                    // Autoplay funcionou!
+            if (promessa !== undefined) {
+                promessa.then(_ => {
+                    // Sucesso no autoplay
                     playBtn.textContent = "⏸️ Pausar";
+                    playBtn.classList.remove('pulsing');
                 }).catch(error => {
-                  
-                    console.log("Autoplay bloqueado. Aguardando interação.");
-                    document.body.addEventListener('click', () => {
-                        audioPlayer.play();
-                        playBtn.textContent = "⏸️ Pausar";
-                    }, { once: true }); 
+                    // Autoplay bloqueado: usuário precisa clicar
+                    console.log("Autoplay bloqueado. Aguardando clique.");
+                    playBtn.textContent = "🔊 Tocar Música";
+                    playBtn.classList.add('pulsing'); // Adiciona efeito pulsante para chamar atenção
                 });
             }
         });
@@ -377,13 +377,14 @@
             if (audioPlayer.paused) {
                 audioPlayer.play();
                 playBtn.textContent = "⏸️ Pausar";
+                playBtn.classList.remove('pulsing');
             } else {
                 audioPlayer.pause();
                 playBtn.textContent = "▶️ Tocar";
             }
         });
 
-      
+        // 3. LÓGICA DO CONTADOR E GRÁFICO
         function atualizarContador() {
             const agora = new Date();
             const diff = agora - dataInicio;
@@ -404,9 +405,7 @@
             atualizarGrafico(dias);
         }
 
-       
         function atualizarGrafico(diasTotais) {
-           
             const diasParaPlotar = Math.max(diasTotais, 10); 
             const largura = 670; 
             const altura = 350; 
@@ -417,21 +416,15 @@
             const pontosGroup = document.getElementById('dataPoints');
             pontosGroup.innerHTML = ''; 
 
-            
             for (let i = 0; i <= 100; i++) {
                 const progresso = i / 100;
-                
-               
                 const x = margemX + (progresso * largura);
-                
-            
                 const intensidade = Math.pow(progresso, 2); 
                 const y = margemY - (intensidade * altura);
 
                 if (i === 0) pathData = `M ${x} ${y}`;
                 else pathData += ` L ${x} ${y}`; 
 
-                
                 if (i % 10 === 0) {
                     const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
                     circle.setAttribute('cx', x);
@@ -441,7 +434,6 @@
                     pontosGroup.appendChild(circle);
                 }
                 
-               
                 if (i === 100) {
                     const endText = document.getElementById('endAnnotation');
                     endText.setAttribute('x', x - 60);
@@ -455,10 +447,24 @@
 
         setInterval(atualizarContador, 1000);
         atualizarContador();
+
+        // 4. LÓGICA DE SCROLL REVEAL (Aparecer ao rolar)
+        // Isso verifica quando as fotos entram na tela
+        const observerOptions = {
+            threshold: 0.1 // Dispara quando 10% da imagem aparece
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            observer.observe(item);
+        });
     </script>
 </body>
 </html>
-
-
-
-
