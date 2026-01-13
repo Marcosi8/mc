@@ -18,11 +18,11 @@
             font-family: 'Orbitron', 'Courier New', monospace;
             min-height: 100vh;
             background: #000000;
+            /* Fundo levemente escurecido para destaque */
             background-image: 
-                radial-gradient(circle at 20% 50%, rgba(139, 0, 139, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 20, 147, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(75, 0, 130, 0.1) 0%, transparent 50%),
-                linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
+                radial-gradient(circle at 20% 50%, rgba(139, 0, 139, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 20, 147, 0.1) 0%, transparent 50%),
+                linear-gradient(180deg, #050505 0%, #000000 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -43,16 +43,13 @@
             height: 100%;
             background-image: 
                 radial-gradient(2px 2px at 20% 30%, #fff, transparent),
-                radial-gradient(2px 2px at 60% 70%, #ff1493, transparent),
-                radial-gradient(1px 1px at 50% 50%, #8b008b, transparent),
-                radial-gradient(1px 1px at 80% 10%, #fff, transparent),
-                radial-gradient(2px 2px at 90% 40%, #ff1493, transparent),
-                radial-gradient(1px 1px at 33% 60%, #8b008b, transparent),
-                radial-gradient(1px 1px at 55% 80%, #fff, transparent);
+                radial-gradient(2px 2px at 60% 70%, #ff69b4, transparent), /* Rosa mais claro */
+                radial-gradient(1px 1px at 50% 50%, #da70d6, transparent), /* Lilás claro */
+                radial-gradient(1px 1px at 80% 10%, #fff, transparent);
             background-repeat: repeat;
             background-size: 200% 200%;
             animation: sparkle 20s linear infinite;
-            opacity: 0.6;
+            opacity: 0.5;
             pointer-events: none;
             z-index: 0;
         }
@@ -63,16 +60,18 @@
         }
 
         .container {
-            background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(0, 0, 0, 0.98) 100%);
-            backdrop-filter: blur(10px);
+            /* MUDANÇA: Fundo quase 100% preto para garantir leitura */
+            background: rgba(5, 5, 5, 0.98);
+            backdrop-filter: blur(15px);
             padding: 50px 40px;
             border-radius: 0;
-            border: 3px solid;
-            border-image: linear-gradient(135deg, #8b008b, #ff1493, #4b0082, #8b008b) 1;
+            border: 2px solid;
+            /* Bordas mais vibrantes */
+            border-image: linear-gradient(135deg, #da70d6, #ff1493, #9400d3, #da70d6) 1;
             box-shadow: 
-                0 0 30px rgba(139, 0, 139, 0.5),
-                0 0 60px rgba(255, 20, 147, 0.3),
-                inset 0 0 30px rgba(0, 0, 0, 0.8);
+                0 0 40px rgba(139, 0, 139, 0.3),
+                0 0 80px rgba(255, 20, 147, 0.1),
+                inset 0 0 50px rgba(0, 0, 0, 1); /* Sombra interna forte */
             text-align: center;
             max-width: 900px;
             width: 100%;
@@ -81,381 +80,198 @@
             z-index: 1;
         }
 
-        .container::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #8b008b, #ff1493, #4b0082, #8b008b);
-            background-size: 400% 400%;
-            animation: borderGlow 3s ease infinite;
-            z-index: -1;
-            border-radius: 0;
-        }
-
-        @keyframes borderGlow {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        /* Efeito de rachaduras góticas */
-        .container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                linear-gradient(90deg, transparent 98%, rgba(139, 0, 139, 0.1) 100%),
-                linear-gradient(0deg, transparent 98%, rgba(255, 20, 147, 0.1) 100%);
-            background-size: 50px 50px;
-            pointer-events: none;
-            opacity: 0.3;
-        }
-
         h1 {
             font-family: 'Orbitron', sans-serif;
             font-size: 2.8em;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 3px;
-            background: linear-gradient(135deg, #ff1493 0%, #8b008b 50%, #4b0082 100%);
+            /* MUDANÇA: Cores mais claras no gradiente do texto */
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 50%, #da70d6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 15px;
             line-height: 1.2;
-            text-shadow: 0 0 20px rgba(255, 20, 147, 0.5);
-            position: relative;
+            text-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
             animation: textPulse 2s ease-in-out infinite;
         }
 
         @keyframes textPulse {
             0%, 100% { filter: brightness(1); }
-            50% { filter: brightness(1.2); }
+            50% { filter: brightness(1.3); }
         }
 
         .subtitle {
             font-size: 1.1em;
-            color: #ff1493;
+            /* MUDANÇA: Cor sólida clara (Branco/Rosa claro) em vez de roxo escuro */
+            color: #ffb6c1; 
             margin-bottom: 30px;
             font-weight: 400;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
+            text-shadow: 0 0 8px rgba(255, 20, 147, 0.8);
         }
 
         .counter-section {
-            background: linear-gradient(135deg, rgba(139, 0, 139, 0.2) 0%, rgba(75, 0, 130, 0.2) 100%);
+            background: rgba(20, 0, 20, 0.6);
             padding: 30px;
-            border: 2px solid #8b008b;
+            border: 1px solid #da70d6; /* Borda mais clara */
             margin: 30px 0;
             box-shadow: 
-                0 0 20px rgba(139, 0, 139, 0.4),
-                inset 0 0 20px rgba(0, 0, 0, 0.5);
+                0 0 15px rgba(218, 112, 214, 0.3),
+                inset 0 0 20px rgba(0, 0, 0, 0.8);
             position: relative;
-        }
-
-        .counter-section::before {
-            content: '⚡';
-            position: absolute;
-            top: -15px;
-            left: 20px;
-            font-size: 2em;
-            animation: rotate 3s linear infinite;
-        }
-
-        .counter-section::after {
-            content: '💀';
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2em;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
         }
 
         #contadorDias {
             font-size: 2em;
             font-weight: 700;
-            color: #ff1493;
+            /* MUDANÇA: Cor mais brilhante */
+            color: #ff69b4; 
             display: block;
             margin: 10px 0;
-            font-family: 'Orbitron', monospace;
-            text-shadow: 
-                0 0 10px rgba(255, 20, 147, 0.8),
-                0 0 20px rgba(255, 20, 147, 0.5),
-                0 0 30px rgba(255, 20, 147, 0.3);
+            text-shadow: 0 0 15px rgba(255, 20, 147, 0.8);
             letter-spacing: 1px;
         }
 
         .date-info {
-            font-size: 0.95em;
-            color: #8b008b;
+            font-size: 1em; /* Fonte levemente maior */
+            /* MUDANÇA: Mudei de roxo escuro (#8b008b) para lilás claro (#e056fd) */
+            color: #e056fd;
             margin-top: 15px;
-            text-shadow: 0 0 5px rgba(139, 0, 139, 0.5);
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 1);
         }
 
         .music-player {
-            background: linear-gradient(135deg, rgba(75, 0, 130, 0.2) 0%, rgba(139, 0, 139, 0.2) 100%);
+            /* Fundo mais escuro para contraste */
+            background: rgba(10, 0, 10, 0.8); 
             padding: 25px;
-            border: 2px solid #4b0082;
+            border: 1px solid #9400d3;
             margin: 30px 0;
-            box-shadow: 
-                0 0 20px rgba(75, 0, 130, 0.4),
-                inset 0 0 20px rgba(0, 0, 0, 0.5);
         }
 
         .music-player h3 {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.4em;
-            color: #ff1493;
+            color: #ff69b4; /* Rosa Choque */
             margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
         }
 
+        .music-tip {
+            margin-top: 10px;
+            font-size: 0.9em;
+            /* MUDANÇA: Cor clara para leitura */
+            color: #dcdcdc; 
+            text-shadow: none;
+        }
+
+        /* Botão escondido visualmente mas acessível se precisar */
         .audio-controls {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
+            opacity: 0.8; 
+            transition: opacity 0.3s;
         }
-
-        .audio-controls audio {
-            flex: 1;
-            min-width: 250px;
-            max-width: 400px;
-            filter: invert(1) hue-rotate(270deg);
+        .audio-controls:hover {
+            opacity: 1;
         }
 
         .play-button {
-            background: linear-gradient(135deg, #8b008b 0%, #ff1493 100%);
-            border: 2px solid #ff1493;
+            background: linear-gradient(135deg, #9400d3 0%, #ff1493 100%);
+            border: 1px solid #fff;
             color: white;
-            padding: 15px 30px;
-            border-radius: 0;
-            font-size: 1.1em;
+            padding: 10px 20px;
+            font-size: 0.9em;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 700;
             font-family: 'Orbitron', monospace;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            box-shadow: 
-                0 0 20px rgba(255, 20, 147, 0.6),
-                inset 0 0 10px rgba(0, 0, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .play-button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .play-button:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .play-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 
-                0 0 30px rgba(255, 20, 147, 0.8),
-                0 0 50px rgba(255, 20, 147, 0.5),
-                inset 0 0 10px rgba(0, 0, 0, 0.3);
-            border-color: #fff;
-        }
-
-        .play-button:active {
-            transform: translateY(0);
         }
 
         .chart-container {
             margin: 40px 0;
             padding: 30px;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(20, 20, 20, 0.8) 100%);
-            border: 2px solid #4b0082;
-            box-shadow: 
-                0 0 20px rgba(75, 0, 130, 0.4),
-                inset 0 0 30px rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #9400d3;
         }
 
         .chart-title {
-            font-family: 'Orbitron', sans-serif;
             font-size: 1.6em;
-            color: #ff1493;
+            color: #ff69b4;
             margin-bottom: 20px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
         }
 
         svg {
             width: 100%;
             height: auto;
             max-width: 800px;
-            background: rgba(0, 0, 0, 0.7);
-            border: 2px solid #8b008b;
-            padding: 20px;
-            box-shadow: inset 0 0 20px rgba(139, 0, 139, 0.3);
-        }
-
-        .grid-line {
-            stroke: #4b0082;
-            stroke-width: 1;
-            opacity: 0.5;
+            background: rgba(10, 10, 10, 0.9); /* Fundo do gráfico bem escuro */
+            border: 1px solid #da70d6;
         }
 
         .axis-line {
-            stroke: #8b008b;
+            stroke: #da70d6; /* Eixos mais claros */
             stroke-width: 2;
         }
+        
+        .grid-line {
+            stroke: #9400d3;
+            opacity: 0.3;
+        }
 
+        /* Labels do gráfico agora em branco/rosa claro */
         .x-axis-label, .y-axis-label {
             font-size: 0.85em;
-            fill: #ff1493;
+            fill: #ffb6c1; 
             font-weight: 600;
-            font-family: 'Orbitron', monospace;
         }
 
         .annotation {
             font-size: 0.9em;
-            fill: #ff1493;
+            fill: #fff; /* Texto de anotação Branco puro */
             font-weight: 600;
-            font-family: 'Orbitron', monospace;
-            text-shadow: 0 0 5px rgba(255, 20, 147, 0.8);
+            text-shadow: 0 0 4px #ff1493;
         }
 
-        #caminhoAmor {
-            fill: none;
-            stroke: url(#gradientLine);
-            stroke-width: 4;
-            filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.8));
-            transition: all 0.5s ease;
+        .footer-text {
+            margin-top: 30px;
+            font-size: 1.2em;
+            color: #fff;
+            font-weight: 700;
+            font-style: italic;
+            text-shadow: 0 0 10px #ff1493;
         }
 
-        .love-point {
-            fill: #ff1493;
-            stroke: #8b008b;
-            stroke-width: 2;
-            r: 6;
-            transition: all 0.3s ease;
-            filter: drop-shadow(0 0 5px rgba(255, 20, 147, 0.8));
-        }
-
-        .love-point:hover {
-            r: 10;
-            fill: #fff;
-            filter: drop-shadow(0 0 15px rgba(255, 20, 147, 1));
-        }
-
+        /* Ícones decorativos */
         .decoration-icon {
             position: absolute;
             width: 70px;
             height: 70px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #ff1493;
-            box-shadow: 
-                0 0 15px rgba(255, 20, 147, 0.6),
-                0 0 30px rgba(139, 0, 139, 0.4);
-            opacity: 0.9;
-            transition: all 0.3s ease;
+            border: 2px solid #ff69b4;
+            opacity: 0.8;
             z-index: 10;
-            background: #000;
         }
 
-        .decoration-icon:hover {
-            transform: scale(1.2) rotate(10deg);
-            opacity: 1;
-            box-shadow: 
-                0 0 25px rgba(255, 20, 147, 0.9),
-                0 0 50px rgba(139, 0, 139, 0.6);
-            border-color: #fff;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
-        }
-
+        /* Animações mantidas */
         @keyframes darkFloat {
             0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
             50% { transform: translateY(-15px) rotate(-10deg) scale(1.1); }
         }
-
-        .icon-pos-1 { top: 20px; left: 20px; animation: darkFloat 5s ease-in-out infinite; animation-delay: 0s; }
+        .icon-pos-1 { top: 20px; left: 20px; animation: darkFloat 5s ease-in-out infinite; }
         .icon-pos-2 { top: 20px; right: 20px; animation: darkFloat 5s ease-in-out infinite; animation-delay: 0.5s; }
         .icon-pos-3 { top: 100px; left: 10px; animation: darkFloat 6s ease-in-out infinite; animation-delay: 1s; }
         .icon-pos-4 { top: 100px; right: 10px; animation: darkFloat 6s ease-in-out infinite; animation-delay: 1.5s; }
-        .icon-pos-5 { top: 250px; left: 10px; animation: darkFloat 7s ease-in-out infinite; animation-delay: 2s; }
-        .icon-pos-6 { top: 250px; right: 10px; animation: darkFloat 7s ease-in-out infinite; animation-delay: 2.5s; }
-        .icon-pos-7 { bottom: 20px; left: 20px; animation: darkFloat 5.5s ease-in-out infinite; animation-delay: 0.3s; }
-        .icon-pos-8 { bottom: 20px; right: 20px; animation: darkFloat 5.5s ease-in-out infinite; animation-delay: 0.8s; }
-
-        .footer-text {
-            margin-top: 30px;
-            font-size: 1.2em;
-            color: #ff1493;
-            font-weight: 700;
-            font-style: italic;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 
-                0 0 10px rgba(255, 20, 147, 0.8),
-                0 0 20px rgba(139, 0, 139, 0.5);
-            font-family: 'Orbitron', monospace;
-        }
-
-        .music-tip {
-            margin-top: 10px;
-            font-size: 0.85em;
-            color: #8b008b;
-            text-shadow: 0 0 5px rgba(139, 0, 139, 0.5);
-        }
+        .icon-pos-5 { bottom: 20px; left: 20px; animation: darkFloat 5.5s ease-in-out infinite; animation-delay: 0.3s; }
+        .icon-pos-6 { bottom: 20px; right: 20px; animation: darkFloat 5.5s ease-in-out infinite; animation-delay: 0.8s; }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 30px 20px;
-            }
-
-            h1 {
-                font-size: 1.8em;
-                letter-spacing: 2px;
-            }
-
-            #contadorDias {
-                font-size: 1.4em;
-            }
-
-            .decoration-icon {
-                width: 50px;
-                height: 50px;
-            }
-
-            .icon-pos-1, .icon-pos-2 { top: 10px; }
-            .icon-pos-3, .icon-pos-4 { top: 80px; }
-            .icon-pos-5, .icon-pos-6 { top: 200px; }
-            .icon-pos-7, .icon-pos-8 { bottom: 10px; }
+            .container { padding: 30px 15px; }
+            h1 { font-size: 1.8em; }
+            .decoration-icon { width: 45px; height: 45px; opacity: 0.6; }
         }
     </style>
 </head>
@@ -465,79 +281,59 @@
         <img src="mc/mc/MV5BNDkyMTVkZWEtNjgzMy00OWE4LTg0ZDAtMzQwNWI5NmVhOTRiXkEyXkFqcGc@._V1_.jpg" alt="" class="decoration-icon icon-pos-2">
         <img src="mc/mc/Kuromi.webp" alt="" class="decoration-icon icon-pos-3">
         <img src="mc/mc/addams.jpg" alt="" class="decoration-icon icon-pos-4">
-        <img src="mc/mc/715jbEtLNcL._AC_UL210_SR210,210_.jpg" alt="" class="decoration-icon icon-pos-5">
-        <img src="mc/mc/patu.jpg" alt="" class="decoration-icon icon-pos-6">
-        <img src="mc/mc/unnamed.jpg" alt="" class="decoration-icon icon-pos-7">
+        <img src="mc/mc/patu.jpg" alt="" class="decoration-icon icon-pos-5">
+        <img src="mc/mc/unnamed.jpg" alt="" class="decoration-icon icon-pos-6">
 
-        <h1>"Eu te amo cada vez mais a cada dia"</h1>
+        <h1>"Eu te amo cada vez mais"</h1>
         <p class="subtitle">Crescimento Exponencial do Amor Dark</p>
 
         <div class="counter-section">
-            <div id="contadorDias">0 dias, 0 horas, 0 minutos e 0 segundos</div>
-            <div class="date-info">desde o início do nosso amor 💀 <span id="dataInicioDisplay">14/05/2025</span></div>
+            <div id="contadorDias">Calculando...</div>
+            <div class="date-info">desde o início 💀 <span id="dataInicioDisplay">14/05/2025</span></div>
         </div>
 
         <div class="music-player">
-            <h3>🎸 Música do Nosso Amor Rock</h3>
+            <h3>🎸 Trilha Sonora</h3>
             <div class="audio-controls">
-                <audio id="audioPlayer" loop preload="auto">
+                <audio id="audioPlayer" loop preload="auto" autoplay>
                     <source src="musica.mp3" type="audio/mpeg">
                     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-                    Seu navegador não suporta o elemento de áudio.
                 </audio>
-                <button class="play-button" id="playPauseBtn">▶️ Reproduzir</button>
+                <button class="play-button" id="playPauseBtn">🔊 Controle de Som</button>
             </div>
-            <p class="music-tip">
-                💀 Dica: Para usar sua própria música, renomeie o arquivo para "musica.mp3" e coloque na pasta do projeto
-            </p>
+            <p class="music-tip">O som deve começar automaticamente. Se não, clique em qualquer lugar.</p>
         </div>
 
         <div class="chart-container">
-            <h3 class="chart-title">Evolução do Nosso Amor Dark</h3>
+            <h3 class="chart-title">Evolução Matemática</h3>
             <svg viewBox="0 0 800 450" id="chartSvg">
                 <defs>
                     <linearGradient id="gradientLine" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:#8b008b;stop-opacity:1" />
+                        <stop offset="0%" style="stop-color:#da70d6;stop-opacity:1" />
                         <stop offset="50%" style="stop-color:#ff1493;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#4b0082;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#fff;stop-opacity:1" />
                     </linearGradient>
                 </defs>
                 
-                <!-- Grid lines -->
                 <line x1="80" y1="50" x2="80" y2="400" class="axis-line" />
                 <line x1="80" y1="400" x2="750" y2="400" class="axis-line" />
                 
-                <!-- Grid horizontal lines -->
                 <line x1="80" y1="350" x2="750" y2="350" class="grid-line" />
                 <line x1="80" y1="300" x2="750" y2="300" class="grid-line" />
                 <line x1="80" y1="250" x2="750" y2="250" class="grid-line" />
                 <line x1="80" y1="200" x2="750" y2="200" class="grid-line" />
                 <line x1="80" y1="150" x2="750" y2="150" class="grid-line" />
-                <line x1="80" y1="100" x2="750" y2="100" class="grid-line" />
                 
-                <!-- Y-axis labels -->
                 <text x="75" y="405" text-anchor="end" class="y-axis-label">0</text>
-                <text x="75" y="355" text-anchor="end" class="y-axis-label">20%</text>
-                <text x="75" y="305" text-anchor="end" class="y-axis-label">40%</text>
-                <text x="75" y="255" text-anchor="end" class="y-axis-label">60%</text>
-                <text x="75" y="205" text-anchor="end" class="y-axis-label">80%</text>
-                <text x="75" y="155" text-anchor="end" class="y-axis-label">100%</text>
-                <text x="30" y="225" text-anchor="middle" transform="rotate(-90 30 225)" class="y-axis-label">Intensidade do Amor</text>
+                <text x="75" y="155" text-anchor="end" class="y-axis-label">Infinito</text>
                 
-                <!-- X-axis labels -->
-                <text x="80" y="420" text-anchor="middle" class="x-axis-label">0</text>
-                <text x="750" y="420" text-anchor="middle" class="x-axis-label" id="labelEixoXFinal">0</text>
-                <text x="415" y="440" text-anchor="middle" class="x-axis-label">Dias</text>
+                <text x="750" y="420" text-anchor="middle" class="x-axis-label" id="labelEixoXFinal">Dias</text>
                 
-                <!-- Love path -->
-                <path id="caminhoAmor" />
-                
-                <!-- Data points -->
+                <path id="caminhoAmor" fill="none" stroke="url(#gradientLine)" stroke-width="4" filter="drop-shadow(0 0 10px #ff1493)" />
                 <g id="dataPoints"></g>
                 
-                <!-- Annotations -->
-                <text x="90" y="390" class="annotation">O amor começa aqui 💀</text>
-                <text id="endAnnotation" x="400" y="150" class="annotation">E cresce sem parar 💀</text>
+                <text x="90" y="390" class="annotation">Início 💀</text>
+                <text id="endAnnotation" x="400" y="150" class="annotation">Hoje (Subindo!) 🚀</text>
             </svg>
         </div>
 
@@ -545,184 +341,123 @@
     </div>
 
     <script>
-        // Função para obter ou definir a data de início no localStorage
-        function obterDataInicio() {
-            const dataSalva = localStorage.getItem('dataInicioAmor');
-            if (dataSalva) {
-                return new Date(dataSalva);
-            } else {
-                // Se não houver data salva, usa a data padrão e salva
-                const dataPadrao = new Date(2025, 4, 14); // 14 de maio de 2025
-                localStorage.setItem('dataInicioAmor', dataPadrao.toISOString());
-                return dataPadrao;
-            }
-        }
-
-        const dataInicio = obterDataInicio();
+        // --- LÓGICA DE DATA ---
+        const dataInicio = new Date(2025, 4, 14); // 14 de Maio de 2025
         
-        // Exibir a data de início formatada
         function formatarData(data) {
             const dia = String(data.getDate()).padStart(2, '0');
             const mes = String(data.getMonth() + 1).padStart(2, '0');
-            const ano = data.getFullYear();
-            return `${dia}/${mes}/${ano}`;
+            return `${dia}/${mes}/${data.getFullYear()}`;
         }
-        
         document.getElementById('dataInicioDisplay').textContent = formatarData(dataInicio);
 
-        // Controle de áudio
+        // --- LÓGICA DE ÁUDIO AUTOMÁTICO ---
         const audioPlayer = document.getElementById('audioPlayer');
-        const playPauseBtn = document.getElementById('playPauseBtn');
-        let isPlaying = false;
+        const playBtn = document.getElementById('playPauseBtn');
 
-        playPauseBtn.addEventListener('click', () => {
-            if (isPlaying) {
-                audioPlayer.pause();
-                playPauseBtn.textContent = '▶️ Reproduzir';
-                isPlaying = false;
-            } else {
-                audioPlayer.play().catch(e => {
-                    console.log('Erro ao reproduzir áudio:', e);
-                    // Tenta carregar música alternativa online
-                    const audioSources = audioPlayer.querySelectorAll('source');
-                    if (audioSources.length > 1) {
-                        audioPlayer.load();
-                        audioPlayer.play().catch(err => {
-                            console.log('Erro ao reproduzir música alternativa:', err);
-                        });
-                    }
+        // Tenta tocar imediatamente ao carregar
+        window.addEventListener('load', () => {
+            const promessaAudio = audioPlayer.play();
+            
+            if (promessaAudio !== undefined) {
+                promessaAudio.then(_ => {
+                    // Autoplay funcionou!
+                    playBtn.textContent = "⏸️ Pausar";
+                }).catch(error => {
+                    // Autoplay foi bloqueado pelo navegador.
+                    // Adicionamos um ouvinte para o PRIMEIRO clique em qualquer lugar da tela
+                    console.log("Autoplay bloqueado. Aguardando interação.");
+                    document.body.addEventListener('click', () => {
+                        audioPlayer.play();
+                        playBtn.textContent = "⏸️ Pausar";
+                    }, { once: true }); // 'once: true' remove o ouvinte após o primeiro clique
                 });
-                playPauseBtn.textContent = '⏸️ Pausar';
-                isPlaying = true;
             }
         });
 
-        // Auto-play suave (apenas se o usuário interagir com a página)
-        let userInteracted = false;
-        document.addEventListener('click', () => {
-            if (!userInteracted) {
-                userInteracted = true;
-                // Não auto-play, apenas marca que houve interação
+        playBtn.addEventListener('click', () => {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                playBtn.textContent = "⏸️ Pausar";
+            } else {
+                audioPlayer.pause();
+                playBtn.textContent = "▶️ Tocar";
             }
-        }, { once: true });
-
-        audioPlayer.addEventListener('ended', () => {
-            playPauseBtn.textContent = '▶️ Reproduzir';
-            isPlaying = false;
         });
 
-        // Função para atualizar contador e gráfico
-        function atualizarContadorEGrafico() {
+        // --- LÓGICA DE CONTADOR ---
+        function atualizarContador() {
             const agora = new Date();
-            const diferencaTempo = agora.getTime() - dataInicio.getTime();
-
-            if (diferencaTempo < 0) {
-                document.getElementById('contadorDias').innerText = 'Aguardando o início...';
-                return;
+            const diff = agora - dataInicio;
+            
+            if (diff < 0) {
+                 document.getElementById('contadorDias').innerText = 'Em breve...';
+                 return;
             }
 
-            const segundosTotais = Math.floor(diferencaTempo / 1000);
-            const dias = Math.floor(segundosTotais / (60 * 60 * 24));
-            const segundosRestantesAposDias = segundosTotais % (60 * 60 * 24);
-            const horas = Math.floor(segundosRestantesAposDias / (60 * 60));
-            const segundosRestantesAposHoras = segundosRestantesAposDias % (60 * 60);
-            const minutos = Math.floor(segundosRestantesAposHoras / 60);
-            const segundos = segundosRestantesAposHoras % 60;
+            const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diff % (1000 * 60)) / 1000);
 
-            document.getElementById('contadorDias').innerText =
-                `${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
-
-            // Atualizar gráfico
+            document.getElementById('contadorDias').innerText = 
+                `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+            
             atualizarGrafico(dias);
         }
 
-        function atualizarGrafico(dias) {
-            const svg = document.getElementById('chartSvg');
-            const larguraSvg = 800;
-            const alturaSvg = 450;
-            const margem = { esquerda: 80, direita: 50, topo: 50, baixo: 50 };
-            const larguraPlotagem = larguraSvg - margem.esquerda - margem.direita;
-            const alturaPlotagem = alturaSvg - margem.topo - margem.baixo;
+        // --- LÓGICA GRÁFICA CORRIGIDA (Crescimento Real) ---
+        function atualizarGrafico(diasTotais) {
+            // Se diasTotais for pequeno, forçamos um mínimo para o gráfico não ficar vazio
+            const diasParaPlotar = Math.max(diasTotais, 10); 
+            const largura = 670; // Largura útil do gráfico
+            const altura = 350; // Altura útil
+            const margemX = 80;
+            const margemY = 400; // Base do eixo Y
 
-            const maxDiasParaGrafico = Math.max(365, dias + 30); // Ajusta dinamicamente
-            const diasParaPlotar = Math.min(dias, maxDiasParaGrafico);
-            const porcentagemDiaAtual = diasParaPlotar / maxDiasParaGrafico;
+            let pathData = `M ${margemX} ${margemY}`;
+            const pontosGroup = document.getElementById('dataPoints');
+            pontosGroup.innerHTML = ''; // Limpa pontos anteriores
 
-            // Atualizar label do eixo X
-            document.getElementById('labelEixoXFinal').textContent = maxDiasParaGrafico;
-
-            // Calcular pontos da curva exponencial
-            const pontos = [];
-            const numPontos = Math.min(100, dias + 1);
-            
-            for (let i = 0; i <= numPontos; i++) {
-                const progresso = i / numPontos;
-                const diasAtuais = progresso * diasParaPlotar;
+            // Cria 100 pontos para suavizar a curva
+            for (let i = 0; i <= 100; i++) {
+                const progresso = i / 100;
                 
-                if (diasAtuais <= dias) {
-                    const x = margem.esquerda + (progresso * larguraPlotagem);
-                    // Curva exponencial: começa baixo e cresce rapidamente
-                    const intensidade = 1 - Math.pow(1 - progresso, 2);
-                    const y = margem.topo + alturaPlotagem - (intensidade * alturaPlotagem);
-                    pontos.push({ x, y });
-                }
-            }
-
-            // Criar path da curva
-            if (pontos.length > 0) {
-                let pathData = `M ${pontos[0].x} ${pontos[0].y}`;
+                // Posição X (Linear no tempo)
+                const x = margemX + (progresso * largura);
                 
-                for (let i = 1; i < pontos.length; i++) {
-                    const pontoAtual = pontos[i];
-                    const pontoAnterior = pontos[i - 1];
-                    
-                    // Usar curvas de Bézier suaves
-                    const cp1x = pontoAnterior.x + (pontoAtual.x - pontoAnterior.x) * 0.5;
-                    const cp1y = pontoAnterior.y;
-                    const cp2x = pontoAnterior.x + (pontoAtual.x - pontoAnterior.x) * 0.5;
-                    const cp2y = pontoAtual.y;
-                    
-                    pathData += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${pontoAtual.x} ${pontoAtual.y}`;
-                }
-                
-                document.getElementById('caminhoAmor').setAttribute('d', pathData);
-            }
+                // Posição Y (Exponencial / Polinomial)
+                // Usando Math.pow(progresso, 2) para simular aceleração (curva convexa)
+                const intensidade = Math.pow(progresso, 2); 
+                const y = margemY - (intensidade * altura);
 
-            // Adicionar pontos de dados
-            const dataPointsGroup = document.getElementById('dataPoints');
-            dataPointsGroup.innerHTML = '';
-            
-            // Adicionar pontos em intervalos regulares
-            const intervaloPontos = Math.max(1, Math.floor(dias / 20));
-            for (let i = 0; i <= dias; i += intervaloPontos) {
-                if (i <= diasParaPlotar) {
-                    const progresso = i / maxDiasParaGrafico;
-                    const x = margem.esquerda + (progresso * larguraPlotagem);
-                    const intensidade = 1 - Math.pow(1 - progresso, 2);
-                    const y = margem.topo + alturaPlotagem - (intensidade * alturaPlotagem);
-                    
+                if (i === 0) pathData = `M ${x} ${y}`;
+                else pathData += ` L ${x} ${y}`; // Usando linhas retas curtas para performance
+
+                // Adiciona bolinhas decorativas a cada 10%
+                if (i % 10 === 0) {
                     const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                    circle.setAttribute('class', 'love-point');
                     circle.setAttribute('cx', x);
                     circle.setAttribute('cy', y);
-                    dataPointsGroup.appendChild(circle);
+                    circle.setAttribute('r', 4);
+                    circle.setAttribute('fill', '#ff69b4');
+                    pontosGroup.appendChild(circle);
+                }
+                
+                // Move a anotação final para o último ponto
+                if (i === 100) {
+                    const endText = document.getElementById('endAnnotation');
+                    endText.setAttribute('x', x - 60);
+                    endText.setAttribute('y', y - 10);
                 }
             }
-
-            // Atualizar anotação final
-            if (pontos.length > 0) {
-                const ultimoPonto = pontos[pontos.length - 1];
-                const endAnnotation = document.getElementById('endAnnotation');
-                endAnnotation.setAttribute('x', Math.min(ultimoPonto.x + 20, larguraSvg - 150));
-                endAnnotation.setAttribute('y', Math.max(ultimoPonto.y - 20, 50));
-            }
+            
+            document.getElementById('caminhoAmor').setAttribute('d', pathData);
+            document.getElementById('labelEixoXFinal').textContent = diasTotais + " dias";
         }
 
-        // Inicializar
-        document.addEventListener('DOMContentLoaded', () => {
-            atualizarContadorEGrafico();
-            setInterval(atualizarContadorEGrafico, 1000);
-        });
+        setInterval(atualizarContador, 1000);
+        atualizarContador(); // Executa imediatamente
     </script>
 </body>
 </html>
