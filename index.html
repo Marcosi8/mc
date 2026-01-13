@@ -4,21 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nosso Amor Dark & Rock</title>
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Black+Ops+One&family=Orbitron:wght@400;700;900&family=Rubik+Glitch&display=swap" rel="stylesheet">
-    
     <style>
-        /* RESET BÁSICO */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
-            font-family: 'Orbitron', Arial, sans-serif; /* Fonte de segurança adicionada */
+            font-family: 'Orbitron', 'Courier New', monospace;
             min-height: 100vh;
-            background-color: #000000;
+            background: #000000;
+            /* Fundo levemente escurecido para destaque */
             background-image: 
-                radial-gradient(circle at 50% 50%, rgba(75, 0, 130, 0.2) 0%, transparent 60%);
+                radial-gradient(circle at 20% 50%, rgba(139, 0, 139, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 20, 147, 0.1) 0%, transparent 50%),
+                linear-gradient(180deg, #050505 0%, #000000 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -27,22 +31,27 @@
             color: #fff;
             position: relative;
             overflow-x: hidden;
-            z-index: 0;
         }
 
-        /* CORREÇÃO CRÍTICA: Efeito de fundo jogado para trás */
+        /* Efeito de partículas/estrelas */
         body::before {
             content: '';
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-image: 
                 radial-gradient(2px 2px at 20% 30%, #fff, transparent),
-                radial-gradient(2px 2px at 60% 70%, #ff1493, transparent);
+                radial-gradient(2px 2px at 60% 70%, #ff69b4, transparent), /* Rosa mais claro */
+                radial-gradient(1px 1px at 50% 50%, #da70d6, transparent), /* Lilás claro */
+                radial-gradient(1px 1px at 80% 10%, #fff, transparent);
+            background-repeat: repeat;
             background-size: 200% 200%;
             animation: sparkle 20s linear infinite;
-            opacity: 0.3;
+            opacity: 0.5;
             pointer-events: none;
-            z-index: -1; /* Garante que fique atrás de tudo */
+            z-index: 0;
         }
 
         @keyframes sparkle {
@@ -50,44 +59,405 @@
             100% { transform: translate(-50%, -50%); }
         }
 
-        /* CONTAINER PRINCIPAL */
         .container {
-            /* Fundo semitransparente escuro para leitura */
-            background: rgba(10, 5, 10, 0.95);
-            padding: 40px 30px;
-            border: 2px solid #da70d6;
+            /* MUDANÇA: Fundo quase 100% preto para garantir leitura */
+            background: rgba(5, 5, 5, 0.98);
+            backdrop-filter: blur(15px);
+            padding: 50px 40px;
+            border-radius: 0;
+            border: 2px solid;
+            /* Bordas mais vibrantes */
+            border-image: linear-gradient(135deg, #da70d6, #ff1493, #9400d3, #da70d6) 1;
             box-shadow: 
-                0 0 30px rgba(139, 0, 139, 0.5),
-                inset 0 0 50px rgba(0, 0, 0, 0.9);
+                0 0 40px rgba(139, 0, 139, 0.3),
+                0 0 80px rgba(255, 20, 147, 0.1),
+                inset 0 0 50px rgba(0, 0, 0, 1); /* Sombra interna forte */
             text-align: center;
             max-width: 900px;
             width: 100%;
             position: relative;
-            z-index: 100; /* Garante que o texto fique na frente */
-            border-radius: 10px;
+            overflow: hidden;
+            z-index: 1;
         }
 
-        /* --- ESTILOS DE TEXTO E FONTES --- */
-        
         h1 {
-            font-family: 'Creepster', cursive, serif; /* Fonte Gótica */
-            font-size: 3em;
-            color: #ff69b4;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8em;
+            font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 15px rgba(255, 20, 147, 0.8);
-            margin-bottom: 10px;
-            animation: textPulse 2s infinite alternate;
+            letter-spacing: 3px;
+            /* MUDANÇA: Cores mais claras no gradiente do texto */
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 50%, #da70d6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            text-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
+            animation: textPulse 2s ease-in-out infinite;
         }
 
         @keyframes textPulse {
-            from { text-shadow: 0 0 10px #ff1493; }
-            to { text-shadow: 0 0 25px #ff1493, 0 0 10px #fff; }
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
         }
 
         .subtitle {
-            font-family: 'Rubik Glitch', sans-serif; /* Fonte Industrial */
-            font-size: 1.2em;
-            color: #ffb6c1;
+            font-size: 1.1em;
+            /* MUDANÇA: Cor sólida clara (Branco/Rosa claro) em vez de roxo escuro */
+            color: #ffb6c1; 
             margin-bottom: 30px;
-            text
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 8px rgba(255, 20, 147, 0.8);
+        }
+
+        .counter-section {
+            background: rgba(20, 0, 20, 0.6);
+            padding: 30px;
+            border: 1px solid #da70d6; /* Borda mais clara */
+            margin: 30px 0;
+            box-shadow: 
+                0 0 15px rgba(218, 112, 214, 0.3),
+                inset 0 0 20px rgba(0, 0, 0, 0.8);
+            position: relative;
+        }
+
+        #contadorDias {
+            font-size: 2em;
+            font-weight: 700;
+            /* MUDANÇA: Cor mais brilhante */
+            color: #ff69b4; 
+            display: block;
+            margin: 10px 0;
+            text-shadow: 0 0 15px rgba(255, 20, 147, 0.8);
+            letter-spacing: 1px;
+        }
+
+        .date-info {
+            font-size: 1em; /* Fonte levemente maior */
+            /* MUDANÇA: Mudei de roxo escuro (#8b008b) para lilás claro (#e056fd) */
+            color: #e056fd;
+            margin-top: 15px;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 1);
+        }
+
+        .music-player {
+            /* Fundo mais escuro para contraste */
+            background: rgba(10, 0, 10, 0.8); 
+            padding: 25px;
+            border: 1px solid #9400d3;
+            margin: 30px 0;
+        }
+
+        .music-player h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4em;
+            color: #ff69b4; /* Rosa Choque */
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .music-tip {
+            margin-top: 10px;
+            font-size: 0.9em;
+            /* MUDANÇA: Cor clara para leitura */
+            color: #dcdcdc; 
+            text-shadow: none;
+        }
+
+        /* Botão escondido visualmente mas acessível se precisar */
+        .audio-controls {
+            opacity: 0.8; 
+            transition: opacity 0.3s;
+        }
+        .audio-controls:hover {
+            opacity: 1;
+        }
+
+        .play-button {
+            background: linear-gradient(135deg, #9400d3 0%, #ff1493 100%);
+            border: 1px solid #fff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 0.9em;
+            cursor: pointer;
+            font-family: 'Orbitron', monospace;
+            text-transform: uppercase;
+        }
+
+        .chart-container {
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #9400d3;
+        }
+
+        .chart-title {
+            font-size: 1.6em;
+            color: #ff69b4;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        svg {
+            width: 100%;
+            height: auto;
+            max-width: 800px;
+            background: rgba(10, 10, 10, 0.9); /* Fundo do gráfico bem escuro */
+            border: 1px solid #da70d6;
+        }
+
+        .axis-line {
+            stroke: #da70d6; /* Eixos mais claros */
+            stroke-width: 2;
+        }
+        
+        .grid-line {
+            stroke: #9400d3;
+            opacity: 0.3;
+        }
+
+        /* Labels do gráfico agora em branco/rosa claro */
+        .x-axis-label, .y-axis-label {
+            font-size: 0.85em;
+            fill: #ffb6c1; 
+            font-weight: 600;
+        }
+
+        .annotation {
+            font-size: 0.9em;
+            fill: #fff; /* Texto de anotação Branco puro */
+            font-weight: 600;
+            text-shadow: 0 0 4px #ff1493;
+        }
+
+        .footer-text {
+            margin-top: 30px;
+            font-size: 1.2em;
+            color: #fff;
+            font-weight: 700;
+            font-style: italic;
+            text-shadow: 0 0 10px #ff1493;
+        }
+
+        /* Ícones decorativos */
+        .decoration-icon {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ff69b4;
+            opacity: 0.8;
+            z-index: 10;
+        }
+
+        /* Animações mantidas */
+        @keyframes darkFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            50% { transform: translateY(-15px) rotate(-10deg) scale(1.1); }
+        }
+        .icon-pos-1 { top: 20px; left: 20px; animation: darkFloat 5s ease-in-out infinite; }
+        .icon-pos-2 { top: 20px; right: 20px; animation: darkFloat 5s ease-in-out infinite; animation-delay: 0.5s; }
+        .icon-pos-3 { top: 100px; left: 10px; animation: darkFloat 6s ease-in-out infinite; animation-delay: 1s; }
+        .icon-pos-4 { top: 100px; right: 10px; animation: darkFloat 6s ease-in-out infinite; animation-delay: 1.5s; }
+        .icon-pos-5 { bottom: 20px; left: 20px; animation: darkFloat 5.5s ease-in-out infinite; animation-delay: 0.3s; }
+        .icon-pos-6 { bottom: 20px; right: 20px; animation: darkFloat 5.5s ease-in-out infinite; animation-delay: 0.8s; }
+
+        @media (max-width: 768px) {
+            .container { padding: 30px 15px; }
+            h1 { font-size: 1.8em; }
+            .decoration-icon { width: 45px; height: 45px; opacity: 0.6; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="mc/mc/img.icons8.png" alt="" class="decoration-icon icon-pos-1">
+        <img src="mc/mc/MV5BNDkyMTVkZWEtNjgzMy00OWE4LTg0ZDAtMzQwNWI5NmVhOTRiXkEyXkFqcGc@._V1_.jpg" alt="" class="decoration-icon icon-pos-2">
+        <img src="mc/mc/Kuromi.webp" alt="" class="decoration-icon icon-pos-3">
+        <img src="mc/mc/addams.jpg" alt="" class="decoration-icon icon-pos-4">
+        <img src="mc/mc/patu.jpg" alt="" class="decoration-icon icon-pos-5">
+        <img src="mc/mc/unnamed.jpg" alt="" class="decoration-icon icon-pos-6">
+
+        <h1>"Eu te amo cada vez mais"</h1>
+        <p class="subtitle">Crescimento Exponencial do Amor Dark</p>
+
+        <div class="counter-section">
+            <div id="contadorDias">Calculando...</div>
+            <div class="date-info">desde o início 💀 <span id="dataInicioDisplay">14/05/2025</span></div>
+        </div>
+
+        <div class="music-player">
+            <h3>🎸 Trilha Sonora</h3>
+            <div class="audio-controls">
+                <audio id="audioPlayer" loop preload="auto" autoplay>
+                    <source src="musica.mp3" type="audio/mpeg">
+                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                </audio>
+                <button class="play-button" id="playPauseBtn">🔊 Controle de Som</button>
+            </div>
+            <p class="music-tip">O som deve começar automaticamente. Se não, clique em qualquer lugar.</p>
+        </div>
+
+        <div class="chart-container">
+            <h3 class="chart-title">Evolução Matemática</h3>
+            <svg viewBox="0 0 800 450" id="chartSvg">
+                <defs>
+                    <linearGradient id="gradientLine" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#da70d6;stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:#ff1493;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#fff;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                
+                <line x1="80" y1="50" x2="80" y2="400" class="axis-line" />
+                <line x1="80" y1="400" x2="750" y2="400" class="axis-line" />
+                
+                <line x1="80" y1="350" x2="750" y2="350" class="grid-line" />
+                <line x1="80" y1="300" x2="750" y2="300" class="grid-line" />
+                <line x1="80" y1="250" x2="750" y2="250" class="grid-line" />
+                <line x1="80" y1="200" x2="750" y2="200" class="grid-line" />
+                <line x1="80" y1="150" x2="750" y2="150" class="grid-line" />
+                
+                <text x="75" y="405" text-anchor="end" class="y-axis-label">0</text>
+                <text x="75" y="155" text-anchor="end" class="y-axis-label">Infinito</text>
+                
+                <text x="750" y="420" text-anchor="middle" class="x-axis-label" id="labelEixoXFinal">Dias</text>
+                
+                <path id="caminhoAmor" fill="none" stroke="url(#gradientLine)" stroke-width="4" filter="drop-shadow(0 0 10px #ff1493)" />
+                <g id="dataPoints"></g>
+                
+                <text x="90" y="390" class="annotation">Início 💀</text>
+                <text id="endAnnotation" x="400" y="150" class="annotation">Hoje (Subindo!) 🚀</text>
+            </svg>
+        </div>
+
+        <p class="footer-text">mc do coração dark 💀</p>
+    </div>
+
+    <script>
+        // --- LÓGICA DE DATA ---
+        const dataInicio = new Date(2025, 4, 14); // 14 de Maio de 2025
+        
+        function formatarData(data) {
+            const dia = String(data.getDate()).padStart(2, '0');
+            const mes = String(data.getMonth() + 1).padStart(2, '0');
+            return `${dia}/${mes}/${data.getFullYear()}`;
+        }
+        document.getElementById('dataInicioDisplay').textContent = formatarData(dataInicio);
+
+        // --- LÓGICA DE ÁUDIO AUTOMÁTICO ---
+        const audioPlayer = document.getElementById('audioPlayer');
+        const playBtn = document.getElementById('playPauseBtn');
+
+        // Tenta tocar imediatamente ao carregar
+        window.addEventListener('load', () => {
+            const promessaAudio = audioPlayer.play();
+            
+            if (promessaAudio !== undefined) {
+                promessaAudio.then(_ => {
+                    // Autoplay funcionou!
+                    playBtn.textContent = "⏸️ Pausar";
+                }).catch(error => {
+                    // Autoplay foi bloqueado pelo navegador.
+                    // Adicionamos um ouvinte para o PRIMEIRO clique em qualquer lugar da tela
+                    console.log("Autoplay bloqueado. Aguardando interação.");
+                    document.body.addEventListener('click', () => {
+                        audioPlayer.play();
+                        playBtn.textContent = "⏸️ Pausar";
+                    }, { once: true }); // 'once: true' remove o ouvinte após o primeiro clique
+                });
+            }
+        });
+
+        playBtn.addEventListener('click', () => {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                playBtn.textContent = "⏸️ Pausar";
+            } else {
+                audioPlayer.pause();
+                playBtn.textContent = "▶️ Tocar";
+            }
+        });
+
+        // --- LÓGICA DE CONTADOR ---
+        function atualizarContador() {
+            const agora = new Date();
+            const diff = agora - dataInicio;
+            
+            if (diff < 0) {
+                 document.getElementById('contadorDias').innerText = 'Em breve...';
+                 return;
+            }
+
+            const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('contadorDias').innerText = 
+                `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+            
+            atualizarGrafico(dias);
+        }
+
+        // --- LÓGICA GRÁFICA CORRIGIDA (Crescimento Real) ---
+        function atualizarGrafico(diasTotais) {
+            // Se diasTotais for pequeno, forçamos um mínimo para o gráfico não ficar vazio
+            const diasParaPlotar = Math.max(diasTotais, 10); 
+            const largura = 670; // Largura útil do gráfico
+            const altura = 350; // Altura útil
+            const margemX = 80;
+            const margemY = 400; // Base do eixo Y
+
+            let pathData = `M ${margemX} ${margemY}`;
+            const pontosGroup = document.getElementById('dataPoints');
+            pontosGroup.innerHTML = ''; // Limpa pontos anteriores
+
+            // Cria 100 pontos para suavizar a curva
+            for (let i = 0; i <= 100; i++) {
+                const progresso = i / 100;
+                
+                // Posição X (Linear no tempo)
+                const x = margemX + (progresso * largura);
+                
+                // Posição Y (Exponencial / Polinomial)
+                // Usando Math.pow(progresso, 2) para simular aceleração (curva convexa)
+                const intensidade = Math.pow(progresso, 2); 
+                const y = margemY - (intensidade * altura);
+
+                if (i === 0) pathData = `M ${x} ${y}`;
+                else pathData += ` L ${x} ${y}`; // Usando linhas retas curtas para performance
+
+                // Adiciona bolinhas decorativas a cada 10%
+                if (i % 10 === 0) {
+                    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    circle.setAttribute('cx', x);
+                    circle.setAttribute('cy', y);
+                    circle.setAttribute('r', 4);
+                    circle.setAttribute('fill', '#ff69b4');
+                    pontosGroup.appendChild(circle);
+                }
+                
+                // Move a anotação final para o último ponto
+                if (i === 100) {
+                    const endText = document.getElementById('endAnnotation');
+                    endText.setAttribute('x', x - 60);
+                    endText.setAttribute('y', y - 10);
+                }
+            }
+            
+            document.getElementById('caminhoAmor').setAttribute('d', pathData);
+            document.getElementById('labelEixoXFinal').textContent = diasTotais + " dias";
+        }
+
+        setInterval(atualizarContador, 1000);
+        atualizarContador(); // Executa imediatamente
+    </script>
+</body>
+</html>
