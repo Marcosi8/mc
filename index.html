@@ -3,215 +3,457 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eu Te Amo Cada Vez Mais a Cada Dia</title>
+    <title>Nosso Amor Eterno</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #1a1a1a;
-            color: #4CAF50;
             padding: 20px;
-            box-sizing: border-box;
+            color: #fff;
+            position: relative;
+            overflow-x: hidden;
         }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         .container {
-            background-color: #282828;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 50px 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
             text-align: center;
-            max-width: 800px;
+            max-width: 900px;
             width: 100%;
-            box-sizing: border-box;
             position: relative;
             overflow: hidden;
-            border: 1px solid #444;
+            color: #2d3748;
         }
-        h1 {
-            color: #2196F3;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-        }
-        .love-photo {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-top: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        }
-        .decoration-icon {
-            display: block;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            opacity: 0.9;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            background-color: #3a3a3a;
-            object-fit: cover;
-            border: 2px solid #2196F3;
+
+        .container::before {
+            content: '';
             position: absolute;
-            z-index: 10;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-            animation-name: floatAnimation;
-            animation-duration: 3s;
-            animation-iteration-count: infinite;
-            animation-timing-function: ease-in-out;
-            animation-direction: alternate;
-        }
-        .decoration-icon:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #4facfe, #00f2fe);
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite;
         }
 
-        @keyframes floatAnimation {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0); }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
         }
 
-        .icon-pos-1 { top: 25px; left: 25px; transform: rotate(-8deg); animation-delay: 0s; }
-        .icon-pos-2 { top: 25px; right: 25px; transform: rotate(15deg); animation-delay: 0.5s; }
-        .icon-pos-3 { top: 100px; left: 5px; transform: rotate(2deg); animation-delay: 1s; }
-        .icon-pos-4 { top: 100px; right: 5px; transform: rotate(-10deg); animation-delay: 1.5s; }
-        .icon-pos-5 { top: 250px; left: 5px; transform: rotate(7deg); animation-delay: 2s; }
-        .icon-pos-6 { top: 250px; right: 5px; transform: rotate(-5deg); animation-delay: 2.5s; }
-        .icon-pos-7 { bottom: 25px; left: 25px; transform: rotate(12deg); animation-delay: 0.2s; }
-        .icon-pos-8 { bottom: 25px; right: 25px; transform: rotate(-3deg); animation-delay: 0.7s; }
-        .icon-pos-9 { bottom: 100px; left: 50%; transform: translateX(-50%) rotate(10deg); animation-delay: 1.2s; }
-        .icon-pos-10 { top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-15deg); animation-delay: 1.7s; width: 70px; height: 70px; }
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            color: #718096;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .counter-section {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            padding: 25px;
+            border-radius: 16px;
+            margin: 30px 0;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        #contadorDias {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #667eea;
+            display: block;
+            margin: 10px 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .date-info {
+            font-size: 0.95em;
+            color: #718096;
+            margin-top: 10px;
+        }
+
+        .music-player {
+            background: linear-gradient(135deg, rgba(118, 75, 162, 0.1) 0%, rgba(240, 147, 251, 0.1) 100%);
+            padding: 20px;
+            border-radius: 16px;
+            margin: 30px 0;
+            border: 1px solid rgba(118, 75, 162, 0.2);
+        }
+
+        .music-player h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3em;
+            color: #764ba2;
+            margin-bottom: 15px;
+        }
+
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .audio-controls audio {
+            flex: 1;
+            min-width: 250px;
+            max-width: 400px;
+        }
+
+        .play-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .play-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .play-button:active {
+            transform: translateY(0);
+        }
+
+        .chart-container {
+            margin: 40px 0;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.05) 0%, rgba(0, 242, 254, 0.05) 100%);
+            border-radius: 16px;
+            border: 1px solid rgba(79, 172, 254, 0.2);
+        }
+
+        .chart-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4em;
+            color: #4facfe;
+            margin-bottom: 20px;
+        }
 
         svg {
-            border: 1px solid #444;
-            background-color: #333;
-            margin-top: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
             width: 100%;
             height: auto;
-            max-width: 600px;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 12px;
+            padding: 20px;
         }
+
         .grid-line {
-            stroke: #555;
+            stroke: #e2e8f0;
+            stroke-width: 1;
         }
-        .x-axis-label, .y-axis-label, .annotation {
-            font-size: 0.9em;
-            fill: #90CAF9;
+
+        .axis-line {
+            stroke: #cbd5e0;
+            stroke-width: 2;
         }
+
+        .x-axis-label, .y-axis-label {
+            font-size: 0.85em;
+            fill: #718096;
+            font-weight: 500;
+        }
+
         .annotation {
-            font-size: 0.8em;
-            fill: #BBDEFB;
+            font-size: 0.9em;
+            fill: #667eea;
+            font-weight: 500;
         }
-        .heart {
-            font-size: 1.2em;
+
+        #caminhoAmor {
+            fill: none;
+            stroke: url(#gradientLine);
+            stroke-width: 4;
+            filter: drop-shadow(0 2px 8px rgba(102, 126, 234, 0.4));
+            transition: all 0.5s ease;
         }
-        p {
-            margin-top: 20px;
+
+        .love-point {
+            fill: #667eea;
+            stroke: white;
+            stroke-width: 2;
+            r: 5;
+            transition: all 0.3s ease;
+        }
+
+        .love-point:hover {
+            r: 8;
+            fill: #764ba2;
+        }
+
+        .decoration-icon {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0.85;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .decoration-icon:hover {
+            transform: scale(1.15) rotate(5deg);
+            opacity: 1;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+
+        .icon-pos-1 { top: 20px; left: 20px; animation: float 4s ease-in-out infinite; animation-delay: 0s; }
+        .icon-pos-2 { top: 20px; right: 20px; animation: float 4s ease-in-out infinite; animation-delay: 0.5s; }
+        .icon-pos-3 { top: 100px; left: 10px; animation: float 5s ease-in-out infinite; animation-delay: 1s; }
+        .icon-pos-4 { top: 100px; right: 10px; animation: float 5s ease-in-out infinite; animation-delay: 1.5s; }
+        .icon-pos-5 { top: 250px; left: 10px; animation: float 6s ease-in-out infinite; animation-delay: 2s; }
+        .icon-pos-6 { top: 250px; right: 10px; animation: float 6s ease-in-out infinite; animation-delay: 2.5s; }
+        .icon-pos-7 { bottom: 20px; left: 20px; animation: float 4.5s ease-in-out infinite; animation-delay: 0.3s; }
+        .icon-pos-8 { bottom: 20px; right: 20px; animation: float 4.5s ease-in-out infinite; animation-delay: 0.8s; }
+
+        .footer-text {
+            margin-top: 30px;
+            font-size: 1.1em;
+            color: #764ba2;
+            font-weight: 500;
             font-style: italic;
-            color: #90CAF9;
-        }
-        #contadorDias {
-            font-weight: bold;
-            color: #2196F3;
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
             .container {
-                padding: 15px;
+                padding: 30px 20px;
             }
+
             h1 {
-                font-size: 1.5em;
+                font-size: 1.8em;
             }
-            .x-axis-label, .y-axis-label, .annotation, p {
-                font-size: 0.8em;
+
+            #contadorDias {
+                font-size: 1.4em;
             }
-            .love-photo {
-                margin-top: 15px;
-                margin-bottom: 15px;
-            }
+
             .decoration-icon {
-                width: 40px;
-                height: 40px;
+                width: 45px;
+                height: 45px;
             }
-            
-            .icon-pos-1 { top: 5px; left: 5px; transform: rotate(-8deg); }
-            .icon-pos-2 { top: 5px; right: 5px; transform: rotate(15deg); }
-            .icon-pos-3 { top: 70px; left: 10px; transform: rotate(2deg); }
-            .icon-pos-4 { top: 70px; right: 10px; transform: rotate(-10deg); } 
 
-            .icon-pos-5 { top: 220px; left: 5px; transform: rotate(7deg); }
-            .icon-pos-6 { top: 220px; right: 5px; transform: rotate(-5deg); } 
-
-            .icon-pos-7 { bottom: 10px; left: 10px; transform: rotate(12deg); }
-            .icon-pos-8 { bottom: 10px; right: 10px; transform: rotate(-3deg); width: 40px; height: 40px; }
-            .icon-pos-9 { top: 15px; left: 50%; transform: translateX(-50%) rotate(10deg); }
-            .icon-pos-10 { bottom: 15px; left: 50%; transform: translateX(-50%) rotate(-15deg); width: 60px; height: 60px; }
-
-            .annotation:first-of-type {
-                font-size: 0.7em;
-                x: 60px;
-                y: 330px;
-            }
-            .annotation:last-of-type {
-                font-size: 0.7em;
-                x: 250px;
-                y: 130px;
-            }
+            .icon-pos-1, .icon-pos-2 { top: 10px; }
+            .icon-pos-3, .icon-pos-4 { top: 80px; }
+            .icon-pos-5, .icon-pos-6 { top: 200px; }
+            .icon-pos-7, .icon-pos-8 { bottom: 10px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="mc/mc/img.icons8.png" alt="3" class="decoration-icon icon-pos-3">
-        <img src="mc/mc/MV5BNDkyMTVkZWEtNjgzMy00OWE4LTg0ZDAtMzQwNWI5NmVhOTRiXkEyXkFqcGc@._V1_.jpg" alt="4" class="decoration-icon icon-pos-4">
-        <img src="mc/mc/Kuromi.webp" alt="5" class="decoration-icon icon-pos-5">
-        <img src="mc/mc/addams.jpg" alt="6" class="decoration-icon icon-pos-6">
-        <img src="mc/mc/715jbEtLNcL._AC_UL210_SR210,210_.jpg" alt="7" class="decoration-icon icon-pos-7">
-        <img src="mc/mc/patu.jpg" alt="8" class="decoration-icon icon-pos-8">
-        <img src="mc/mc/unnamed.jpg" alt="10" class="decoration-icon icon-pos-10">
+        <img src="mc/mc/img.icons8.png" alt="" class="decoration-icon icon-pos-1">
+        <img src="mc/mc/MV5BNDkyMTVkZWEtNjgzMy00OWE4LTg0ZDAtMzQwNWI5NmVhOTRiXkEyXkFqcGc@._V1_.jpg" alt="" class="decoration-icon icon-pos-2">
+        <img src="mc/mc/Kuromi.webp" alt="" class="decoration-icon icon-pos-3">
+        <img src="mc/mc/addams.jpg" alt="" class="decoration-icon icon-pos-4">
+        <img src="mc/mc/715jbEtLNcL._AC_UL210_SR210,210_.jpg" alt="" class="decoration-icon icon-pos-5">
+        <img src="mc/mc/patu.jpg" alt="" class="decoration-icon icon-pos-6">
+        <img src="mc/mc/unnamed.jpg" alt="" class="decoration-icon icon-pos-7">
 
-        <h1>“Eu te amo cada vez mais a cada dia”</h1>
-        <p><span id="contadorDias">0 dias, 0 horas, 0 minutos e 0 segundos</span> desde o início do nosso amor💙 14/05/2025</p>
-        <p>(Crescimento Exponencial do Amor)</p>
+        <h1>"Eu te amo cada vez mais a cada dia"</h1>
+        <p class="subtitle">Crescimento Exponencial do Amor</p>
 
-        <img src="" alt="" class="love-photo">
+        <div class="counter-section">
+            <div id="contadorDias">0 dias, 0 horas, 0 minutos e 0 segundos</div>
+            <div class="date-info">desde o início do nosso amor 💙 <span id="dataInicioDisplay">14/05/2025</span></div>
+        </div>
 
-        <svg viewBox="0 0 600 400">
-            <line x1="50" y1="350" x2="550" y2="350" stroke="#555" class="grid-line" />
-            <line x1="50" y1="50" x2="550" y2="50" stroke="#555" class="grid-line" />
-            <line x1="50" y1="350" x2="50" y2="50" stroke="#555" class="grid-line" />
-            <line x1="550" y1="350" x2="550" y2="50" stroke="#555" class="grid-line" />
+        <div class="music-player">
+            <h3>🎵 Música do Nosso Amor</h3>
+            <div class="audio-controls">
+                <audio id="audioPlayer" loop preload="auto">
+                    <source src="musica.mp3" type="audio/mpeg">
+                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                    Seu navegador não suporta o elemento de áudio.
+                </audio>
+                <button class="play-button" id="playPauseBtn">▶️ Reproduzir</button>
+            </div>
+            <p style="margin-top: 10px; font-size: 0.85em; color: #718096;">
+                💡 Dica: Para usar sua própria música, renomeie o arquivo para "musica.mp3" e coloque na pasta do projeto
+            </p>
+        </div>
 
-            <text x="35" y="355" text-anchor="end" class="y-axis-label">0</text>
-            <text x="35" y="55" text-anchor="end" class="y-axis-label">Alto</text>
-            <text x="25" y="200" text-anchor="end" transform="rotate(-90 25 200)" class="y-axis-label">Intensidade do Amor</text>
+        <div class="chart-container">
+            <h3 class="chart-title">Evolução do Nosso Amor</h3>
+            <svg viewBox="0 0 800 450" id="chartSvg">
+                <defs>
+                    <linearGradient id="gradientLine" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:#764ba2;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#f093fb;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                
+                <!-- Grid lines -->
+                <line x1="80" y1="50" x2="80" y2="400" class="axis-line" />
+                <line x1="80" y1="400" x2="750" y2="400" class="axis-line" />
+                
+                <!-- Grid horizontal lines -->
+                <line x1="80" y1="350" x2="750" y2="350" class="grid-line" />
+                <line x1="80" y1="300" x2="750" y2="300" class="grid-line" />
+                <line x1="80" y1="250" x2="750" y2="250" class="grid-line" />
+                <line x1="80" y1="200" x2="750" y2="200" class="grid-line" />
+                <line x1="80" y1="150" x2="750" y2="150" class="grid-line" />
+                <line x1="80" y1="100" x2="750" y2="100" class="grid-line" />
+                
+                <!-- Y-axis labels -->
+                <text x="75" y="405" text-anchor="end" class="y-axis-label">0</text>
+                <text x="75" y="355" text-anchor="end" class="y-axis-label">20%</text>
+                <text x="75" y="305" text-anchor="end" class="y-axis-label">40%</text>
+                <text x="75" y="255" text-anchor="end" class="y-axis-label">60%</text>
+                <text x="75" y="205" text-anchor="end" class="y-axis-label">80%</text>
+                <text x="75" y="155" text-anchor="end" class="y-axis-label">100%</text>
+                <text x="30" y="225" text-anchor="middle" transform="rotate(-90 30 225)" class="y-axis-label">Intensidade do Amor</text>
+                
+                <!-- X-axis labels -->
+                <text x="80" y="420" text-anchor="middle" class="x-axis-label">0</text>
+                <text x="750" y="420" text-anchor="middle" class="x-axis-label" id="labelEixoXFinal">0</text>
+                <text x="415" y="440" text-anchor="middle" class="x-axis-label">Dias</text>
+                
+                <!-- Love path -->
+                <path id="caminhoAmor" />
+                
+                <!-- Data points -->
+                <g id="dataPoints"></g>
+                
+                <!-- Annotations -->
+                <text x="90" y="390" class="annotation">O amor começa aqui 💙</text>
+                <text id="endAnnotation" x="400" y="150" class="annotation">E cresce sem parar 💙</text>
+            </svg>
+        </div>
 
-            <text x="50" y="370" text-anchor="middle" class="x-axis-label">0</text>
-            <text x="550" y="370" text-anchor="middle" class="x-axis-label" id="labelEixoXFinal">0</text>
-            <text x="300" y="385" text-anchor="middle" class="x-axis-label">Dias</text>
-
-            <path id="caminhoAmor"
-                  fill="none" stroke="#2196F3" stroke-width="3"
-                  style="filter: drop-shadow(0 0 5px rgba(33,150,243,0.7));"
-            />
-
-            <text x="60" y="340" class="annotation">O amor começa aqui 💙</text>
-            <text x="400" y="150" class="annotation">E cresce sem parar 💙</text>
-        </svg>
-
-        <p>mc do coração 💙</p>
-
+        <p class="footer-text">mc do coração 💙</p>
     </div>
 
     <script>
-        const dataInicio = new Date(2025, 4, 5);
+        // Função para obter ou definir a data de início no localStorage
+        function obterDataInicio() {
+            const dataSalva = localStorage.getItem('dataInicioAmor');
+            if (dataSalva) {
+                return new Date(dataSalva);
+            } else {
+                // Se não houver data salva, usa a data padrão e salva
+                const dataPadrao = new Date(2025, 4, 14); // 14 de maio de 2025
+                localStorage.setItem('dataInicioAmor', dataPadrao.toISOString());
+                return dataPadrao;
+            }
+        }
 
+        const dataInicio = obterDataInicio();
+        
+        // Exibir a data de início formatada
+        function formatarData(data) {
+            const dia = String(data.getDate()).padStart(2, '0');
+            const mes = String(data.getMonth() + 1).padStart(2, '0');
+            const ano = data.getFullYear();
+            return `${dia}/${mes}/${ano}`;
+        }
+        
+        document.getElementById('dataInicioDisplay').textContent = formatarData(dataInicio);
+
+        // Controle de áudio
+        const audioPlayer = document.getElementById('audioPlayer');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        let isPlaying = false;
+
+        playPauseBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                audioPlayer.pause();
+                playPauseBtn.textContent = '▶️ Reproduzir';
+                isPlaying = false;
+            } else {
+                audioPlayer.play().catch(e => {
+                    console.log('Erro ao reproduzir áudio:', e);
+                    // Tenta carregar música alternativa online
+                    const audioSources = audioPlayer.querySelectorAll('source');
+                    if (audioSources.length > 1) {
+                        audioPlayer.load();
+                        audioPlayer.play().catch(err => {
+                            console.log('Erro ao reproduzir música alternativa:', err);
+                        });
+                    }
+                });
+                playPauseBtn.textContent = '⏸️ Pausar';
+                isPlaying = true;
+            }
+        });
+
+        // Auto-play suave (apenas se o usuário interagir com a página)
+        let userInteracted = false;
+        document.addEventListener('click', () => {
+            if (!userInteracted) {
+                userInteracted = true;
+                // Não auto-play, apenas marca que houve interação
+            }
+        }, { once: true });
+
+        audioPlayer.addEventListener('ended', () => {
+            playPauseBtn.textContent = '▶️ Reproduzir';
+            isPlaying = false;
+        });
+
+        // Função para atualizar contador e gráfico
         function atualizarContadorEGrafico() {
             const agora = new Date();
             const diferencaTempo = agora.getTime() - dataInicio.getTime();
+
+            if (diferencaTempo < 0) {
+                document.getElementById('contadorDias').innerText = 'Aguardando o início...';
+                return;
+            }
 
             const segundosTotais = Math.floor(diferencaTempo / 1000);
             const dias = Math.floor(segundosTotais / (60 * 60 * 24));
@@ -224,50 +466,93 @@
             document.getElementById('contadorDias').innerText =
                 `${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
 
-            document.getElementById('labelEixoXFinal').innerText = dias;
+            // Atualizar gráfico
+            atualizarGrafico(dias);
+        }
 
-            const larguraSvg = 600;
-            const alturaSvg = 400;
-            const margem = { esquerda: 50, direita: 50, topo: 50, baixo: 50 };
+        function atualizarGrafico(dias) {
+            const svg = document.getElementById('chartSvg');
+            const larguraSvg = 800;
+            const alturaSvg = 450;
+            const margem = { esquerda: 80, direita: 50, topo: 50, baixo: 50 };
             const larguraPlotagem = larguraSvg - margem.esquerda - margem.direita;
             const alturaPlotagem = alturaSvg - margem.topo - margem.baixo;
 
-            const maxDiasParaGrafico = 365;
-            const porcentagemDiaAtual = Math.min(dias / maxDiasParaGrafico, 1);
+            const maxDiasParaGrafico = Math.max(365, dias + 30); // Ajusta dinamicamente
+            const diasParaPlotar = Math.min(dias, maxDiasParaGrafico);
+            const porcentagemDiaAtual = diasParaPlotar / maxDiasParaGrafico;
 
-            const inicioX = margem.esquerda;
-            const inicioY = margem.topo + alturaPlotagem;
+            // Atualizar label do eixo X
+            document.getElementById('labelEixoXFinal').textContent = maxDiasParaGrafico;
 
-            const fimX = margem.esquerda + (porcentagemDiaAtual * larguraPlotagem);
-            const intensidade = 1 - (1 * Math.pow(porcentagemDiaAtual, 0.8));
-            const fimY = margem.topo + (intensidade * alturaPlotagem);
-
-            const cp1x = inicioX + (larguraPlotagem * 0.2);
-            const cp1y = inicioY - (alturaPlotagem * 0.1);
-
-            const cp2x = inicioX + (larguraPlotagem * 0.6);
-            const cp2y = inicioY - (alturaPlotagem * 0.7 * porcentagemDiaAtual);
-
-            const dadosCaminho = `M ${inicioX} ${inicioY} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${fimX} ${fimY}`;
-
-            const caminhoAmor = document.getElementById('caminhoAmor');
-            if (caminhoAmor) {
-                caminhoAmor.setAttribute('d', dadosCaminho);
+            // Calcular pontos da curva exponencial
+            const pontos = [];
+            const numPontos = Math.min(100, dias + 1);
+            
+            for (let i = 0; i <= numPontos; i++) {
+                const progresso = i / numPontos;
+                const diasAtuais = progresso * diasParaPlotar;
+                
+                if (diasAtuais <= dias) {
+                    const x = margem.esquerda + (progresso * larguraPlotagem);
+                    // Curva exponencial: começa baixo e cresce rapidamente
+                    const intensidade = 1 - Math.pow(1 - progresso, 2);
+                    const y = margem.topo + alturaPlotagem - (intensidade * alturaPlotagem);
+                    pontos.push({ x, y });
+                }
             }
 
-            const primeiraAnotacao = document.querySelector('.annotation:first-of-type');
-            const ultimaAnotacao = document.querySelector('.annotation:last-of-type');
-
-            if (primeiraAnotacao) {
-                primeiraAnotacao.setAttribute('x', inicioX + 10);
-                primeiraAnotacao.setAttribute('y', inicioY - 10);
+            // Criar path da curva
+            if (pontos.length > 0) {
+                let pathData = `M ${pontos[0].x} ${pontos[0].y}`;
+                
+                for (let i = 1; i < pontos.length; i++) {
+                    const pontoAtual = pontos[i];
+                    const pontoAnterior = pontos[i - 1];
+                    
+                    // Usar curvas de Bézier suaves
+                    const cp1x = pontoAnterior.x + (pontoAtual.x - pontoAnterior.x) * 0.5;
+                    const cp1y = pontoAnterior.y;
+                    const cp2x = pontoAnterior.x + (pontoAtual.x - pontoAnterior.x) * 0.5;
+                    const cp2y = pontoAtual.y;
+                    
+                    pathData += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${pontoAtual.x} ${pontoAtual.y}`;
+                }
+                
+                document.getElementById('caminhoAmor').setAttribute('d', pathData);
             }
-            if (ultimaAnotacao) {
-                ultimaAnotacao.setAttribute('x', fimX - 50);
-                ultimaAnotacao.setAttribute('y', fimY - 20);
+
+            // Adicionar pontos de dados
+            const dataPointsGroup = document.getElementById('dataPoints');
+            dataPointsGroup.innerHTML = '';
+            
+            // Adicionar pontos em intervalos regulares
+            const intervaloPontos = Math.max(1, Math.floor(dias / 20));
+            for (let i = 0; i <= dias; i += intervaloPontos) {
+                if (i <= diasParaPlotar) {
+                    const progresso = i / maxDiasParaGrafico;
+                    const x = margem.esquerda + (progresso * larguraPlotagem);
+                    const intensidade = 1 - Math.pow(1 - progresso, 2);
+                    const y = margem.topo + alturaPlotagem - (intensidade * alturaPlotagem);
+                    
+                    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    circle.setAttribute('class', 'love-point');
+                    circle.setAttribute('cx', x);
+                    circle.setAttribute('cy', y);
+                    dataPointsGroup.appendChild(circle);
+                }
+            }
+
+            // Atualizar anotação final
+            if (pontos.length > 0) {
+                const ultimoPonto = pontos[pontos.length - 1];
+                const endAnnotation = document.getElementById('endAnnotation');
+                endAnnotation.setAttribute('x', Math.min(ultimoPonto.x + 20, larguraSvg - 150));
+                endAnnotation.setAttribute('y', Math.max(ultimoPonto.y - 20, 50));
             }
         }
 
+        // Inicializar
         document.addEventListener('DOMContentLoaded', () => {
             atualizarContadorEGrafico();
             setInterval(atualizarContadorEGrafico, 1000);
@@ -275,4 +560,3 @@
     </script>
 </body>
 </html>
-
