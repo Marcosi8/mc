@@ -1,5 +1,0 @@
-
-Renomeie seu arquivo de áudio para: musica.mp3
-Coloque o arquivo na mesma pasta do index.html (pasta "mc")
-
-Formatos suportados: MP3, OGG, WAV
