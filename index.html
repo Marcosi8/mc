@@ -19,7 +19,7 @@
             padding-bottom: 80px;
         }
 
-        /* Fundo Estrelado Animado */
+        /* Fundo Estrelado */
         body::before {
             content: '';
             position: fixed;
@@ -53,14 +53,14 @@
             filter: drop-shadow(0 0 15px rgba(255, 20, 147, 0.6));
         }
 
-        /* --- CONTADOR DE DIAS (RECUPERADO) --- */
+        /* --- CONTADOR --- */
         .counter-box {
             background: rgba(20, 0, 20, 0.6);
             border: 1px solid #da70d6;
             padding: 20px;
             border-radius: 10px;
             margin: 0 auto 40px;
-            max-width: 600px;
+            max-width: 700px; /* Aumentei um pouco para caber o texto */
             box-shadow: 0 0 20px rgba(218, 112, 214, 0.2);
             animation: pulseGlow 3s infinite alternate;
         }
@@ -71,21 +71,14 @@
         }
 
         #contador {
-            font-size: clamp(1.5em, 4vw, 2.5em);
+            font-size: clamp(1.2em, 3.5vw, 2em); /* Ajuste de tamanho */
             font-weight: 700;
             color: #fff;
             text-shadow: 0 0 10px #ff69b4;
-            margin-bottom: 5px;
+            line-height: 1.5;
         }
 
-        .data-label {
-            color: #ffb6c1;
-            font-size: 0.9em;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* --- PLAYER DE MÚSICA --- */
+        /* --- PLAYER --- */
         .player-wrapper {
             background: rgba(20, 20, 20, 0.9);
             border: 1px solid #da70d6;
@@ -111,9 +104,7 @@
 
         .paused .bar { animation-play-state: paused; height: 5px; transition: 0.5s; }
 
-        .song-title {
-            color: #ffb6c1; margin-bottom: 15px; font-size: 0.9em; letter-spacing: 1px;
-        }
+        .song-title { color: #ffb6c1; margin-bottom: 15px; font-size: 0.9em; letter-spacing: 1px; }
 
         .controls button {
             background: transparent; border: 1px solid #da70d6; color: white;
@@ -123,7 +114,7 @@
         .controls button:hover { background: #ff1493; color: black; box-shadow: 0 0 15px #ff1493; }
         .play-main { font-size: 1.2em; border-color: #ff69b4 !important; }
 
-        /* --- GALERIA COM SCROLL --- */
+        /* --- GALERIA --- */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -138,7 +129,6 @@
             padding: 10px;
             border: 1px solid #333;
             transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-            
             opacity: 0;
             transform: translateY(100px) scale(0.9);
             filter: blur(5px);
@@ -169,13 +159,12 @@
 
         <div class="counter-box">
             <div id="contador">Calculando...</div>
-            <div class="data-label">Juntos desde <span id="dataInicioTexto">--/--/----</span></div>
         </div>
         
         <ul id="playlistDados">
-            <li data-src="mc/mc/musica.mp3.mp3">1. Always</li>
-            <li data-src="mc/mc/Preciso Dizer Que Te Amo.mp3">2. Preciso Dizer Que Te Amo</li>
-            <li data-src="mc/mc/musica3.mp3">3. Batida do Coração</li>
+            <li data-src="mc/mc/preciso.mp3">Preciso Dizer Que Te Amo</li>
+            <li data-src="mc/mc/musica2.mp3">Segunda Música</li>
+            <li data-src="mc/mc/musica3.mp3">Terceira Música</li>
         </ul>
 
         <div class="player-wrapper paused" id="visualizer">
@@ -228,15 +217,11 @@
     </div>
 
     <script>
-        // --- 1. CONFIGURAÇÃO DA DATA (MUDE AQUI) ---
-        // Ano, Mês (Janeiro=0, Maio=4), Dia
+        // --- 1. CONFIGURAÇÃO DA DATA ---
+        // Ano, Mês (Maio = 4), Dia
         const dataInicial = new Date(2025, 4, 14); 
 
-        // Formata a data para mostrar na tela
-        const dataFormatada = dataInicial.toLocaleDateString('pt-BR');
-        document.getElementById('dataInicioTexto').textContent = dataFormatada;
-
-        // --- 2. LÓGICA DO CONTADOR ---
+        // --- 2. LÓGICA DO CONTADOR (Formato solicitado) ---
         function atualizarContador() {
             const agora = new Date();
             const diferenca = agora - dataInicial;
@@ -249,17 +234,13 @@
                 const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
                 const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
 
-                // Adiciona o zero na frente se for menor que 10 (ex: 09, 05)
-                const h = String(horas).padStart(2, '0');
-                const m = String(minutos).padStart(2, '0');
-                const s = String(segundos).padStart(2, '0');
-
+                // Monta a frase exatamente como você pediu
                 document.getElementById('contador').innerText = 
-                    `${dias} Dias · ${h}:${m}:${s}`;
+                    `juntos há ${dias} dias ${horas} horas ${minutos} min e ${segundos} seg`;
             }
         }
         setInterval(atualizarContador, 1000);
-        atualizarContador(); // Roda a primeira vez sem esperar 1 seg
+        atualizarContador(); 
 
         // --- 3. LÓGICA DA PLAYLIST ---
         const listaHTML = document.querySelectorAll('#playlistDados li');
@@ -289,6 +270,7 @@
             if (index >= playlist.length) index = 0;
             
             indexAtual = index;
+            // Decodifica possíveis caracteres especiais no link
             audio.src = playlist[indexAtual].src;
             displayTitulo.innerText = `🎵 ${playlist[indexAtual].nome}`;
         }
@@ -302,7 +284,8 @@
                         btnPlay.innerText = "⏸ Pausar";
                     }).catch(erro => {
                         console.error("Erro:", erro);
-                        alert("Não foi possível tocar: " + playlist[indexAtual].src);
+                        // Alerta mais específico
+                        alert(`ERRO: Não consegui tocar o arquivo.\n\nTentando acessar: ${playlist[indexAtual].src}\n\nDICA: Verifique se o arquivo existe na pasta 'mc/mc/' e se o nome não tem espaços.`);
                     });
                 }
             } else {
@@ -341,4 +324,3 @@
     </script>
 </body>
 </html>
-
