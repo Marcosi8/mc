@@ -64,21 +64,8 @@
         .polaroid:hover img { filter: grayscale(0%); transform: scale(1.03); }
         .polaroid img.error { padding: 50px; object-fit: contain; opacity: 0.3; }
         #playlistDados { display: none; }
-
-        /* --- CONFIGURAÇÃO DA KUROMI (CANTO ESQUERDO) --- */
-        .kuromi-corner {
-            position: fixed;
-            bottom: 0px; 
-            left: 0px; 
-            width: 150px; /* Ajuste o tamanho dela aqui */
-            z-index: 50; 
-            pointer-events: none; /* Para não atrapalhar cliques */
-        }
-        
-        /* Ajuste para não ficar gigante no celular */
-        @media (max-width: 600px) {
-            .kuromi-corner { width: 100px; }
-        }
+        .kuromi-corner { position: fixed; bottom: 0px; left: 0px; width: 150px; z-index: 50; pointer-events: none; }
+        @media (max-width: 600px) { .kuromi-corner { width: 100px; } }
     </style>
 </head>
 <body>
@@ -98,8 +85,9 @@
         </div>
         
         <ul id="playlistDados">
-            <li data-src="mc/mc/musica1.mp3">Preciso Dizer Que Te Amo</li>
-            <li data-src="mc/mc/musica2.mp3">Nossa Segunda Música</li>
+            <li data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">1. Teste de Áudio (Online)</li>
+            
+            <li data-src="mc/mc/musica1.mp3">2. Nossa Música (Seu Arquivo)</li>
         </ul>
 
         <div class="player-wrapper paused" id="visualizer">
@@ -118,42 +106,20 @@
         <p style="margin-top:20px; color:#666; font-size:0.8em;">(Role a página para ver as memórias)</p>
 
         <div class="gallery-grid">
-            
-            <div class="polaroid">
-                <img src="mc/mc/img.icons8.png" onerror="erroImg(this)">
-            </div>
-
-            <div class="polaroid">
-                <img src="mc/mc/MV5BNDkyMTVkZWEtNjgzMy00OWE4LTg0ZDAtMzQwNWI5NmVhOTRiXkEyXkFqcGc@._V1_.jpg" onerror="erroImg(this)">
-            </div>
-
-            <div class="polaroid">
-                <img src="mc/mc/Kuromi.webp" onerror="erroImg(this)">
-            </div>
-
-            <div class="polaroid">
-                <img src="mc/mc/addams.jpg" onerror="erroImg(this)">
-            </div>
-
-            <div class="polaroid">
-                <img src="mc/mc/patu.jpg" onerror="erroImg(this)">
-            </div>
-            
-            <div class="polaroid">
-                <img src="mc/mc/unnamed.jpg" onerror="erroImg(this)">
-            </div>
+            <div class="polaroid"><img src="mc/mc/img.icons8.png" onerror="erroImg(this)"></div>
+            <div class="polaroid"><img src="mc/mc/MV5BNDkyMTVkZWEtNjgzMy00OWE4LTg0ZDAtMzQwNWI5NmVhOTRiXkEyXkFqcGc@._V1_.jpg" onerror="erroImg(this)"></div>
+            <div class="polaroid"><img src="mc/mc/Kuromi.webp" onerror="erroImg(this)"></div>
+            <div class="polaroid"><img src="mc/mc/addams.jpg" onerror="erroImg(this)"></div>
+            <div class="polaroid"><img src="mc/mc/patu.jpg" onerror="erroImg(this)"></div>
+            <div class="polaroid"><img src="mc/mc/unnamed.jpg" onerror="erroImg(this)"></div>
         </div>
 
-        <div style="margin-top: 80px; opacity: 0.6; font-size: 0.8em;">
-            Feito com amor eterno &hearts;
-        </div>
+        <div style="margin-top: 80px; opacity: 0.6; font-size: 0.8em;">Feito com amor eterno &hearts;</div>
     </div>
 
     <script>
-        // --- 1. DATA ---
         const dataInicial = new Date(2025, 4, 14); 
 
-        // --- 2. CONTADOR ---
         function atualizarContador() {
             const agora = new Date();
             const diferenca = agora - dataInicial;
@@ -164,14 +130,12 @@
                 const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
                 const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
-                document.getElementById('contador').innerText = 
-                    `juntos há ${dias} dias ${horas} horas ${minutos} min e ${segundos} seg`;
+                document.getElementById('contador').innerText = `juntos há ${dias} dias ${horas} horas ${minutos} min e ${segundos} seg`;
             }
         }
         setInterval(atualizarContador, 1000);
         atualizarContador(); 
 
-        // --- 3. PLAYLIST ---
         const listaHTML = document.querySelectorAll('#playlistDados li');
         const playlist = [];
         listaHTML.forEach(item => {
@@ -183,7 +147,7 @@
         const visualizer = document.getElementById('visualizer');
         const btnPlay = document.getElementById('btnPlay');
 
-        if(playlist.length > 0) { carregarMusica(0); } else { displayTitulo.innerText = "Nenhuma música encontrada!"; }
+        if(playlist.length > 0) { carregarMusica(0); }
 
         function carregarMusica(index) {
             if (index < 0) index = playlist.length - 1;
@@ -202,7 +166,8 @@
                         btnPlay.innerText = "⏸ Pausar";
                     }).catch(erro => {
                         console.error("Erro:", erro);
-                        alert(`ERRO: Não tocou o arquivo: ${playlist[indexAtual].src}`);
+                        // Mensagem de erro amigável e explicativa
+                        alert(`ERRO AO TOCAR!\n\nO site tentou abrir: "${playlist[indexAtual].src}"\n\nSE A MÚSICA 1 TOCOU E A 2 NÃO:\nSignifica que seu arquivo 'musica1.mp3' está corrompido ou ainda não subiu para o GitHub.\n\nSE NENHUMA TOCOU:\nO navegador bloqueou o áudio. Tente recarregar a página.`);
                     });
                 }
             } else {
@@ -212,7 +177,6 @@
         function mudarFaixa(direcao) { carregarMusica(indexAtual + direcao); togglePlay(); }
         audio.addEventListener('ended', () => mudarFaixa(1));
 
-        // --- 4. SCROLL ---
         const observador = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('reveal');
@@ -221,11 +185,8 @@
         }, { threshold: 0.15 });
         document.querySelectorAll('.polaroid').forEach(el => observador.observe(el));
 
-        // --- 5. ERRO IMG ---
         function erroImg(img) {
-            img.onerror = "";
-            img.src = "https://placehold.co/400x400/202020/ff69b4?text=Imagem+Quebrada";
-            img.classList.add('error');
+            img.onerror = ""; img.src = "https://placehold.co/400x400/202020/ff69b4?text=Imagem+Quebrada"; img.classList.add('error');
         }
     </script>
 </body>
