@@ -64,18 +64,22 @@
         .polaroid:hover img { filter: grayscale(0%); transform: scale(1.03); }
         .polaroid img.error { padding: 50px; object-fit: contain; opacity: 0.3; }
         #playlistDados { display: none; }
-        .kuromi-corner { position: fixed; bottom: 0px; left: 0px; width: 150px; z-index: 50; pointer-events: none; }
-        @media (max-width: 600px) { .kuromi-corner { width: 100px; } }
+
+        /* --- CONFIGURAÇÃO DA KUROMI (CANTO DIREITO) --- */
+        .kuromi-corner {
+            position: fixed;
+            bottom: 0px; 
+            right: 0px; /* Alterado para DIREITA */
+            width: 150px; 
+            z-index: 50; 
+            pointer-events: none;
+        }
+        @media (max-width: 600px) { .kuromi-corner { width: 120px; } }
     </style>
 </head>
 <body>
 
-    <div class="kuromi-corner">
-        <div class="tenor-gif-embed" data-postid="861306002551391311" data-share-method="host" data-aspect-ratio="0.791209" data-width="100%">
-            <a href="https://tenor.com/view/kumori-corner-peak-peaking-sanrio-gif-861306002551391311">Kumori Corner Peak Sticker</a>
-        </div> 
-        <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-    </div>
+    <img src="https://media.tenor.com/J3s0N9gK8voAAAAi/kumori-corner-peak.gif" class="kuromi-corner" alt="Kuromi Espiando">
 
     <div class="container">
         <h1>Nosso Universo</h1>
@@ -85,9 +89,8 @@
         </div>
         
         <ul id="playlistDados">
-            <li data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">1. Teste de Áudio (Online)</li>
-            
-            <li data-src="mc/mc/musica1.mp3">2. Nossa Música (Seu Arquivo)</li>
+            <li data-src="mc/mc/musica1.mp3">Preciso Dizer Que Te Amo</li>
+            <li data-src="mc/mc/musica2.mp3">Nossa Segunda Música</li>
         </ul>
 
         <div class="player-wrapper paused" id="visualizer">
@@ -166,8 +169,7 @@
                         btnPlay.innerText = "⏸ Pausar";
                     }).catch(erro => {
                         console.error("Erro:", erro);
-                        // Mensagem de erro amigável e explicativa
-                        alert(`ERRO AO TOCAR!\n\nO site tentou abrir: "${playlist[indexAtual].src}"\n\nSE A MÚSICA 1 TOCOU E A 2 NÃO:\nSignifica que seu arquivo 'musica1.mp3' está corrompido ou ainda não subiu para o GitHub.\n\nSE NENHUMA TOCOU:\nO navegador bloqueou o áudio. Tente recarregar a página.`);
+                        alert(`ERRO: Não tocou o arquivo: ${playlist[indexAtual].src}`);
                     });
                 }
             } else {
