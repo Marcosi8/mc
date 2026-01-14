@@ -23,7 +23,7 @@
             background-size: 200% 200%; animation: stars 60s linear infinite; z-index: -1; opacity: 0.6;
         }
         @keyframes stars { from {background-position: 0 0;} to {background-position: 100% 100%;} }
-        .container { max-width: 900px; margin: 0 auto; padding: 20px; text-align: center; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; text-align: center; position: relative; z-index: 10; }
         h1 {
             font-size: clamp(2em, 5vw, 3.5em); margin: 30px 0 20px;
             background: linear-gradient(90deg, #ff1493, #fff, #da70d6);
@@ -64,9 +64,37 @@
         .polaroid:hover img { filter: grayscale(0%); transform: scale(1.03); }
         .polaroid img.error { padding: 50px; object-fit: contain; opacity: 0.3; }
         #playlistDados { display: none; }
+
+        /* --- NOVA ANIMAÇÃO DA KUROMI --- */
+        .kuromi-walk {
+            position: fixed;
+            bottom: -10px; /* Ajuste para ela ficar no chão */
+            left: -150px; /* Começa fora da tela */
+            width: 100px; /* Tamanho da Kuromi */
+            z-index: 50; /* Fica na frente do fundo, mas atrás de modais se tiver */
+            pointer-events: none; /* Permite clicar através dela */
+            animation: andandoTela 25s linear infinite; /* 25s para atravessar e voltar */
+            filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.5));
+        }
+
+        @keyframes andandoTela {
+            0% { left: -150px; transform: scaleX(1); } /* Começa na esquerda, virada pra direita */
+            45% { left: 105%; transform: scaleX(1); } /* Chega na direita (sai da tela) */
+            50% { left: 105%; transform: scaleX(-1); } /* Vira para a esquerda */
+            95% { left: -150px; transform: scaleX(-1); } /* Volta para a esquerda */
+            100% { left: -150px; transform: scaleX(1); } /* Reseta */
+        }
+
+        /* Responsividade para celulares */
+        @media (max-width: 600px) {
+            .kuromi-walk { width: 80px; }
+        }
     </style>
 </head>
 <body>
+
+    <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHk5aGZ1bXF6YmZlYmY1YmZlYmY1YmZlYmY1YmZlYmY1JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/StT7X0e1u9jZ5Jz5b7/giphy.gif" class="kuromi-walk" alt="Kuromi Andando">
+
     <div class="container">
         <h1>Nosso Universo</h1>
 
