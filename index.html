@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-       
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Orbitron', sans-serif;
@@ -65,7 +65,7 @@
         .polaroid img.error { padding: 50px; object-fit: contain; opacity: 0.3; }
         #playlistDados { display: none; }
 
-      
+       
         .kuromi-corner {
             position: fixed;
             bottom: 0px; 
@@ -73,7 +73,7 @@
             width: 150px; 
             z-index: 50; 
             pointer-events: none;
-        
+       
             image-rendering: -webkit-optimize-contrast;
         }
         @media (max-width: 600px) { .kuromi-corner { width: 120px; } }
@@ -93,7 +93,7 @@
         </div>
         
         <ul id="playlistDados">
-           
+            
             <li data-src="https://cdn.discordapp.com/attachments/1460993143641083987/1461002567155843278/Dom_Quixote_-_Engenheiros_do_Hawaii_youtube.mp3?ex=6968f82c&is=6967a6ac&hm=c09d445ebb7d42522c8dc5f56d59c3784889c7513f077b7fed2801dd1d57810c&">Dom Quixote</li>
             <li data-src="https://cdn.discordapp.com/attachments/1460993143641083987/1461002027655102600/musica.mp3.mp3?ex=6968f7ab&is=6967a62b&hm=3086f240b75785134dec7d1c0a0e687ead1e6488c2faff101e14877fed2b8b35&">Always</li>
              <li data-src="https://cdn.discordapp.com/attachments/1460993143641083987/1460993232283504660/Fallen_Star.mp3?ex=6968ef7a&is=69679dfa&hm=335d218eccbc491cd759a77324fbd575ae74a2f8b556b83c2aceb5cffd3ccafc&">Fallen Star</li>
@@ -198,11 +198,13 @@
         function erroImg(img) {
             img.onerror = ""; img.src = "https://placehold.co/400x400/202020/ff69b4?text=Imagem+Quebrada"; img.classList.add('error');
         }
+
+        document.body.addEventListener('click', () => {
+            
+            if (audio.paused) {
+                togglePlay();
+            }
+        }, { once: true }); 
     </script>
 </body>
 </html>
-
-
-
-
-
