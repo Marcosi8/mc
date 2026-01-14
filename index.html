@@ -44,13 +44,45 @@
 
         h1 {
             font-size: clamp(2em, 5vw, 3.5em);
-            margin: 30px 0 10px;
+            margin: 30px 0 20px;
             background: linear-gradient(90deg, #ff1493, #fff, #da70d6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-transform: uppercase;
             letter-spacing: 4px;
             filter: drop-shadow(0 0 15px rgba(255, 20, 147, 0.6));
+        }
+
+        /* --- CONTADOR DE DIAS (RECUPERADO) --- */
+        .counter-box {
+            background: rgba(20, 0, 20, 0.6);
+            border: 1px solid #da70d6;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 0 auto 40px;
+            max-width: 600px;
+            box-shadow: 0 0 20px rgba(218, 112, 214, 0.2);
+            animation: pulseGlow 3s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            from { box-shadow: 0 0 10px rgba(218, 112, 214, 0.2); }
+            to { box-shadow: 0 0 25px rgba(255, 20, 147, 0.5); }
+        }
+
+        #contador {
+            font-size: clamp(1.5em, 4vw, 2.5em);
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 10px #ff69b4;
+            margin-bottom: 5px;
+        }
+
+        .data-label {
+            color: #ffb6c1;
+            font-size: 0.9em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         /* --- PLAYER DE MÚSICA --- */
@@ -65,7 +97,6 @@
             position: relative;
         }
 
-        /* Visualizador de Áudio (Barrinhas) */
         .equalizer {
             display: flex; justify-content: center; gap: 5px; height: 30px; margin-bottom: 15px;
         }
@@ -108,13 +139,11 @@
             border: 1px solid #333;
             transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
             
-            /* Estado Inicial (Invisível) */
             opacity: 0;
             transform: translateY(100px) scale(0.9);
             filter: blur(5px);
         }
 
-        /* Estado Visível (Adicionado pelo JS) */
         .polaroid.reveal {
             opacity: 1;
             transform: translateY(0) scale(1);
@@ -130,19 +159,24 @@
         .polaroid:hover img { filter: grayscale(0%); transform: scale(1.03); }
         .polaroid img.error { padding: 50px; object-fit: contain; opacity: 0.3; }
 
-        #playlistDados { display: none; } /* Esconde a lista crua */
+        #playlistDados { display: none; }
     </style>
 </head>
 <body>
 
     <div class="container">
         <h1>Nosso Universo</h1>
+
+        <div class="counter-box">
+            <div id="contador">Calculando...</div>
+            <div class="data-label">Juntos desde <span id="dataInicioTexto">--/--/----</span></div>
+        </div>
         
         <ul id="playlistDados">
             <li data-src="mc/mc/musica1.mp3">1. Nossa Música Tema</li>
             <li data-src="mc/mc/musica2.mp3">2. Momento Especial</li>
             <li data-src="mc/mc/musica3.mp3">3. Batida do Coração</li>
-            </ul>
+        </ul>
 
         <div class="player-wrapper paused" id="visualizer">
             <div class="equalizer">
@@ -186,7 +220,7 @@
                 <img src="mc/mc/unnamed.jpg" onerror="erroImg(this)">
             </div>
 
-            </div>
+        </div>
 
         <div style="margin-top: 80px; opacity: 0.6; font-size: 0.8em;">
             Feito com amor eterno &hearts;
@@ -194,11 +228,43 @@
     </div>
 
     <script>
-        // --- 1. LÓGICA DA PLAYLIST ---
+        // --- 1. CONFIGURAÇÃO DA DATA (MUDE AQUI) ---
+        // Ano, Mês (Janeiro=0, Maio=4), Dia
+        const dataInicial = new Date(2025, 4, 14); 
+
+        // Formata a data para mostrar na tela
+        const dataFormatada = dataInicial.toLocaleDateString('pt-BR');
+        document.getElementById('dataInicioTexto').textContent = dataFormatada;
+
+        // --- 2. LÓGICA DO CONTADOR ---
+        function atualizarContador() {
+            const agora = new Date();
+            const diferenca = agora - dataInicial;
+
+            if (diferenca < 0) {
+                document.getElementById('contador').innerText = "Em breve...";
+            } else {
+                const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+                const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+                const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+                // Adiciona o zero na frente se for menor que 10 (ex: 09, 05)
+                const h = String(horas).padStart(2, '0');
+                const m = String(minutos).padStart(2, '0');
+                const s = String(segundos).padStart(2, '0');
+
+                document.getElementById('contador').innerText = 
+                    `${dias} Dias · ${h}:${m}:${s}`;
+            }
+        }
+        setInterval(atualizarContador, 1000);
+        atualizarContador(); // Roda a primeira vez sem esperar 1 seg
+
+        // --- 3. LÓGICA DA PLAYLIST ---
         const listaHTML = document.querySelectorAll('#playlistDados li');
         const playlist = [];
         
-        // Puxa os dados do HTML para o JS
         listaHTML.forEach(item => {
             playlist.push({
                 src: item.getAttribute('data-src'),
@@ -212,7 +278,6 @@
         const visualizer = document.getElementById('visualizer');
         const btnPlay = document.getElementById('btnPlay');
 
-        // Carregar a primeira música
         if(playlist.length > 0) {
             carregarMusica(0);
         } else {
@@ -220,7 +285,6 @@
         }
 
         function carregarMusica(index) {
-            // Lógica circular (se passar da última, volta pra primeira)
             if (index < 0) index = playlist.length - 1;
             if (index >= playlist.length) index = 0;
             
@@ -238,7 +302,7 @@
                         btnPlay.innerText = "⏸ Pausar";
                     }).catch(erro => {
                         console.error("Erro:", erro);
-                        alert("Não foi possível tocar: " + playlist[indexAtual].src + "\nVerifique se o nome do arquivo está igual na pasta!");
+                        alert("Não foi possível tocar: " + playlist[indexAtual].src);
                     });
                 }
             } else {
@@ -250,33 +314,25 @@
 
         function mudarFaixa(direcao) {
             carregarMusica(indexAtual + direcao);
-            togglePlay(); // Já começa tocando a próxima
+            togglePlay();
         }
 
-        // Toca a próxima automaticamente
         audio.addEventListener('ended', () => mudarFaixa(1));
 
-
-        // --- 2. SCROLL REVEAL (SOBE E DESCE) ---
+        // --- 4. SCROLL REVEAL (SOBE E DESCE) ---
         const observador = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Quando entra na tela
                     entry.target.classList.add('reveal');
                 } else {
-                    // Quando sai da tela (remove a classe para animar de novo depois)
                     entry.target.classList.remove('reveal');
                 }
             });
-        }, {
-            threshold: 0.15, // Aciona quando 15% da foto estiver visível
-            rootMargin: "0px"
-        });
+        }, { threshold: 0.15 });
 
-        // Aplica o observador em todas as polaroids
         document.querySelectorAll('.polaroid').forEach(el => observador.observe(el));
 
-        // --- 3. TRATAMENTO DE ERRO DE IMAGEM ---
+        // --- 5. ERRO DE IMAGEM ---
         function erroImg(img) {
             img.onerror = "";
             img.src = "https://placehold.co/400x400/202020/ff69b4?text=Foto+Não+Encontrada";
