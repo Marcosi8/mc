@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nossa História</title>
+    <title>oi :)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* --- ESTILOS --- */
+       
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Orbitron', sans-serif;
@@ -65,7 +65,7 @@
         .polaroid img.error { padding: 50px; object-fit: contain; opacity: 0.3; }
         #playlistDados { display: none; }
 
-        /* --- CONFIGURAÇÃO DA KUROMI (Fixa no canto direito) --- */
+      
         .kuromi-corner {
             position: fixed;
             bottom: 0px; 
@@ -73,7 +73,7 @@
             width: 150px; 
             z-index: 50; 
             pointer-events: none;
-            /* Garante que a imagem renderize nítida */
+        
             image-rendering: -webkit-optimize-contrast;
         }
         @media (max-width: 600px) { .kuromi-corner { width: 120px; } }
@@ -83,7 +83,7 @@
 
     <img src="https://media.tenor.com/zixpOZAH5b0AAAAj/kuromi-hello-kitty.gif" 
          class="kuromi-corner" 
-         alt="Kuromi Espiando">
+         alt="Kuromi">
 
     <div class="container">
         <h1>Nosso Universo</h1>
@@ -93,8 +93,9 @@
         </div>
         
         <ul id="playlistDados">
-            <li data-src="https://cdn.discordapp.com/attachments/1460993143641083987/1460993232283504660/Fallen_Star.mp3?ex=6968ef7a&is=69679dfa&hm=335d218eccbc491cd759a77324fbd575ae74a2f8b556b83c2aceb5cffd3ccafc&">Preciso Dizer Que Te Amo</li>
-            <li data-src="https://raw.githubusercontent.com/marcosi8/mc/main/mc/mc/musica2.mp3">Nossa Segunda Música</li>
+            <li data-src="https://cdn.discordapp.com/attachments/1460993143641083987/1460993232283504660/Fallen_Star.mp3?ex=6968ef7a&is=69679dfa&hm=335d218eccbc491cd759a77324fbd575ae74a2f8b556b83c2aceb5cffd3ccafc&">Fallen Star</li>
+            <li data-src="https://raw.githubusercontent.com/marcosi8/mc/main/mc/mc/musica2.mp3">Dom Quixote</li>
+            <li data-src="https://raw.githubusercontent.com/marcosi8/mc/main/mc/mc/musica2.mp3">Always</li>
         </ul>
 
         <div class="player-wrapper paused" id="visualizer">
@@ -105,23 +106,24 @@
             <audio id="playerAudio" preload="auto"></audio>
             <div class="controls">
                 <button onclick="mudarFaixa(-1)">⏮</button>
-                <button onclick="togglePlay()" class="play-main" id="btnPlay">▶ Tocar</button>
+                <button onclick="togglePlay()" class="play-main" id="btnPlay">▶</button>
                 <button onclick="mudarFaixa(1)">⏭</button>
             </div>
         </div>
 
-        <p style="margin-top:20px; color:#666; font-size:0.8em;">(Role a página para ver as memórias)</p>
+        <p style="margin-top:20px; color:#666; font-size:0.8em;">mc...</p>
 
         <div class="gallery-grid">
-            <div class="polaroid"><img src="mc/mc/img.icons8.png" onerror="erroImg(this)"></div>
-            <div class="polaroid"><img src="mc/mc/MV5BNDkyMTVkZWEtNjgzMy00OWE4LTg0ZDAtMzQwNWI5NmVhOTRiXkEyXkFqcGc@._V1_.jpg" onerror="erroImg(this)"></div>
-            <div class="polaroid"><img src="mc/mc/Kuromi.webp" onerror="erroImg(this)"></div>
-            <div class="polaroid"><img src="mc/mc/addams.jpg" onerror="erroImg(this)"></div>
-            <div class="polaroid"><img src="mc/mc/patu.jpg" onerror="erroImg(this)"></div>
-            <div class="polaroid"><img src="mc/mc/unnamed.jpg" onerror="erroImg(this)"></div>
+            <div class="polaroid"><img src="mc/mc/foto1" onerror="erroImg(this)"></div>
+            <div class="polaroid"><img src="mc/mc/foto7" onerror="erroImg(this)"></div>
+            <div class="polaroid"><img src="mc/mc/foto2" onerror="erroImg(this)"></div>
+            <div class="polaroid"><img src="mc/mc/foto3" onerror="erroImg(this)"></div>
+            <div class="polaroid"><img src="mc/mc/foto4" onerror="erroImg(this)"></div>
+            <div class="polaroid"><img src="mc/mc/foto5" onerror="erroImg(this)"></div>
+            <div class="polaroid"><img src="mc/mc/foto6" onerror="erroImg(this)"></div>
         </div>
 
-        <div style="margin-top: 80px; opacity: 0.6; font-size: 0.8em;">Feito com amor eterno &hearts;</div>
+        <div style="margin-top: 80px; opacity: 0.6; font-size: 0.8em;">Te amo, Mozilla &hearts;</div>
     </div>
 
     <script>
@@ -161,7 +163,7 @@
             if (index >= playlist.length) index = 0;
             indexAtual = index;
             audio.src = playlist[indexAtual].src;
-            displayTitulo.innerText = `🎵 ${playlist[indexAtual].nome}`;
+            displayTitulo.innerText = `${playlist[indexAtual].nome}`;
         }
 
         function togglePlay() {
@@ -170,7 +172,7 @@
                 if (promessa !== undefined) {
                     promessa.then(() => {
                         visualizer.classList.remove('paused');
-                        btnPlay.innerText = "⏸ Pausar";
+                        btnPlay.innerText = "⏸";
                     }).catch(erro => {
                         console.error("Erro:", erro);
                         alert(`ERRO: Não consegui acessar: ${playlist[indexAtual].src}`);
@@ -197,4 +199,5 @@
     </script>
 </body>
 </html>
+
 
