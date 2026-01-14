@@ -70,16 +70,21 @@
             position: fixed;
             bottom: 0px; 
             right: 0px; 
-            width: 150px; 
+            width: 150px; /* Tamanho da Kuromi */
             z-index: 50; 
-            pointer-events: none;
+            pointer-events: none; /* Deixa clicar no que estiver atrás */
         }
         @media (max-width: 600px) { .kuromi-corner { width: 120px; } }
     </style>
 </head>
 <body>
 
-    <img src="https://media.tenor.com/J3s0N9gK8voAAAAi/kumori-corner-peak.gif" class="kuromi-corner" alt="Kuromi Espiando">
+    <div class="kuromi-corner">
+        <div class="tenor-gif-embed" data-postid="861306002551391311" data-share-method="host" data-aspect-ratio="0.791209" data-width="100%">
+            <a href="https://tenor.com/view/kumori-corner-peak-peaking-sanrio-gif-861306002551391311">Kumori Corner Peak Sticker</a>
+        </div>
+        <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    </div>
 
     <div class="container">
         <h1>Nosso Universo</h1>
@@ -169,7 +174,7 @@
                         btnPlay.innerText = "⏸ Pausar";
                     }).catch(erro => {
                         console.error("Erro:", erro);
-                        alert(`ERRO: Não consegui acessar o link da música: ${playlist[indexAtual].src}`);
+                        alert(`ERRO: Não consegui acessar: ${playlist[indexAtual].src}`);
                     });
                 }
             } else {
