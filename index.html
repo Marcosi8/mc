@@ -60,7 +60,7 @@
             padding: 20px;
             border-radius: 10px;
             margin: 0 auto 40px;
-            max-width: 700px; /* Aumentei um pouco para caber o texto */
+            max-width: 700px;
             box-shadow: 0 0 20px rgba(218, 112, 214, 0.2);
             animation: pulseGlow 3s infinite alternate;
         }
@@ -71,7 +71,7 @@
         }
 
         #contador {
-            font-size: clamp(1.2em, 3.5vw, 2em); /* Ajuste de tamanho */
+            font-size: clamp(1.2em, 3.5vw, 2em);
             font-weight: 700;
             color: #fff;
             text-shadow: 0 0 10px #ff69b4;
@@ -162,9 +162,9 @@
         </div>
         
         <ul id="playlistDados">
-            <li data-src="mc/mc/musica1.mp3">Preciso Dizer Que Te Amo</li>
-            <li data-src="mc/mc/musica2.mp3">Segunda Música</li>
-            <li data-src="mc/mc/musica3.mp3">Terceira Música</li>
+            <li data-src="musica1.mp3">Preciso Dizer Que Te Amo</li>
+            <li data-src="musica2.mp3">Segunda Música</li>
+            <li data-src="musica3.mp3">Terceira Música</li>
         </ul>
 
         <div class="player-wrapper paused" id="visualizer">
@@ -186,27 +186,27 @@
         <div class="gallery-grid">
             
             <div class="polaroid">
-                <img src="mc/mc/img.icons8.png" onerror="erroImg(this)">
+                <img src="img.icons8.png" onerror="erroImg(this)">
             </div>
 
             <div class="polaroid">
-                <img src="mc/mc/MV5BNDkyMTVkZWEtNjgzMy00OWE4LTg0ZDAtMzQwNWI5NmVhOTRiXkEyXkFqcGc@._V1_.jpg" onerror="erroImg(this)">
+                <img src="MV5BNDkyMTVkZWEtNjgzMy00OWE4LTg0ZDAtMzQwNWI5NmVhOTRiXkEyXkFqcGc@._V1_.jpg" onerror="erroImg(this)">
             </div>
 
             <div class="polaroid">
-                <img src="mc/mc/Kuromi.webp" onerror="erroImg(this)">
+                <img src="Kuromi.webp" onerror="erroImg(this)">
             </div>
 
             <div class="polaroid">
-                <img src="mc/mc/addams.jpg" onerror="erroImg(this)">
+                <img src="addams.jpg" onerror="erroImg(this)">
             </div>
 
             <div class="polaroid">
-                <img src="mc/mc/patu.jpg" onerror="erroImg(this)">
+                <img src="patu.jpg" onerror="erroImg(this)">
             </div>
             
             <div class="polaroid">
-                <img src="mc/mc/unnamed.jpg" onerror="erroImg(this)">
+                <img src="unnamed.jpg" onerror="erroImg(this)">
             </div>
 
         </div>
@@ -218,10 +218,9 @@
 
     <script>
         // --- 1. CONFIGURAÇÃO DA DATA ---
-        // Ano, Mês (Maio = 4), Dia
         const dataInicial = new Date(2025, 4, 14); 
 
-        // --- 2. LÓGICA DO CONTADOR (Formato solicitado) ---
+        // --- 2. LÓGICA DO CONTADOR ---
         function atualizarContador() {
             const agora = new Date();
             const diferenca = agora - dataInicial;
@@ -234,7 +233,6 @@
                 const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
                 const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
 
-                // Monta a frase exatamente como você pediu
                 document.getElementById('contador').innerText = 
                     `juntos há ${dias} dias ${horas} horas ${minutos} min e ${segundos} seg`;
             }
@@ -270,7 +268,6 @@
             if (index >= playlist.length) index = 0;
             
             indexAtual = index;
-            // Decodifica possíveis caracteres especiais no link
             audio.src = playlist[indexAtual].src;
             displayTitulo.innerText = `🎵 ${playlist[indexAtual].nome}`;
         }
@@ -284,8 +281,7 @@
                         btnPlay.innerText = "⏸ Pausar";
                     }).catch(erro => {
                         console.error("Erro:", erro);
-                        // Alerta mais específico
-                        alert(`ERRO: Não consegui tocar o arquivo.\n\nTentando acessar: ${playlist[indexAtual].src}\n\nDICA: Verifique se o arquivo existe na pasta 'mc/mc/' e se o nome não tem espaços.`);
+                        alert(`ERRO: Não consegui tocar o arquivo.\n\nTentando acessar: ${playlist[indexAtual].src}\n\nDICA: Como o arquivo está na mesma pasta, o nome tem que ser EXATO (Maiúsculas/minúsculas importam).`);
                     });
                 }
             } else {
@@ -302,7 +298,7 @@
 
         audio.addEventListener('ended', () => mudarFaixa(1));
 
-        // --- 4. SCROLL REVEAL (SOBE E DESCE) ---
+        // --- 4. SCROLL REVEAL ---
         const observador = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -324,5 +320,3 @@
     </script>
 </body>
 </html>
-
-
