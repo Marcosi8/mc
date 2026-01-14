@@ -1,3 +1,17 @@
+Que achado! Esse GIF da Kuromi "Peeking" (espiando do canto) é perfeito para decorar o site.
+
+Como o próprio nome do GIF diz ("Corner Peak"), ele foi feito para ficar **fixo no cantinho** da tela, espiando, e não andando de um lado para o outro (se ela andasse, pareceria que está deslizando, o que ficaria estranho).
+
+Por isso, **atualizei o código** para que ela fique fixa no canto esquerdo, "espiando" o casal.
+
+### O que mudou:
+
+1. **Troquei o GIF:** Tirei a imagem antiga e coloquei o **código de incorporação (embed)** do Tenor que você mandou.
+2. **Mudei a Animação:** Em vez de andar pela tela (`kuromi-walk`), criei a classe `.kuromi-corner` para fixá-la no rodapé esquerdo. Ajustei o tamanho para ficar discreto e fofo.
+
+Aqui está o **código completo atualizado**. É só copiar e colar tudo no seu `index.html`:
+
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -65,35 +79,30 @@
         .polaroid img.error { padding: 50px; object-fit: contain; opacity: 0.3; }
         #playlistDados { display: none; }
 
-        /* --- NOVA ANIMAÇÃO DA KUROMI --- */
-        .kuromi-walk {
+        /* --- CONFIGURAÇÃO DA KUROMI (CANTO ESQUERDO) --- */
+        .kuromi-corner {
             position: fixed;
-            bottom: -10px; /* Ajuste para ela ficar no chão */
-            left: -150px; /* Começa fora da tela */
-            width: 100px; /* Tamanho da Kuromi */
-            z-index: 50; /* Fica na frente do fundo, mas atrás de modais se tiver */
-            pointer-events: none; /* Permite clicar através dela */
-            animation: andandoTela 25s linear infinite; /* 25s para atravessar e voltar */
-            filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.5));
+            bottom: 0px; 
+            left: 0px; 
+            width: 150px; /* Ajuste o tamanho dela aqui */
+            z-index: 50; 
+            pointer-events: none; /* Para não atrapalhar cliques */
         }
-
-        @keyframes andandoTela {
-            0% { left: -150px; transform: scaleX(1); } /* Começa na esquerda, virada pra direita */
-            45% { left: 105%; transform: scaleX(1); } /* Chega na direita (sai da tela) */
-            50% { left: 105%; transform: scaleX(-1); } /* Vira para a esquerda */
-            95% { left: -150px; transform: scaleX(-1); } /* Volta para a esquerda */
-            100% { left: -150px; transform: scaleX(1); } /* Reseta */
-        }
-
-        /* Responsividade para celulares */
+        
+        /* Ajuste para não ficar gigante no celular */
         @media (max-width: 600px) {
-            .kuromi-walk { width: 80px; }
+            .kuromi-corner { width: 100px; }
         }
     </style>
 </head>
 <body>
 
-    <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHk5aGZ1bXF6YmZlYmY1YmZlYmY1YmZlYmY1YmZlYmY1JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/StT7X0e1u9jZ5Jz5b7/giphy.gif" class="kuromi-walk" alt="Kuromi Andando">
+    <div class="kuromi-corner">
+        <div class="tenor-gif-embed" data-postid="861306002551391311" data-share-method="host" data-aspect-ratio="0.791209" data-width="100%">
+            <a href="https://tenor.com/view/kumori-corner-peak-peaking-sanrio-gif-861306002551391311">Kumori Corner Peak Sticker</a>
+        </div> 
+        <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    </div>
 
     <div class="container">
         <h1>Nosso Universo</h1>
@@ -235,3 +244,5 @@
     </script>
 </body>
 </html>
+
+```
