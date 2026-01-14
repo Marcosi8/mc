@@ -86,8 +86,7 @@
          alt="Kuromi">
 
     <div class="container">
-        <h1>Tudo bem, até pode ser
-Que os dragões sejam moinhos de vento...</h1>
+        <h1></h1>
 
         <div class="counter-box">
             <div id="contador">Calculando...</div>
@@ -113,14 +112,15 @@ Que os dragões sejam moinhos de vento...</h1>
             </div>
         </div>
 
-        <p style="margin-top:20px; color:#666; font-size:0.8em;">mc...</p>
+        <p style="margin-top:20px; color:#666; font-size:0.8em;">Tudo bem, até pode ser
+Que os dragões sejam moinhos de vento...</p>
 
         <div class="gallery-grid">
             <div class="polaroid"><img src="mc/mc/foto1" onerror="erroImg(this)"></div>
-            <div class="polaroid"><img src="mc/mc/foto7" onerror="erroImg(this)"></div>
+            <div class="polaroid"><img src="mc/mc/foto4" onerror="erroImg(this)"></div>
             <div class="polaroid"><img src="mc/mc/foto2" onerror="erroImg(this)"></div>
             <div class="polaroid"><img src="mc/mc/foto3" onerror="erroImg(this)"></div>
-            <div class="polaroid"><img src="mc/mc/foto4" onerror="erroImg(this)"></div>
+            <div class="polaroid"><img src="mc/mc/foto7" onerror="erroImg(this)"></div>
             <div class="polaroid"><img src="mc/mc/foto5" onerror="erroImg(this)"></div>
             <div class="polaroid"><img src="mc/mc/foto6" onerror="erroImg(this)"></div>
         </div>
@@ -141,7 +141,7 @@ Que os dragões sejam moinhos de vento...</h1>
                 const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
                 const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
-                document.getElementById('contador').innerText = `juntos há ${dias} dias ${horas} horas ${minutos} min e ${segundos} seg`;
+                document.getElementById('contador').innerText = `${dias} dias ${horas} horas ${minutos} min e ${segundos} seg`;
             }
         }
         setInterval(atualizarContador, 1000);
@@ -201,6 +201,7 @@ Que os dragões sejam moinhos de vento...</h1>
     </script>
 </body>
 </html>
+
 
 
 
