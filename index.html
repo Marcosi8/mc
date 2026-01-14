@@ -65,21 +65,25 @@
         .polaroid img.error { padding: 50px; object-fit: contain; opacity: 0.3; }
         #playlistDados { display: none; }
 
-        /* --- CONFIGURAÇÃO DA KUROMI (CANTO DIREITO) --- */
+        /* --- CONFIGURAÇÃO DA KUROMI (Fixa no canto direito) --- */
         .kuromi-corner {
             position: fixed;
             bottom: 0px; 
             right: 0px; 
-            width: 150px; /* Tamanho da Kuromi */
+            width: 150px; 
             z-index: 50; 
-            pointer-events: none; /* Deixa clicar no que estiver atrás */
+            pointer-events: none;
+            /* Garante que a imagem renderize nítida */
+            image-rendering: -webkit-optimize-contrast;
         }
         @media (max-width: 600px) { .kuromi-corner { width: 120px; } }
     </style>
 </head>
 <body>
 
-    <img src="https://media.tenor.com/J3s0N9gK8voAAAAi/kumori-corner-peak.gif" class="kuromi-corner" alt="Kuromi Espiando">
+    <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDV0aXZ0aXZ0aXZ0aXZ0aXZ0aXZ0aXZ0aXZ0aXZ0aSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/StT7X0e1u9jZ5Jz5b7/giphy.gif" 
+         class="kuromi-corner" 
+         alt="Kuromi Espiando">
 
     <div class="container">
         <h1>Nosso Universo</h1>
