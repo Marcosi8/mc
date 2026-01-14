@@ -69,7 +69,7 @@
         .kuromi-corner {
             position: fixed;
             bottom: 0px; 
-            right: 0px; /* Alterado para DIREITA */
+            right: 0px; 
             width: 150px; 
             z-index: 50; 
             pointer-events: none;
@@ -89,8 +89,8 @@
         </div>
         
         <ul id="playlistDados">
-            <li data-src="mc/mc/musica1.mp3">Preciso Dizer Que Te Amo</li>
-            <li data-src="mc/mc/musica2.mp3">Nossa Segunda Música</li>
+            <li data-src="https://raw.githubusercontent.com/marcosi8/mc/main/mc/mc/musica1.mp3">Preciso Dizer Que Te Amo</li>
+            <li data-src="https://raw.githubusercontent.com/marcosi8/mc/main/mc/mc/musica2.mp3">Nossa Segunda Música</li>
         </ul>
 
         <div class="player-wrapper paused" id="visualizer">
@@ -169,7 +169,7 @@
                         btnPlay.innerText = "⏸ Pausar";
                     }).catch(erro => {
                         console.error("Erro:", erro);
-                        alert(`ERRO: Não tocou o arquivo: ${playlist[indexAtual].src}`);
+                        alert(`ERRO: Não consegui acessar o link da música: ${playlist[indexAtual].src}`);
                     });
                 }
             } else {
